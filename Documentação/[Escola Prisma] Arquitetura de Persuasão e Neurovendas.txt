@@ -1,0 +1,87 @@
+# Arquitetura de Persuasão e Neurovendas: Escola Prisma
+
+Este documento detalha o wireframe, o fluxo de conversão (funil), o copywriting e a direção de arte (UI) para transformar o site da Escola Prisma em uma máquina de aquisições de leads qualificados. 
+
+Toda a arquitetura foi desenhada visando aliviar as dores da **Persona Mariana** (mãe que trabalha, sente culpa pelo pouco tempo, busca excelência com acolhimento e teme escolhas erradas).
+
+---
+
+## 1. Direção de Arte e Neuro-Design (UI)
+
+*   **Tipografia:** Fontes sem serifa, modernas e de altíssima legibilidade (ex: *Inter*, *Outfit* ou *Plus Jakarta Sans*). Transmitem modernidade e clareza, aliviando a carga cognitiva.
+*   **Paleta de Cores (Neuromarketing):**
+    *   **Cores Primárias (Fundo e Estrutura):** Branco (pureza, organização) e Cinza muito claro. 
+    *   **Cores Institucionais:** Azul (confiança, tradição acadêmica) e um tom secundário quente (ex: amarelo/mostarda sutil) para energia e juventude.
+    *   **A Cor da Ação (CTAs):** Laranja vibrante ou Verde-Esmeralda. O botão precisa "saltar" da tela. É a única coisa que brilha na interface.
+*   **Fotografia (Crítico):** **Zero banco de imagens**. Fotos reais em estilo fotodocumentário. Ambientes bem iluminados (luz natural). O foco das fotos não deve ser cadeiras vazias, mas *conexão visual*: crianças sorrindo para a câmera, professor abraçando um aluno de Fundamental I, adolescente focado com o material Positivo.
+*   **Estilo Visual:** Glassmorphism sutil para dar um ar *premium*, bordas arredondadas (transmite suavidade e segurança, apelando ao maternal) e micro-interações suaves para dar "vida" ao site.
+
+---
+
+## 2. Wireframe e Copywriting (A Jornada na Landing Page)
+
+O site será estruturado em um formato *One-Page* (rolagem única, retendo o usuário). Cada seção combate uma objeção específica da persona.
+
+### SEÇÃO 1: A Dobra Matadora (Hero Section)
+*Objetivo: Reter a atenção em 3 segundos. Confirmar suspeitas de que eles merecem algo melhor.*
+*   **Visual:** Uma imagem imponente de fundo: um aluno interagindo de forma feliz com uma professora, ou mãe buscando a criança (tangibilizando alívio).
+*   **Selo no Topo:** A logo da Escola Prisma + Logo do Sistema Positivo (Autoridade Imediata).
+*   **Headline (Promessa Maior):** "O Equilíbrio Perfeito Entre a Aprovação no Vestibular e o Acolhimento que Seu Filho Merece."
+*   **Sub-headline:** "Da Educação Infantil ao Ensino Médio: Formação forte, segurança em tempo integral e valores humanos. Dê ao seu filho o melhor futuro possível em Feira de Santana, enquanto você trabalha com tranquilidade."
+*   **CTA Principal:** `[ Agendar Visita e Conhecer a Estrutura ]` (Botão vibrante que abre o WhatsApp).
+*   **Social Proof Bar:** "Acolhendo as famílias de Feira de Santana há 29 anos" com avaliações 5 estrelas do Google.
+
+### SEÇÃO 2: Problema x Solução (Agitação da Dor)
+*Objetivo: Mostrar que entendemos a "Mariana". Validar a dor e a culpa de não ter tempo.*
+*   **Headline:** "Nós sabemos que a sua rotina é intensa. E a educação do seu filho não pode ser uma preocupação a mais."
+*   **Estrutura em 3 Blocos Rápidos (Ícones modernos):**
+    1.  **Segurança Intransigente:** "Não somos uma escola onde a criança fica 'solta'. Monitoramento rigoroso, portaria segura e cuidado emocional contínuo."
+    2.  **Turno Integral Verdadeiro:** "Enquanto você trabalha, eles não estão apenas passando tempo. Estão imersos no inglês, nos esportes e no desenvolvimento integral."
+    3.  **Longe da Tela, Perto do Mundo:** "Combatemos a apatia tecnológica com atividades reais: Balé, Karatê e projetos práticos que constroem disciplina."
+
+### SEÇÃO 3: Os Passos para o Futuro (Mapeamento de Etapas)
+*Objetivo: Mostrar a jornada completa e aliviar o medo de "ficar pulando de escola".*
+*   **Headline:** "Acompanhamos a evolução do seu bem mais precioso em cada fase."
+*   *(Tabs ou Cards interativos)*
+    *   **Infantil:** "A alfabetização forte que respeita o ritmo da criança. Aqui, o acolhimento é nosso currículo principal."
+    *   **Fundamental I e II:** "A construção do hábito de estudos, disciplina intelectual e a inserção do bilinguismo."
+    *   **Ensino Médio:** "Foco total na UEFS, ENEM e nas grandes oportunidades. Cobrança de alto nível sem destruir a saúde mental do adolescente."
+
+### SEÇÃO 4: O "Arsenal" de Diferenciais
+*Objetivo: Justificar o preço e provar a entrega de valor.*
+*   **Visual:** Uma grade visual impactante.
+*   **Itens Destacados:**
+    *   *Positivo English Solution (Bilinguismo de verdade).*
+    *   *Sistema de Ensino Positivo.*
+    *   *Acompanhamento Psicopedagógico.*
+    *   *Atividades Extracurriculares (A mente sã no corpo são).*
+
+### SEÇÃO 5: O Peso da Prova Social (Gatilho da Comunidade)
+*Objetivo: Quebrar a barreira da desconfiança.*
+*   **Headline:** "Não confie apenas nas nossas palavras. Escute as mães e os pais da Escola Prisma."
+*   **Estrutura:** 3 a 4 depoimentos reais e curtos (em vídeo é melhor; se texto, usar fotos dos pais com os filhos).
+*   *Copy do depoimento (Exemplo real)*: "Eu precisava focar na minha clínica sem sentir culpa por deixar meu filho ocioso. A Prisma resolveu minha vida com o tempo integral e a segurança incrível que eles têm."
+
+### SEÇÃO 6: FAQ (Quebra de Objeções Ocultas)
+*Objetivo: Responder ao que a Mariana pensa, mas não diz.*
+*   "A escola realmente acompanha cada aluno de perto ou meu filho será só mais um número?" (R: Explicar a limitação de alunos por turma).
+*   "O Turno Integral não vai deixar meu filho exausto?" (R: Explicar o balanceamento entre esporte, descanso e estudo).
+*   "Como a escola lida com questões comportamentais e bullying?"
+
+### SEÇÃO 7: Fechamento Magnético (Urgency e CTA Final)
+*Objetivo: Forçar o clique imediato.*
+*   **Visual:** Fundo escuro ou imagem de alto impacto.
+*   **Headline:** "O futuro brilhante do seu filho não aceita atalhos. Aceita boas escolhas."
+*   **Copy:** "As vagas para as turmas de [ANO] estão sendo rapidamente preenchidas. Mantemos um número restrito de alunos para garantir o acompanhamento individualizado que prometemos. Venha tomar um café com a nossa coordenação e ver nossos diferenciais de perto."
+*   **CTA Final:** `[ Falar com a Equipe no WhatsApp ]`
+
+---
+
+## 3. O Fluxo de Neurovendas (Pós-Clique)
+
+O erro de muitos sites é levar para um WhatsApp onde ninguém responde ou cai num bot robótico. 
+
+1.  **O Clique:** O botão já envia a mensagem pronta: *"Olá! Sou de Feira de Santana, vi o site de vocês e gostaria de informações sobre matrículas e agendar uma visita para o meu filho(a)."*
+2.  **O Atendimento Límbico (Empático):** A primeira resposta não manda PDF de preço.
+    *   *Exemplo:* "Olá! Seja muito bem-vinda à família Prisma. Que alegria receber seu contato. Para eu te dar as informações bem certinhas, me conta: quantos aninhos tem seu filho(a) e como ele(a) se chama?"
+3.  **A Meta Comercial:** O fechamento não é "vender a escola" no WhatsApp. A única meta do WhatsApp é **vender a VISITA**. A magia, o encantamento da estrutura e a confiança humana acontecem pessoalmente. Quando a mãe pisa na escola e a estrutura confirma tudo que o site prometeu, o preço se torna irrelevante e o valor percebido domina a negociação.

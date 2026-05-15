@@ -1,0 +1,51 @@
+# Auditoria de UX e Marketing Educacional: Escola Prisma
+
+**Público-Alvo:** Pais e responsáveis em fase de decisão de matrícula.
+**Objetivo Primário do Site:** Geração de Leads (Agendamento de Visitas / Contatos de interessados).
+
+---
+
+## 1. Pontos Fortes (O que funciona)
+
+*   **Selo de Autoridade (Sistema Positivo):** A presença logo no cabeçalho do selo "Escola Conveniada - Sistema de Ensino Positivo" funciona como uma âncora heurística. A escola empresta a autoridade de uma marca nacional, gerando confiança instantânea sobre a qualidade do material didático.
+*   **Visibilidade de Diferenciais Decisivos:** A seção de Atividades Extracurriculares aponta serviços cruciais (Tempo Integral, Reforço Escolar, Aulas de Inglês Positivo English Solution). Para os pais contemporâneos, essas opções não são "extras", são fatores de desempate para a matrícula.
+*   **Contato de Baixa Fricção (WhatsApp):** O uso do widget flutuante (Whatsclub) no canto inferior é excelente. Atende ao senso de urgência moderno, onde pais preferem enviar mensagens diretas em vez de ligar ou preencher formulários frios.
+*   **Estrutura de Página Única (One-Page):** O menu âncora que rola a página ao invés de abrir abas secundárias ajuda a reter o usuário, guiando-o de forma mais previsível ao longo da jornada.
+
+## 2. Pontos de Atrito (O que NÃO funciona)
+
+*   **Aparência de Abandono (Desatualização Crônica):**
+    *   A seção "Vídeos" apresenta conteúdo do "Natal 2013" e "Natal 2014".
+    *   O link direto para download é o "Calendário Letivo 2023".
+    *   As pastas de imagens listadas no HTML remetem a anos anteriores (2021).
+    *   Isso envia um sinal de alerta vermelho para os pais: *Se a escola não cuida da própria vitrine digital desde 2014, ela cuidará da atualização pedagógica do meu filho?*
+*   **Falta de Foco em Novos Clientes (Top Menu):** A área nobre do topo da página dedica espaço a "Serviço aos Pais" e "Portal do Aluno". São botões de retenção, para quem já estuda lá. Eles não geram matrículas. Quem pesquisa o site pela primeira vez não encontra uma ação prioritária para o momento dele.
+*   **Poluição com Informativos Aleatórios:** A seção de notícias possui artigos reciclados ("CEO da Apple não quer sobrinho nas redes", etc.). O pai não acessa o site da escola buscando ler um blog genérico. Ele acessa buscando certezas institucionais.
+
+## 3. Análise de Conteúdo e "Call to Action" (CTA)
+
+*   **Textos Egocêntricos e Burocráticos:** A seção "A Escola" é um mar de textos corporativos ("Existimos na esperança...", e listas longas de Missão, Visão e Valores). Pais não leem isso. Eles não matriculam o filho por causa da "Missão" da empresa, mas pela promessa de transformação: segurança, acolhimento, aprovação e suporte emocional. O site fala demais sobre a escola e muito pouco sobre *a família e o aluno*.
+*   **CTAs Passivos:** "Entre em Contato" não inspira ação. Falta uma oferta atrativa, uma razão pela qual o pai deve dar o próximo passo agora.
+*   **Fricção Grave de Formulário:** O formulário de contato exige que o usuário preencha um captcha fazendo continhas ("Informe o resultado da soma ao lado: 5 + 7"). Qualquer micro-obstáculo derruba drasticamente a taxa de conversão. 
+
+## 4. Sugestões de Melhoria Prática (O que Fazer)
+
+> [!CAUTION]
+> **Remover Imediatamente (Gera perda de confiança):**
+> *   **O Calendário 2023:** Exclua essa seção até ter o calendário do ano vigente. Ocultar o erro é melhor que exibir desleixo.
+> *   **Seção de Vídeos Inteira:** Remover até que tenham produções atuais, preferencialmente curtas (estilo Reels/TikTok) de boa qualidade.
+> *   **Seção de Informativos Genéricos.**
+> *   **Captcha de Matemática:** Remova a conta manual, utilize reCAPTCHA invisível do Google ou simplesmente direcione todo o foco de contato para o WhatsApp.
+
+> [!IMPORTANT]
+> **Adicionar/Otimizar (Gera aumento de conversão):**
+> *   **CTA de Alta Conversão Acima da Dobra:** Adicione um botão em destaque no primeiro banner: `[ Agende uma Visita Guiada ]` ou `[ Conheça as Vagas Disponíveis ]`.
+> *   **Prova Social:** Crie uma seção de "O que dizem nossos pais". Fotos ou vídeos curtos de pais reais recomendando a instituição é a maior alavanca de vendas na educação.
+> *   **Transformar MVV em Benefícios Tangíveis:** Transforme "Missão, Visão e Valores" em pequenos blocos de valor, como: *"Acolhimento Familiar"*, *"Segurança em Tempo Integral"*, *"Metodologia de Vanguarda"*.
+> *   **Evidenciar a Estrutura:** Mostrar fotos vibrantes, de alta qualidade e com pessoas/crianças interagindo (sempre sorrindo), não imagens de infraestrutura vazias e sem vida.
+
+## 5. Justificativa Teórica
+
+1.  **Marketing de Serviços (Tangibilização do Intangível):** Como a educação não pode ser experimentada antes da compra, o consumidor usa "pistas" visuais e estruturais (o site) para julgar a qualidade total (Efeito Halo). Se a pista principal exibe vídeos de uma década atrás, a dedução imediata é que a metodologia da escola também está paralisada no tempo.
+2.  **O Princípio da Prova Social (Robert Cialdini):** Em decisões de alta complexidade emocional (quem vai cuidar do meu filho?), o ser humano reduz o esforço mental baseando-se no comportamento de outros semelhantes. A ausência de depoimentos significa a ausência de mitigação de risco. O gatilho mais forte de venda não está sendo utilizado.
+3.  **Arquitetura de Conversão e Lei de Hick (UX):** A Lei de Hick afirma que o tempo de decisão aumenta com a quantidade de escolhas e distrações. O menu foca no Portal do Aluno e notícias inúteis em vez de direcionar a visão em "F" (topo e esquerda) diretamente para o funil comercial. O tempo de captura da atenção do pai na web é de segundos; ele deve saber o que a escola vende e onde clicar imediatamente.
