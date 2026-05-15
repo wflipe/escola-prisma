@@ -2,7 +2,7 @@
    ESCOLA PRISMA - VARIÁVEIS DE MARCA E BASE
    ========================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap');
+/* Google Fonts carregado via <link preload> no HTML para evitar bloqueio duplo */
 
 :root {
   /* Cores Primárias */
@@ -144,6 +144,7 @@ section {
 
 .cta-pulse {
   animation: pulse 2s infinite;
+  will-change: box-shadow; /* GPU-accelerated */
 }
 
 @keyframes pulse {
@@ -667,6 +668,7 @@ section {
   justify-content: center;
   transition: all 0.3s ease;
   animation: pulse-wa 2s infinite;
+  will-change: transform, box-shadow; /* GPU-accelerated */
 }
 
 .whatsapp-float:hover {
