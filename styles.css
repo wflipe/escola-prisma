@@ -177,22 +177,33 @@ section {
 }
 
 .cta-pulse {
+  position: relative;
+  will-change: transform;
+}
+
+.cta-pulse::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  background-color: rgba(255, 106, 26, 0.4);
   animation: pulse 2s infinite;
-  will-change: box-shadow;
-  /* GPU-accelerated */
+  z-index: -1;
+  will-change: transform, opacity;
 }
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 106, 26, 0.4);
+    transform: scale(1);
+    opacity: 1;
   }
-
   70% {
-    box-shadow: 0 0 0 15px rgba(255, 106, 26, 0);
+    transform: scale(1.15);
+    opacity: 0;
   }
-
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 106, 26, 0);
+    transform: scale(1.15);
+    opacity: 0;
   }
 }
 
@@ -1044,9 +1055,18 @@ section {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  background-color: rgba(37, 211, 102, 0.5);
   animation: pulse-wa 2s infinite;
-  will-change: transform, box-shadow;
-  /* GPU-accelerated */
+  z-index: -1;
+  will-change: transform, opacity;
 }
 
 .whatsapp-float:hover {
@@ -1055,15 +1075,16 @@ section {
 
 @keyframes pulse-wa {
   0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    transform: scale(1);
+    opacity: 1;
   }
-
   70% {
-    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    transform: scale(1.4);
+    opacity: 0;
   }
-
   100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    transform: scale(1.4);
+    opacity: 0;
   }
 }
 
@@ -1242,21 +1263,22 @@ section {
     -webkit-overflow-scrolling: touch;
     padding-bottom: 20px;
   }
-  
+
   .insta-card {
     min-width: 280px;
     scroll-snap-align: center;
   }
-  
+
   /* Hide scrollbar */
   .insta-grid::-webkit-scrollbar {
     display: none;
   }
+
   .insta-grid {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .insta-dots {
     display: flex;
   }
