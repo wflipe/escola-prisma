@@ -15,7 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
 
     let lastScrollY = 0;
-    let topBarHeight = topBar ? topBar.offsetHeight : 40;
+    let topBarHeight = 40;
+    if (topBar) {
+        requestAnimationFrame(() => {
+            topBarHeight = topBar.offsetHeight;
+        });
+    }
     let topBarHidden = false;
 
     function updateHeaderPosition(hidden) {
