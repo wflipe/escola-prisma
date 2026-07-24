@@ -1032,7 +1032,7 @@ section {
   width: 60px;
   height: 60px;
   bottom: 40px;
-  right: 40px;
+  left: 40px;
   background-color: #25d366;
   color: #FFF;
   border-radius: 50px;
@@ -1151,8 +1151,8 @@ section {
   }
 
   .whatsapp-float {
-    bottom: 80px;
-    right: 20px;
+    bottom: 20px;
+    left: 20px;
   }
 
   .back-to-top {
