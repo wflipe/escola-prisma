@@ -30,7 +30,7 @@
     <meta name="ICBM" content="-12.2858, -38.9556" />
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#236065">
+    <meta name="theme-color" content="#FF6602">
 
     <!-- Preconnect para GTM -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -39,64 +39,326 @@
          GOOGLE TAG MANAGER (HEAD)
          ========================= -->
     <!-- Substitua GTM-XXXXXXX pelo seu ID -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');</script>
 
     <!-- =========================
          PERFORMANCE: CRITICAL CSS (Pintura Instantânea)
          ========================= -->
     <style>
         /* Critical CSS: apenas o necessário para header + hero renderizar sem esperar arquivos externos */
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{font-size:16px}
-        body{font-family:'Montserrat',sans-serif;color:#2B2B2B;background:#FFF;line-height:1.6;overflow-x:hidden}
-        h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:#2B2B2B;margin-bottom:1rem}
-        h1{font-weight:700;font-size:3rem;line-height:1.1}
-        a{text-decoration:none;color:#2B2B2B;transition:all .3s ease}
-        .container{max-width:1140px;margin:0 auto;padding:0 20px}
-        .header{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);position:fixed;top:0;width:100%;z-index:1000;box-shadow:0 1px 0 rgba(0,0,0,.05);padding:15px 0;transition:padding .3s ease}
-        .header .container{display:flex;justify-content:space-between;align-items:center}
-        .logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.5rem;display:flex;align-items:center;gap:10px}
-        .logo-img{height:45px;width:auto;object-fit:contain}
-        .nav-links{display:flex;gap:30px;list-style:none}
-        .nav-links a{font-family:'Poppins',sans-serif;font-weight:600;font-size:.95rem;text-transform:uppercase;letter-spacing:.5px}
-        .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;min-height:48px;font-family:'Poppins',sans-serif;font-weight:600;border-radius:8px;cursor:pointer;transition:all .3s ease;border:none;font-size:1rem}
-        .btn-primary{background:#FF6A1A;color:#FFF;box-shadow:0 4px 15px rgba(255,106,26,.3)}
-        .btn-large{padding:18px 36px;font-size:1.125rem}
-        .hero{padding-top:140px;padding-bottom:80px;display:flex;align-items:center;min-height:90vh;position:relative;overflow:hidden}
-        .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-        .trust-badge{display:inline-block;background:rgba(255,212,0,.15);color:#B29400;font-weight:600;padding:8px 16px;border-radius:50px;margin-bottom:20px;font-size:.875rem}
-        .hero-content p{font-size:1.2rem;margin-bottom:40px;color:#4A4A4A}
-        .hero-actions{display:flex;flex-direction:column;gap:15px;align-items:flex-start}
-        .hero-image{position:relative}
-        .hero-image img{width:100%;border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.1);object-fit:cover;position:relative;z-index:2}
-        @media(max-width:992px){
-            .hero .container{grid-template-columns:1fr;text-align:center}
-            .hero-content{order:1;align-items:center;text-align:center}
-            .hero-actions{align-items:center}
-            .hero-image{order:2;margin-top:30px}
-            .nav-links{display:none}
-            h1{font-size:2.25rem}
-            .btn{width:100%;text-align:center}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
         }
-        @media(max-width:768px){#cta-header{display:none!important}.header .container{justify-content:center}.logo-img{height:60px}}
+
+        html {
+            font-size: 16px
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #2B2B2B;
+            background: #FFF;
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #2B2B2B;
+            margin-bottom: 1rem
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1.1
+        }
+
+        a {
+            text-decoration: none;
+            color: #2B2B2B;
+            transition: all .3s ease
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        .top-bar {
+            background: #ff6602;
+            color: #FFF;
+            font-size: .8rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001;
+            padding: 8px 0
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px
+        }
+
+        .top-bar-phone,
+        .top-bar-link {
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500
+        }
+
+        .top-bar-link {
+            padding: 5px 14px;
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 6px
+        }
+
+        .logo-positivo {
+            height: 24px;
+            width: auto;
+            object-fit: contain
+        }
+
+        .header {
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 40px;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
+            padding: 15px 0;
+            transition: padding .3s ease
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none
+        }
+
+        .nav-links a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: .95rem;
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            min-height: 48px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .3s ease;
+            border: none;
+            font-size: 1rem
+        }
+
+        .btn-primary {
+            background: #FF6A1A;
+            color: #FFF;
+            box-shadow: 0 4px 15px rgba(255, 106, 26, .3)
+        }
+
+        .btn-large {
+            padding: 18px 36px;
+            font-size: 1.125rem
+        }
+
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            display: flex;
+            align-items: center;
+            min-height: 90vh;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center
+        }
+
+        .trust-badge {
+            display: inline-block;
+            background: transparent;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-size: .875rem
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #4A4A4A
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start
+        }
+
+        .hero-image {
+            position: relative
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .1);
+            object-fit: cover;
+            position: relative;
+            z-index: 2
+        }
+
+        @media(max-width:992px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+
+            .hero-content {
+                order: 1;
+                align-items: center;
+                text-align: center
+            }
+
+            .hero-actions {
+                align-items: center
+            }
+
+            .hero-image {
+                order: 2;
+                margin-top: 30px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            h1 {
+                font-size: 2.25rem
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center
+            }
+
+            .top-bar-left {
+                display: none
+            }
+
+            .top-bar .container {
+                justify-content: center
+            }
+        }
+
+        @media(max-width:768px) {
+            #cta-header {
+                display: none !important
+            }
+
+            .header .container {
+                justify-content: center
+            }
+
+            .logo-img {
+                height: 60px
+            }
+
+            .top-bar {
+                font-size: .7rem
+            }
+
+            .top-bar-right {
+                gap: 8px
+            }
+
+            .top-bar-link {
+                padding: 4px 8px
+            }
+        }
     </style>
 
     <!-- Google Fonts: Preload não-bloqueante (substitui @import do CSS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap"></noscript>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap"
+        onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap">
+    </noscript>
 
     <!-- CSS principal (não-crítico, carrega normalmente) -->
     <link rel="stylesheet" href="styles.css">
 
     <!-- Font Awesome: Carregamento assíncrono (não bloqueia renderização) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
     <!-- Scripts (Defer) -->
     <script src="scripts.js" defer></script>
@@ -145,12 +407,34 @@
             style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- =========================
+         TOP BAR (BARRA DE UTILIDADES)
+         ========================= -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-right">
+                <a href="tel:+557536229180" class="top-bar-phone" aria-label="Ligar para a escola">
+                    <i class="fa-solid fa-phone"></i> (75) 3622-9180
+                </a>
+                <a href="https://pais.escolaprisma.com/login" class="top-bar-link" id="btn-servico-pais" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fa-solid fa-users"></i> Serviço aos Pais
+                </a>
+                <a href="https://grafiteweb.infocraft.com.br/prismafeira" class="top-bar-link" id="btn-portal-aluno"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-graduation-cap"></i> Portal do Aluno
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
          HEADER E NAVEGAÇÃO
          ========================= -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo">
-                <img src="assets/logo.png" alt="Escola Prisma - Educar é ensinar a pensar sozinho" class="logo-img" width="180" height="45">
+                <img src="assets/logo.png" alt="Escola Prisma - Educar é ensinar a pensar sozinho" class="logo-img"
+                    width="180" height="45">
             </a>
             <nav>
                 <ul class="nav-links">
@@ -164,8 +448,43 @@
                 class="btn btn-primary" id="cta-header" target="_blank" rel="noopener noreferrer">
                 Falar com a Coordenação
             </a>
+            <button class="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-overlay"></div>
+    <nav class="mobile-menu" aria-label="Menu mobile">
+        <ul class="mobile-menu-nav">
+            <li><a href="#proposta">A Escola</a></li>
+            <li><a href="#etapas">Fases</a></li>
+            <li><a href="#ecossistema">Diferenciais</a></li>
+            <li><a href="#depoimentos">Famílias</a></li>
+        </ul>
+        <div class="mobile-menu-utils">
+            <a href="tel:+557536229180" class="mobile-util-phone">
+                <i class="fa-solid fa-phone"></i> (75) 3622-9180
+            </a>
+            <a href="https://pais.escolaprisma.com/login" class="mobile-util-pais" target="_blank"
+                rel="noopener noreferrer">
+                <i class="fa-solid fa-users"></i> Serviço aos Pais
+            </a>
+            <a href="https://grafiteweb.infocraft.com.br/prismafeira" class="mobile-util-aluno" target="_blank"
+                rel="noopener noreferrer">
+                <i class="fa-solid fa-graduation-cap"></i> Portal do Aluno
+            </a>
+        </div>
+        <div class="mobile-menu-cta">
+            <a href="https://wa.me/557536229180?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20falar%20com%20a%20Coordena%C3%A7%C3%A3o."
+                class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i> Falar com a Coordenação
+            </a>
+        </div>
+    </nav>
 
     <!-- =========================
          DOBRA MATADORA (HERO)
@@ -174,7 +493,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="trust-badge">
-                    <i class="fa-solid fa-award"></i> Sistema Positivo de Ensino
+                    <img src="assets/logo-positivo-topo.png" alt="Sistema Positivo de Ensino"
+                        class="logo-positivo-badge" height="28">
                 </div>
                 <h1>Você cuida dos sonhos da sua família, nós cuidamos do desenvolvimento.</h1>
                 <p>Deixe-nos preparar seu filho para as melhores oportunidades do futuro, em um ambiente totalmente
@@ -191,14 +511,41 @@
 
             <div class="hero-image">
                 <div class="hero-shape"></div>
-                <!-- Imagem realista e iluminada conforme diretrizes do brand -->
-                <img src="assets/hero_prisma.webp"
-                    srcset="assets/hero_prisma-400.webp 400w,
-                            assets/hero_prisma-800.webp 800w,
-                            assets/hero_prisma.webp 1024w"
-                    sizes="(max-width: 768px) 100vw, 570px"
-                    alt="Criança feliz estudando na Escola Prisma com uma professora, transmitindo segurança e acolhimento"
-                    width="570" height="380" fetchpriority="high">
+                <!-- Slider Container -->
+                <div class="hero-slider" id="heroSlider">
+                    <div class="hero-slides">
+                        <div class="slide active">
+                            <img src="assets/hero_prisma.webp"
+                                srcset="assets/hero_prisma-400.webp 400w, assets/hero_prisma-800.webp 800w, assets/hero_prisma.webp 1024w"
+                                sizes="(max-width: 768px) 100vw, 570px"
+                                alt="Criança feliz estudando na Escola Prisma com uma professora, transmitindo segurança e acolhimento"
+                                fetchpriority="high">
+                        </div>
+                        <div class="slide">
+                            <img src="assets/hero_prisma.webp"
+                                srcset="assets/hero_prisma-400.webp 400w, assets/hero_prisma-800.webp 800w, assets/hero_prisma.webp 1024w"
+                                sizes="(max-width: 768px) 100vw, 570px"
+                                alt="Ambiente estimulante e criativo para o desenvolvimento" loading="lazy">
+                        </div>
+                        <div class="slide">
+                            <img src="assets/hero_prisma.webp"
+                                srcset="assets/hero_prisma-400.webp 400w, assets/hero_prisma-800.webp 800w, assets/hero_prisma.webp 1024w"
+                                sizes="(max-width: 768px) 100vw, 570px"
+                                alt="Professores dedicados e ensino de excelência" loading="lazy">
+                        </div>
+                    </div>
+                    <!-- Controles -->
+                    <button class="slider-btn prev" aria-label="Anterior"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                    <button class="slider-btn next" aria-label="Próximo"><i
+                            class="fa-solid fa-chevron-right"></i></button>
+                    <!-- Indicadores -->
+                    <div class="slider-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -440,16 +787,24 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="assets/logo-branca.webp" alt="Logotipo Escola Prisma - versão branca"
-                            class="logo-img-footer" loading="lazy" width="200" height="60">
+                        <img src="assets/logo.png" alt="Logotipo Escola Prisma - versão original"
+                            class="logo-img-footer" loading="lazy" width="200" height="45">
                     </div>
                     <p class="tagline">Educar é ensinar a pensar sozinho.</p>
                 </div>
                 <div class="footer-contact">
                     <h4>Fale Conosco</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> Caminho 16, Conjunto Feira VII, Nº 16
+                        <br>Tomba Feira de Santana - BA | CEP 44100-000. </br>
+                    </p>
                     <p><i class="fa-brands fa-whatsapp"></i> (75) 3622-9180</p>
-                    <p><i class="fa-solid fa-location-dot"></i> Caminho 16, Conj. Feira VII - Tomba, Feira de Santana,
-                        BA</p>
+                </div>
+                <div class="footer-map">
+                    <h4>Nossa Localização</h4>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.3098707311688!2d-38.9456826!3d-12.294906899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71436f7e1195c27%3A0x9e87434af4a9f8ff!2sEscola%20Prisma!5e0!3m2!1spt-BR!2sbr!4v1784898990687!5m2!1spt-BR!2sbr"
+                        width="100%" height="200" style="border:0; border-radius: 12px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -464,6 +819,11 @@
         aria-label="Fale conosco pelo WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- VOLTAR AO TOPO -->
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
 </body>
 
