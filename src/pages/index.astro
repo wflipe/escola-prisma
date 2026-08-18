@@ -8,6 +8,7 @@ import Phases from '../components/sections/Phases.astro';
 import Ecosystem from '../components/sections/Ecosystem.astro';
 import SocialProof from '../components/sections/SocialProof.astro';
 import FAQ from '../components/sections/FAQ.astro';
+import SocialFeed from '../components/sections/SocialFeed.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
 import { educationalOrganizationSchema } from '../utils/schema';
 import heroData from '../content/site/hero.json';
@@ -33,5 +34,6 @@ const schema = educationalOrganizationSchema();
   <Ecosystem items={ecosystemData.items} ctaLink={ecosystemData.ctaLink} />
   <SocialProof whyItems={whyItemsData} testimonials={testimonialsData} />
   <FAQ faqs={faqsData} />
+  <SocialFeed />
   <FinalCTA />
 </BaseLayout>
