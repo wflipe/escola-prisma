@@ -1,0 +1,156 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<header class="header">
+  <Container class="header-container">
+    <a href="/" class="logo" aria-label="Escola Prisma - Página inicial">
+      <img src="/assets/logo.png" alt="Escola Prisma" style="height: 50px; width: auto;" />
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <ul class="nav-links">
+        <li><a href="#proposta">A Escola</a></li>
+        <li><a href="#etapas">Fases</a></li>
+        <li><a href="#ecossistema">Diferenciais</a></li>
+        <li><a href="#depoimentos">Famílias</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <Button
+        href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Sou%20de%20Feira%20de%20Santana%2C%20vi%20o%20site%20e%20gostaria%20de%20falar%20com%20a%20Coordena%C3%A7%C3%A3o."
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+        size="md"
+        id="cta-header"
+        data-ga4-event="click_falar_coordenacao"
+        data-ga4-location="header"
+      >
+        <Icon name="whatsapp" size="sm" />
+        Falar com a Coordenação
+      </Button>
+    </div>
+
+    <button class="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </Container>
+</header>
+
+<style>
+  .header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2005;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
+    transition: padding var(--transition-base);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .nav {
+      display: block;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text);
+    transition: color var(--transition-base);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .header-cta {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media (min-width: 768px) {
+    .hamburger {
+      display: none;
+    }
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-secondary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" role="navigation">
+  <Container class="mobile-menu-container">
+    <ul class="mobile-menu-nav">
+      <li><a href="#proposta">A Escola</a></li>
+      <li><a href="#etapas">Fases</a></li>
+      <li><a href="#ecossistema">Diferenciais</a></li>
+      <li><a href="#depoimentos">Famílias</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+    </ul>
+
+    <div class="mobile-menu-utils">
+      <a href="tel:+557536229180" class="mobile-util-phone">
+        <Icon name="phone" size="md" />
+        (75) 3622-9180
+      </a>
+      <a href="https://pais.escolaprisma.com/login" target="_blank" rel="noopener noreferrer" class="mobile-util-pais">
+        <Icon name="users" size="md" />
+        Serviço aos Pais
+      </a>
+      <a href="https://grafiteweb.infocraft.com.br/prismafeira" target="_blank" rel="noopener noreferrer" class="mobile-util-aluno">
+        <Icon name="graduation-cap" size="md" />
+        Portal do Aluno
+      </a>
+    </div>
+
+    <div class="mobile-menu-cta">
+      <Button
+        href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20falar%20com%20a%20Coordena%C3%A7%C3%A3o."
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+        fullWidth
+        data-ga4-event="click_falar_coordenacao"
+        data-ga4-location="mobile_menu"
+        class="mobile-cta-btn"
+      >
+        <Icon name="whatsapp" size="md" />
+        Falar com a Coordenação
+      </Button>
+    </div>
+  </Container>
+</nav>
+
+<style>
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 320px;
+    background: white;
+    z-index: 2001;
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-container {
+    padding: 6rem 1.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-menu-nav a {
+    display: block;
+    padding: 0.5rem 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--color-text);
+    transition: color var(--transition-base);
+  }
+
+  .mobile-menu-nav a:hover {
+    color: var(--color-primary);
+  }
+
+  .mobile-menu-utils {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mobile-menu-utils a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color var(--transition-base);
+  }
+
+  .mobile-menu-utils a:hover {
+    color: var(--color-primary);
+  }
+
+  .mobile-menu-cta {
+    margin-top: 1.5rem;
+    margin-bottom: auto;
+  }
+
+  :global(.mobile-cta-btn) {
+    white-space: normal !important;
+    text-align: center;
+    height: auto;
+    line-height: 1.2;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  background?: 'white' | 'gray' | 'primary' | 'secondary' | 'gradient' | 'none';
+  padding?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
+  id?: string;
+  class?: string;
+
+}
+
+const { background = 'white', padding = 'xl', id, class: className = '', ...attrs } = Astro.props;
+
+const backgroundStyles = {
+  white: 'bg-surface',
+  gray: 'bg-surface-alt',
+  primary: 'bg-primary text-white',
+  secondary: 'bg-secondary text-white',
+  gradient: 'bg-gradient-to-b from-surface via-surface-alt to-surface',
+  none: '',
+};
+
+const paddingStyles = {
+  none: '',
+  sm: 'py-12',
+  md: 'py-16',
+  lg: 'py-20',
+  xl: 'py-24',
+};
+---
+
+<section
+  id={id}
+  class={`${backgroundStyles[background]} ${paddingStyles[padding]} ${className}`}
+  {...attrs}
+>
+  <slot />
+</section>

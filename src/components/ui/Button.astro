@@ -1,0 +1,170 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  fullWidth?: boolean;
+  href?: string;
+  target?: string;
+  rel?: string;
+  'data-ga4-event'?: string;
+  'data-ga4-location'?: string;
+  class?: string;
+
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  fullWidth = false,
+  href,
+  target,
+  rel,
+  'data-ga4-event': ga4Event,
+  'data-ga4-location': ga4Location,
+  class: className = '',
+  ...attrs
+} = Astro.props;
+
+const isLink = !!href;
+const Tag = isLink ? 'a' : 'button';
+
+const ga4Attrs = ga4Event ? { 'data-ga4-event': ga4Event, 'data-ga4-location': ga4Location || '' } : {};
+
+const classList = [
+  'btn',
+  `btn-${variant}`,
+  `btn-${size}`,
+  fullWidth ? 'btn-full' : '',
+  className,
+].filter(Boolean).join(' ');
+
+// Remove any object values or GA4 properties from rest attributes to prevent [object Object] in HTML
+const cleanedAttrs = {};
+for (const [key, value] of Object.entries(attrs)) {
+  if (typeof value !== 'object' && key !== 'data-ga4-event' && key !== 'data-ga4-location') {
+    cleanedAttrs[key] = value;
+  }
+}
+---
+
+{isLink ? (
+  <a
+    href={href}
+    target={target}
+    rel={rel}
+    class={classList}
+    {...ga4Attrs}
+    {...cleanedAttrs}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    class={classList}
+    {...ga4Attrs}
+    {...cleanedAttrs}
+  >
+    <slot />
+  </button>
+)}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Variants */
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 102, 2, 0.3);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    box-shadow: 0 6px 20px rgba(255, 102, 2, 0.4);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    background: var(--color-primary-dark);
+  }
+
+  .btn-secondary {
+    background: var(--color-secondary);
+    color: white;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background: #1f1f1f;
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+  }
+
+  .btn-outline:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-ghost {
+    color: var(--color-secondary);
+    background: transparent;
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--color-surface-alt);
+  }
+
+  /* Sizes */
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-height: 40px;
+  }
+
+  .btn-md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    min-height: 56px;
+  }
+
+  .btn-xl {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+    min-height: 64px;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+</style>

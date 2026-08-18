@@ -1,0 +1,141 @@
+---
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="top-bar-wrapper">
+  <Container>
+    <div class="top-bar-inner">
+      <div class="top-bar-left">
+        <a href="tel:+557536229180" class="top-bar-phone" aria-label="Ligar para a escola">
+          <Icon name="phone" size="sm" />
+          (75) 3622-9180
+        </a>
+      </div>
+
+      <div class="top-bar-right">
+        <a href="tel:+557536229180" class="top-bar-phone-mobile" aria-label="Ligar para a escola">
+          <Icon name="phone" size="sm" />
+        </a>
+
+        <a href="https://pais.escolaprisma.com/login" target="_blank" rel="noopener noreferrer" class="top-bar-link" aria-label="Serviço aos Pais">
+          <Icon name="users" size="sm" />
+          <span>Serviço aos Pais</span>
+        </a>
+
+        <a href="https://grafiteweb.infocraft.com.br/prismafeira" target="_blank" rel="noopener noreferrer" class="top-bar-link" aria-label="Portal do Aluno">
+          <Icon name="graduation-cap" size="sm" />
+          <span>Portal do Aluno</span>
+        </a>
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .top-bar-wrapper {
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.8rem;
+    position: relative;
+    width: 100%;
+    z-index: 1001;
+  }
+
+  .top-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 8px 0;
+  }
+
+  .top-bar-left {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .top-bar-phone {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 500;
+    transition: color var(--transition-base);
+  }
+
+  .top-bar-phone:hover {
+    color: var(--color-accent);
+  }
+
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .top-bar-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  .top-bar-right {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .top-bar-phone-mobile {
+    display: none; /* Ocultado no mobile para dar mais espaço aos outros links */
+  }
+
+  .top-bar-phone-mobile:hover {
+    color: var(--color-accent);
+  }
+
+  .phone-text {
+    display: none;
+  }
+
+  @media (min-width: 480px) {
+    .phone-text {
+      display: inline;
+    }
+  }
+
+  .top-bar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color var(--transition-base);
+  }
+
+  .top-bar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .top-bar-right {
+      gap: 1rem;
+      overflow-x: visible;
+    }
+
+    .top-bar-phone-mobile {
+      display: none;
+    }
+  }
+</style>

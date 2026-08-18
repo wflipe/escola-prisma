@@ -1,0 +1,108 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section background="none" padding="xl" class="cta-final bg-noise bg-mesh-warm">
+  <span class="cta-blob cta-blob-1"></span>
+  <span class="cta-blob cta-blob-2"></span>
+  <Container>
+    <h2 class="cta-title">
+      Antes de escolher a escola, <br />
+      <span class="font-serif italic text-primary">conheça</span> a escola.
+    </h2>
+    <p class="cta-text">
+      As turmas são planejadas para preservar o acompanhamento próximo que prometemos. Por isso, trabalhamos com um número limitado de vagas por turma a cada ciclo letivo.
+    </p>
+    <Button
+      href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20visita%20para%20conhecer%20a%20Escola%20Prisma%20pessoalmente."
+      target="_blank"
+      rel="noopener noreferrer"
+      variant="primary"
+      size="xl"
+      data-ga4-event="click_agendar_visita"
+      data-ga4-location="final_cta"
+    >
+      Agendar uma visita
+      <Icon name="arrow-right" size="md" />
+    </Button>
+    <p class="cta-apoio">
+      Conheça a estrutura, converse com a coordenação e tire suas dúvidas pessoalmente.<br>
+      <span class="micro-copy">💬 Resposta rápida pelo WhatsApp oficial da Coordenação.</span>
+    </p>
+  </Container>
+</Section>
+
+<style>
+  .cta-final {
+    position: relative;
+    overflow: hidden;
+    color: var(--color-secondary);
+    text-align: center;
+  }
+
+  .cta-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: pulseSlow 8s ease-in-out infinite;
+  }
+
+  .cta-blob-1 {
+    width: 420px;
+    height: 420px;
+    left: -100px;
+    top: 10px;
+    background: rgba(255, 102, 2, 0.15);
+  }
+
+  .cta-blob-2 {
+    width: 480px;
+    height: 480px;
+    right: -100px;
+    bottom: 10px;
+    background: rgba(6, 182, 212, 0.1);
+    animation-delay: -9s;
+  }
+
+  .cta-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-secondary) !important;
+    margin-bottom: 2rem;
+  }
+
+  .cta-text {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-text-muted) !important;
+    max-width: 46rem;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-apoio {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted) !important;
+    line-height: 1.6;
+  }
+
+  .micro-copy {
+    color: var(--color-text-muted) !important;
+  }
+
+  .cta-final .btn-primary {
+    animation: pulsePrimary 2s infinite;
+  }
+
+  @keyframes pulsePrimary {
+    0% { box-shadow: 0 4px 15px rgba(255, 102, 2, 0.3); }
+    50% { box-shadow: 0 4px 15px rgba(255, 102, 2, 0.5), 0 0 0 10px rgba(255, 102, 2, 0.1); }
+    100% { box-shadow: 0 4px 15px rgba(255, 102, 2, 0.3); }
+  }
+</style>

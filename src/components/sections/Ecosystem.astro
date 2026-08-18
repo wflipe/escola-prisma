@@ -1,0 +1,147 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+
+interface EcoItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  items: EcoItem[];
+  ctaLink: string;
+}
+
+const { items, ctaLink } = Astro.props;
+
+const ecoColors = [
+  { bg: '#06B6D4', color: 'white' },   // Cyan
+  { bg: '#7C3AED', color: 'white' },   // Purple
+  { bg: '#FF6602', color: 'white' },   // Orange
+  { bg: '#10B981', color: 'white' },   // Green
+];
+---
+
+<Section id="ecossistema" background="secondary" padding="xl" class="ecossistema">
+  <Container>
+    <div class="ecossistema-content">
+      <h2 class="eco-title">
+        Aprender vai muito além da <br />
+        <span class="font-serif italic" style="color: var(--color-primary);">sala de aula.</span>
+      </h2>
+      <p>
+        Uma estrutura pensada para integrar conhecimento acadêmico, prática, tecnologia e formação do caráter.
+      </p>
+      <Button
+        href={ctaLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+        size="lg"
+        data-ga4-event="click_conhecer_estrutura"
+        data-ga4-location="ecossistema"
+      >
+        Quero conhecer a estrutura
+      </Button>
+    </div>
+
+    <div class="ecossistema-grid">
+      {items.map((item, index) => {
+        const ec = ecoColors[index % ecoColors.length];
+        return (
+          <Card variant="bordered" padding="lg" hover class="eco-item" style={`animation-delay: ${index * 100}ms; --eco-bg: ${ec.bg}; --eco-color: ${ec.color};`}>
+            <div class="eco-icon">
+              <Icon name={item.icon} size="xl" />
+            </div>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </Card>
+        )
+      })}
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .ecossistema-content {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 4rem;
+  }
+
+  .ecossistema-content .eco-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .ecossistema-content .eco-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .ecossistema-content p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+  }
+
+  .ecossistema-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .ecossistema-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .ecossistema-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .eco-item {
+    text-align: center;
+  }
+
+  .eco-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1.25rem;
+    background: var(--eco-bg, var(--color-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--eco-color, white);
+    transition: all var(--transition-base);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--eco-bg) 30%, transparent);
+  }
+
+  .eco-item:hover .eco-icon {
+    transform: scale(1.1) rotate(6deg);
+  }
+
+  .eco-item h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .eco-item p {
+    color: var(--color-text-muted);
+  }
+</style>

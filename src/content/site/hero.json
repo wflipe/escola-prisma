@@ -1,0 +1,20 @@
+{
+  "badge": "Formação humana · Excelência acadêmica · Tecnologia",
+  "headline": "Seu filho preparado para o futuro, com o cuidado que ele precisa hoje.",
+  "subheadline": "Da Educação Infantil ao Ensino Médio, uma formação que combina ensino consistente, inglês, tecnologia, esporte e acompanhamento próximo — em uma escola onde seu filho é conhecido pelo nome.",
+  "primaryCTA": {
+    "text": "Agendar Visita",
+    "link": "https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20visita%20guiada%20na%20Escola%20Prisma."
+  },
+  "trustIndicators": [
+    { "icon": "star", "text": "4.9 no Google" },
+    { "icon": "calendar", "text": "26 anos de história" },
+    { "icon": "location", "text": "Feira de Santana" }
+  ],
+  "sliderImages": [
+    { "src": "/assets/1.svg", "alt": "Estudantes focados no aprendizado" },
+    { "src": "/assets/2.svg", "alt": "Ambiente acolhedor e estimulante" },
+    { "src": "/assets/3.svg", "alt": "Atividades práticas e desenvolvimento" },
+    { "src": "/assets/4.svg", "alt": "Convívio e ensino de excelência" }
+  ]
+}

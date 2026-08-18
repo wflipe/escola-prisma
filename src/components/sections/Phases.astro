@@ -1,0 +1,203 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+
+interface Phase {
+  title: string;
+  slug: string;
+  phaseLabel: string;
+  icon: string;
+  color: 'amarela' | 'laranja' | 'azul' | 'carvao';
+  description: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+interface Props {
+  phases: Phase[];
+}
+
+const { phases } = Astro.props;
+
+const colorStyles = {
+  amarela: { bg: 'rgba(245, 158, 11, 0.15)', text: '#d97706', border: 'rgba(245, 158, 11, 0.3)', shadow: '0 12px 32px rgba(245, 158, 11, 0.15)' },
+  laranja: { bg: 'rgba(255, 102, 2, 0.12)', text: '#ea580c', border: 'rgba(255, 102, 2, 0.25)', shadow: '0 12px 32px rgba(255, 102, 2, 0.15)' },
+  azul: { bg: 'rgba(6, 182, 212, 0.12)', text: '#0891b2', border: 'rgba(6, 182, 212, 0.25)', shadow: '0 12px 32px rgba(6, 182, 212, 0.15)' },
+  carvao: { bg: 'rgba(124, 58, 237, 0.1)', text: '#7C3AED', border: 'rgba(124, 58, 237, 0.2)', shadow: '0 12px 32px rgba(124, 58, 237, 0.12)' },
+};
+---
+
+<Section id="etapas" background="white" padding="xl" class="fases-ensino">
+  <Container>
+    <div class="section-header">
+      <span class="section-tagline">Fases de Ensino</span>
+      <h2>
+        Acompanhamos o crescimento completo do seu <span class="font-serif italic text-primary">filho</span>.
+      </h2>
+      <p>
+        Uma jornada contínua, da primeira infância ao Ensino Médio, acompanhando cada nova fase do desenvolvimento.
+      </p>
+    </div>
+
+    <div class="fases-grid">
+      {phases.map((phase, index) => {
+        const colors = colorStyles[phase.color];
+        return (
+          <Card variant="bordered" padding="lg" hover class="fase-card" style={`border-top-color: ${colors.text}; border-top-width: 6px; --fase-bg: ${colors.bg}; --fase-text: ${colors.text}; --fase-border: ${colors.border}; --fase-shadow: ${colors.shadow};`}>
+            <div class="fase-header-clean">
+              <div class="fase-selo" style={`color: var(--fase-text); background: var(--fase-bg); border-color: var(--fase-border);`}>
+                <Icon name={phase.icon} size="sm" />
+                {phase.phaseLabel}
+              </div>
+              <h3 class="fase-title">{phase.title}</h3>
+            </div>
+
+            <div class="fase-body">
+              <p>{phase.description}</p>
+
+              <Button
+                href={phase.ctaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outline"
+                size="md"
+                fullWidth
+                style={`color: var(--fase-text); border-color: var(--fase-text);`}
+                class="mt-auto fase-btn"
+                data-ga4-event="click_saber_mais_fase"
+                data-ga4-location={phase.slug}
+              >
+                {phase.ctaText}
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            </div>
+          </Card>
+        )
+      })}
+    </div>
+
+    <div class="assinatura-fases">
+      <p class="font-serif italic text-2xl text-secondary">Avançar de fase é evoluir.</p>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .fases-ensino {
+    position: relative;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 4rem;
+  }
+
+  .section-tagline {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .fases-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .fases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .fases-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .fase-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all var(--transition-slow);
+  }
+
+  .fase-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--fase-shadow, var(--shadow-md));
+  }
+
+  .fase-header-clean {
+    margin-bottom: 1rem;
+  }
+
+  .fase-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    margin-top: 1rem;
+  }
+
+  .fase-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .fase-selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.825rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    width: fit-content;
+    border-width: 1px;
+  }
+
+  .fase-body p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex: 1;
+  }
+
+  .fase-btn:hover {
+    background: var(--fase-text) !important;
+    color: white !important;
+    border-color: var(--fase-text) !important;
+  }
+
+  .assinatura-fases {
+    text-align: center;
+    margin-top: 4rem;
+  }
+</style>

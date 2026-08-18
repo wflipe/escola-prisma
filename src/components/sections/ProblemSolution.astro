@@ -1,0 +1,143 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="proposta" background="gray" padding="xl" class="problema-solucao">
+  <Container>
+    <div class="section-header">
+      <span class="section-tagline">Por que a Escola Prisma?</span>
+      <h2>
+        Você quer que seu filho esteja preparado para o futuro. Mas também quer <span class="font-serif italic text-primary">tranquilidade</span> enquanto trabalha.
+      </h2>
+      <p>
+        A educação do seu filho não pode ser mais uma fonte de preocupação. Na Prisma, construímos uma rotina que permite a você conciliar trabalho, família e a formação dos seus filhos com mais segurança.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <Card variant="bordered" padding="lg" hover class="feature-card" style="--card-color: #FF6602; --card-bg: rgba(255, 102, 2, 0.1);">
+        <div class="feature-icon">
+          <Icon name="shield-halved" size="xl" />
+        </div>
+        <h3>Confiança para a sua rotina</h3>
+        <p>Portaria controlada, acompanhamento da equipe e uma rotina estruturada para cuidar do bem-estar de cada aluno. Seu filho em um ambiente em que você pode confiar.</p>
+      </Card>
+
+      <Card variant="bordered" padding="lg" hover class="feature-card" style="--card-color: #06B6D4; --card-bg: rgba(6, 182, 212, 0.1);">
+        <div class="feature-icon">
+          <Icon name="clock" size="xl" />
+        </div>
+        <h3>Desenvolvimento de verdade</h3>
+        <p>Esportes, inglês, projetos práticos, estudo orientado e momentos de descanso. Uma rotina planejada para que seu filho cresça ativo e motivado.</p>
+      </Card>
+
+      <Card variant="bordered" padding="lg" hover class="feature-card" style="--card-color: #10B981; --card-bg: rgba(16, 185, 129, 0.1);">
+        <div class="feature-icon">
+          <Icon name="user-check" size="xl" />
+        </div>
+        <h3>Seu filho conhecido pelo nome</h3>
+        <p>Turmas planejadas para preservar o acompanhamento próximo. Nossa coordenação acompanha o ritmo, as dificuldades e as conquistas de cada estudante e mantém você informado.</p>
+      </Card>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .problema-solucao {
+    position: relative;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 4rem;
+  }
+
+  .section-tagline {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .feature-card {
+    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
+    transition: all var(--transition-slow);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px color-mix(in srgb, var(--card-color) 15%, transparent);
+  }
+
+  .feature-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background: var(--card-bg, rgba(255, 102, 2, 0.1));
+    color: var(--card-color, var(--color-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all var(--transition-base);
+  }
+
+  :global(.feature-card:hover) .feature-icon {
+    background: var(--card-color, var(--color-primary));
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .feature-card h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

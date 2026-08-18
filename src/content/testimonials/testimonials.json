@@ -1,0 +1,16 @@
+[
+  {
+    "id": "mariana",
+    "initial": "M",
+    "name": "Mariana",
+    "role": "Mãe de aluna do 4º ano",
+    "text": "Minha rotina é pesada e eu vivia preocupada com o tempo que minha filha ficava em casa. Desde que ela entrou na Prisma, a segurança e o carinho da equipe me deram a tranquilidade que eu precisava."
+  },
+  {
+    "id": "carlos",
+    "initial": "C",
+    "name": "Carlos",
+    "role": "Pai de aluno do 8º ano",
+    "text": "Meu filho veio de uma escola onde era só mais um número. Na Prisma, a coordenação conhece ele pelo nome, identificou as dificuldades e comemorou cada avanço. Ele voltou a gostar de estudar."
+  }
+]

@@ -1,0 +1,140 @@
+---
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<footer class="footer">
+  <Container class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo.png" alt="Logotipo Escola Prisma" style="height: 45px; width: auto;" />
+        <p>Educar é ensinar a pensar sozinho.</p>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Fale Conosco</h4>
+        <p class="footer-address">
+          <Icon name="location-dot" size="md" />
+          <span>Caminho 16, Conjunto Feira VII, Nº 16<br>Tomba Feira de Santana - BA | CEP 44100-000</span>
+        </p>
+        <p class="footer-phone">
+          <Icon name="phone" size="md" />
+          <a href="tel:+557536229180">(75) 3622-9180 (Fixo)</a>
+        </p>
+        <p class="footer-phone">
+          <Icon name="whatsapp" size="md" />
+          <a href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener noreferrer">(75) 99895-4848 (WhatsApp)</a>
+        </p>
+      </div>
+
+      <div class="footer-map">
+        <h4>Nossa Localização</h4>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.3098707311688!2d-38.9456826!3d-12.294906899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71436f7e1195c27%3A0x9e87434af4a9f8ff!2sEscola%20Prisma!5e0!3m2!1spt-BR!2sbr!4v1784898990687!5m2!1spt-BR!2sbr"
+          width="100%"
+          height="200"
+          style="border: 0; border-radius: 12px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Localização da Escola Prisma"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Escola Prisma. Todos os direitos reservados.</p>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-surface);
+  }
+
+  .footer-container {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  .footer-brand img {
+    height: 45px;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .footer-contact h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .footer-address {
+    display: flex;
+    gap: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+
+  .footer-address svg {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+    color: var(--color-primary);
+  }
+
+  .footer-phone {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-phone svg {
+    color: var(--color-primary);
+  }
+
+  .footer-phone a {
+    color: var(--color-text-muted);
+    transition: color var(--transition-base);
+  }
+
+  .footer-phone a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-map h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+</style>

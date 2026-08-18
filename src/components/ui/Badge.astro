@@ -1,0 +1,73 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'accent';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+
+}
+
+const { variant = 'primary', size = 'md', class: className = '', ...attrs } = Astro.props;
+
+const variantClass = `badge-${variant}`;
+const sizeClass = `badge-${size}`;
+---
+
+<span class={`badge ${variantClass} ${sizeClass} ${className}`} {...attrs}>
+  <slot />
+</span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    border-width: 1px;
+  }
+
+  .badge-primary {
+    background: rgba(255, 102, 2, 0.1);
+    color: var(--color-primary);
+    border-color: rgba(255, 102, 2, 0.2);
+  }
+
+  .badge-secondary {
+    background: rgba(43, 43, 43, 0.1);
+    color: var(--color-secondary);
+    border-color: rgba(43, 43, 43, 0.2);
+  }
+
+  .badge-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-success);
+    border-color: rgba(16, 185, 129, 0.2);
+  }
+
+  .badge-warning {
+    background: #fef3c7;
+    color: #b45309;
+    border-color: #fcd34d;
+  }
+
+  .badge-accent {
+    background: rgba(255, 212, 0, 0.1);
+    color: #b45309;
+    border-color: rgba(255, 212, 0, 0.2);
+  }
+
+  .badge-sm {
+    padding: 0.125rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .badge-md {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .badge-lg {
+    padding: 0.375rem 1rem;
+    font-size: 1rem;
+  }
+</style>

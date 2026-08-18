@@ -1,0 +1,52 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  class?: string;
+
+}
+
+const { size = 'lg', class: className = '', ...attrs } = Astro.props;
+
+const sizeStyles = {
+  sm: 'container-sm',
+  md: 'container-md',
+  lg: 'container-lg',
+  xl: 'container-xl',
+  full: 'container-full',
+};
+
+const baseStyle = 'container-base';
+---
+
+<div class={`${baseStyle} ${sizeStyles[size]} ${className}`} {...attrs}>
+  <slot />
+</div>
+
+<style>
+  .container-base {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-base {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-base {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .container-sm { max-width: 48rem; }
+  .container-md { max-width: 64rem; }
+  .container-lg { max-width: 80rem; }
+  .container-xl { max-width: 71.25rem; }
+  .container-full { max-width: 100%; }
+</style>

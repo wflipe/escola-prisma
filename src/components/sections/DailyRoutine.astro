@@ -1,0 +1,153 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="rotina" background="white" padding="xl" class="rotina-real">
+  <Container>
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div class="rotina-content">
+        <h2>
+          Uma rotina que desenvolve seu filho e simplifica a sua.
+        </h2>
+        <p>
+          Mais experiências reais, menos aprendizado passivo. O dia a dia na Prisma é estruturado, engajador e focado no crescimento integral.
+        </p>
+
+        <ul class="rotina-lista">
+          <li>
+            <div class="rotina-icone">
+              <Icon name="heart" size="lg" />
+            </div>
+            <div>
+              <h4>Acolhimento desde a chegada</h4>
+              <p>Recebemos cada aluno com atenção, garantindo que o dia comece de forma positiva e organizada.</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="rotina-icone">
+              <Icon name="book-open" size="lg" />
+            </div>
+            <div>
+              <h4>Ensino com profundidade</h4>
+              <p>Aulas com a metodologia do Sistema Positivo, focadas em compreensão real, não apenas memorização.</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="rotina-icone">
+              <Icon name="person-running" size="lg" />
+            </div>
+            <div>
+              <h4>Corpo ativo, mente equilibrada</h4>
+              <p>Balé, Karatê, esportes e atividades artísticas que constroem disciplina, expressão e equilíbrio emocional.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rotina-video">
+        <iframe
+          width="100%"
+          height="450"
+          src="https://www.youtube.com/embed/q0hmY3pO44Q?si=IzQBl28Z53OXB6pS"
+          title="Rotina na Escola Prisma"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .rotina-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .rotina-content h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .rotina-content p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .rotina-lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .rotina-lista li {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .rotina-icone {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: rgba(255, 102, 2, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-primary);
+    transition: all var(--transition-base);
+  }
+
+  .rotina-lista li:hover .rotina-icone {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .rotina-lista h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 0.25rem;
+  }
+
+  .rotina-lista p {
+    color: var(--color-text-muted);
+  }
+
+  .rotina-video {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .rotina-video iframe {
+    display: block;
+    border-radius: 1.5rem;
+  }
+
+  @media (max-width: 992px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rotina-video {
+      order: -1;
+    }
+
+    .rotina-video iframe {
+      height: 300px;
+    }
+  }
+</style>

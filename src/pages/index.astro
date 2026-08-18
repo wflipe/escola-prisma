@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ProblemSolution from '../components/sections/ProblemSolution.astro';
+import Manifesto from '../components/sections/Manifesto.astro';
+import DailyRoutine from '../components/sections/DailyRoutine.astro';
+import Phases from '../components/sections/Phases.astro';
+import Ecosystem from '../components/sections/Ecosystem.astro';
+import SocialProof from '../components/sections/SocialProof.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
+import { educationalOrganizationSchema } from '../utils/schema';
+import heroData from '../content/site/hero.json';
+import phasesData from '../content/site/phases.json';
+import ecosystemData from '../content/site/ecosystem.json';
+import whyItemsData from '../content/site/why-items.json';
+import testimonialsData from '../content/testimonials/testimonials.json';
+import faqsData from '../content/faqs/faqs.json';
+
+const schema = educationalOrganizationSchema();
+---
+
+<BaseLayout
+  title="Escola Prisma - Educar é ensinar a pensar sozinho"
+  description="A Escola Prisma em Feira de Santana oferece desenvolvimento completo, acolhimento e excelência acadêmica. O equilíbrio perfeito entre a aprovação no vestibular e o acolhimento que seu filho merece."
+  schema={schema}
+>
+  <Hero data={heroData} />
+  <ProblemSolution />
+  <Manifesto />
+  <DailyRoutine />
+  <Phases phases={phasesData} />
+  <Ecosystem items={ecosystemData.items} ctaLink={ecosystemData.ctaLink} />
+  <SocialProof whyItems={whyItemsData} testimonials={testimonialsData} />
+  <FAQ faqs={faqsData} />
+  <FinalCTA />
+</BaseLayout>

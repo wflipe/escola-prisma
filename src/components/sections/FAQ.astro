@@ -1,0 +1,117 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import type { FAQItem } from '../../content/faqs/faqs';
+
+interface Props {
+  faqs: FAQItem[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<Section id="faq" background="white" padding="xl" class="faq">
+  <Container>
+    <div class="section-header">
+      <h2>
+        As perguntas que você faria antes de matricular.
+      </h2>
+    </div>
+
+    <div class="faq-container">
+      {faqs.map((faq, index) => (
+        <details class="faq-item" style={`animation-delay: ${index * 50}ms;`}>
+          <summary>{faq.question}</summary>
+          <div class="faq-content">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .section-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+  }
+
+  @media (min-width: 1024px) {
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .faq-container {
+    max-width: 48rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: var(--color-secondary);
+    font-size: 1.0625rem;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: -3px;
+    border-radius: 0.5rem;
+  }
+
+  .faq-item summary svg {
+    color: var(--color-text-muted);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .faq-item[open] summary svg {
+    transform: rotate(90deg);
+  }
+
+  .faq-content {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--color-text-muted);
+    animation: faqSlideDown 0.3s ease-out;
+  }
+
+  @keyframes faqSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

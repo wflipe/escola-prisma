@@ -1,0 +1,106 @@
+---
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Button from '../ui/Button.astro';
+---
+
+<Section class="manifesto bg-noise bg-mesh-warm">
+  <span class="manifesto-blob manifesto-blob-1"></span>
+  <span class="manifesto-blob manifesto-blob-2"></span>
+  <Container size="md" class="manifesto-container">
+    <span class="manifesto-tagline">Para você que dá o seu melhor todos os dias</span>
+    <h2 class="manifesto-title">
+      Seu filho não é apenas <br />
+      mais um <span class="font-serif italic text-primary">número</span> na chamada.
+    </h2>
+    <p class="manifesto-text">
+      Sabemos que sua rotina é corrida, que conciliar trabalho e família exige um esforço imenso, e que o futuro deles é a sua maior prioridade. Na Prisma, acolhemos a individualidade de cada estudante, garantindo excelência nos estudos e o carinho e segurança que você precisa para trabalhar em paz.
+    </p>
+    <div class="manifesto-footer">
+      <Button
+        href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20escola."
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+        size="lg"
+      >
+        Vamos caminhar juntos?
+      </Button>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .manifesto {
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 102, 2, 0.1);
+    border-bottom: 1px solid rgba(255, 102, 2, 0.1);
+  }
+
+  .manifesto-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: pulseSlow 8s ease-in-out infinite;
+  }
+
+  .manifesto-blob-1 {
+    width: 420px;
+    height: 420px;
+    left: -100px;
+    top: 10px;
+    background: rgba(255, 102, 2, 0.15);
+  }
+
+  .manifesto-blob-2 {
+    width: 480px;
+    height: 480px;
+    right: -100px;
+    bottom: 10px;
+    background: rgba(6, 182, 212, 0.1);
+    animation-delay: -9s;
+  }
+
+  .manifesto-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .manifesto-tagline {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .manifesto-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .manifesto-text {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 46rem;
+    margin: 0 auto 3rem;
+  }
+
+  .manifesto-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
