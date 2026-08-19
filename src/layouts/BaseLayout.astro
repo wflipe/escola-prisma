@@ -62,8 +62,6 @@ const structuredData = schema ? JSON.stringify(schema) : '';
 
   <meta name="theme-color" content="#F67A21" />
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-
   {structuredData && (
     <script type="application/ld+json" set:html={structuredData} />
   )}

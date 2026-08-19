@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.escolaprisma.net.br/sitemap-index.xml

@@ -27,12 +27,22 @@ import Icon from '../ui/Icon.astro';
 
   <!-- The Javascript can be moved to the end of the html page before the </body> tag -->
   <script type="text/javascript" is:inline>
-  /* curator-feed */
-  (function(){
-  var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
-  i.src="https://cdn.curator.io/published/cb5b7056-5624-4fe0-8dbc-02113ba4.js";
-  e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
-  })();
+  /* curator-feed lazy load */
+  document.addEventListener("DOMContentLoaded", function() {
+    var feedContainer = document.getElementById("curator-feed");
+    if (!feedContainer) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+        i.src="https://cdn.curator.io/published/cb5b7056-5624-4fe0-8dbc-02113ba4.js";
+        e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+        observer.disconnect();
+      }
+    }, { rootMargin: "200px" });
+
+    observer.observe(feedContainer);
+  });
   </script>
 </Section>
 

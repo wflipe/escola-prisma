@@ -12,7 +12,7 @@ import Icon from '../ui/Icon.astro';
       </div>
 
       <div class="footer-contact">
-        <h4>Fale Conosco</h4>
+        <h3>Fale Conosco</h3>
         <p class="footer-address">
           <Icon name="location-dot" size="md" />
           <span>Caminho 16, Conjunto Feira VII, Nº 16<br>Tomba Feira de Santana - BA | CEP 44100-000</span>
@@ -28,7 +28,7 @@ import Icon from '../ui/Icon.astro';
       </div>
 
       <div class="footer-map">
-        <h4>Nossa Localização</h4>
+        <h3>Nossa Localização</h3>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.3098707311688!2d-38.9456826!3d-12.294906899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71436f7e1195c27%3A0x9e87434af4a9f8ff!2sEscola%20Prisma!5e0!3m2!1spt-BR!2sbr!4v1784898990687!5m2!1spt-BR!2sbr"
           width="100%"
@@ -83,10 +83,11 @@ import Icon from '../ui/Icon.astro';
     font-weight: 500;
   }
 
-  .footer-contact h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  .footer-contact h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--color-white);
   }
 
   .footer-address {
@@ -121,12 +122,6 @@ import Icon from '../ui/Icon.astro';
 
   .footer-phone a:hover {
     color: var(--color-primary);
-  }
-
-  .footer-map h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
   }
 
   .footer-bottom {
