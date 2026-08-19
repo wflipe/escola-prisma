@@ -4,9 +4,9 @@ import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import Section from '../ui/Section.astro';
 import { Image } from 'astro:assets';
-import studentInfantil from '../../assets/images/student-infantil.png';
-import studentFundamental from '../../assets/images/student-fundamental.png';
-import studentMedio from '../../assets/images/student-medio.png';
+import studentInfantil from '../../assets/images/Balé 1024 x 1024.webp';
+import studentFundamental from '../../assets/images/Karatê 1024 x 1024.webp';
+import studentMedio from '../../assets/images/Ensino Médio 1024 x 1024.webp';
 import type { HeroData } from '../../content/site/hero';
 
 interface Props {
@@ -64,39 +64,39 @@ const { data } = Astro.props;
 
     <!-- Floating Cards Section (Inspirada nas fotos sobrepostas do Lumos) -->
     <div class="hero-showcase">
-      <!-- Card 1: Educação Infantil -->
+      <!-- Card 1: Balé / Educação Infantil -->
       <div class="student-card card-infantil float-slow">
         <div class="student-avatar-container">
-          <Image src={studentInfantil} alt="Aluno da Educação Infantil Prisma" class="student-img" width={400} height={400} />
+          <Image src={studentInfantil} alt="Aluna do Balé Prisma" class="student-img" width={400} height={400} />
           <span class="verify-badge">✓</span>
         </div>
         <div class="student-info">
-          <div class="student-name">Arthur <span class="text-accent">★</span></div>
-          <div class="student-tag">ALFABETIZADO AOS 6 ANOS</div>
+          <div class="student-name">Balé Infantil <span class="text-accent">★</span></div>
+          <div class="student-tag">EXPRESSÃO & DISCIPLINA</div>
         </div>
       </div>
 
-      <!-- Card 2: Ensino Fundamental -->
+      <!-- Card 2: Karatê / Ensino Fundamental -->
       <div class="student-card card-fundamental float-slow" style="animation-delay: -2s;">
         <div class="student-avatar-container">
-          <Image src={studentFundamental} alt="Aluna do Ensino Fundamental Prisma" class="student-img" width={400} height={400} />
+          <Image src={studentFundamental} alt="Aluno do Karatê Prisma" class="student-img" width={400} height={400} />
           <span class="verify-badge bg-primary">✓</span>
         </div>
         <div class="student-info">
-          <div class="student-name">Laura</div>
-          <div class="student-tag">INGLÊS FLUENTE & ROBÓTICA</div>
+          <div class="student-name">Karatê Esportivo</div>
+          <div class="student-tag">FOCO & RESPEITO</div>
         </div>
       </div>
 
-      <!-- Card 3: Ensino Médio/Aprovação -->
+      <!-- Card 3: Ensino Médio -->
       <div class="student-card card-medio float-slow" style="animation-delay: -4s;">
         <div class="student-avatar-container">
           <Image src={studentMedio} alt="Aluno do Ensino Médio Prisma" class="student-img" width={400} height={400} />
           <span class="verify-badge bg-success">✓</span>
         </div>
         <div class="student-info">
-          <div class="student-name">Gabriel</div>
-          <div class="student-tag">MEDICINA · UEFS</div>
+          <div class="student-name">Ensino Médio</div>
+          <div class="student-tag">PREPARAÇÃO & VESTIBULAR</div>
         </div>
       </div>
     </div>
