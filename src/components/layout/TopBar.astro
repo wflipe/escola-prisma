@@ -76,51 +76,29 @@ import Icon from '../ui/Icon.astro';
   }
 
   .top-bar-right {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 2px;
-  }
-
-  .top-bar-right::-webkit-scrollbar {
-    display: none;
-  }
-
-  .top-bar-right {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    width: 100%;
   }
 
   .top-bar-phone-mobile {
-    display: none; /* Ocultado no mobile para dar mais espaço aos outros links */
-  }
-
-  .top-bar-phone-mobile:hover {
-    color: var(--color-accent);
-  }
-
-  .phone-text {
     display: none;
-  }
-
-  @media (min-width: 480px) {
-    .phone-text {
-      display: inline;
-    }
   }
 
   .top-bar-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.375rem 0.75rem;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 0.5rem;
     color: white;
     font-size: 0.75rem;
     font-weight: 500;
     white-space: nowrap;
+    width: 100%;
     transition: background-color var(--transition-base);
   }
 
@@ -130,8 +108,13 @@ import Icon from '../ui/Icon.astro';
 
   @media (min-width: 768px) {
     .top-bar-right {
+      display: flex;
+      width: auto;
       gap: 1rem;
-      overflow-x: visible;
+    }
+
+    .top-bar-link {
+      width: auto;
     }
 
     .top-bar-phone-mobile {
