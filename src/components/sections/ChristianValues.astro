@@ -1,0 +1,161 @@
+---
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+import Card from '../ui/Card.astro';
+---
+
+<Section id="valores-cristaos" background="white" padding="xl" class="christian-values">
+  <Container>
+    <div class="values-header">
+      <div class="badge">Nossa Essência</div>
+      <h2 class="title">
+        Valores Cristãos: <br />
+        <span class="font-serif italic text-primary">Princípios Essenciais</span>
+      </h2>
+      <p class="subtitle">
+        Acreditamos que educar é mais do que ensinar conteúdos. Nosso compromisso é formar alunos com conhecimento, princípios cristãos e valores que fortaleçam o caráter e o propósito de vida.
+      </p>
+    </div>
+
+    <div class="values-grid">
+      <!-- Card 1 -->
+      <Card variant="bordered" padding="lg" hover class="value-card">
+        <div class="icon-container color-orange">
+          <Icon name="shield-halved" size="lg" />
+        </div>
+        <h3>Formação com Propósito</h3>
+        <p>Ajudamos o aluno a crescer em conhecimento, fé, caráter e responsabilidade. Educar vai além do conteúdo, é preparar para a vida.</p>
+      </Card>
+
+      <!-- Card 2 -->
+      <Card variant="bordered" padding="lg" hover class="value-card">
+        <div class="icon-container color-blue">
+          <Icon name="hands-holding-child" size="lg" />
+        </div>
+        <h3>Amor ao Próximo</h3>
+        <p>Incentivamos o respeito, a empatia e o acolhimento genuíno. Cultivamos relações saudáveis e fraternas no dia a dia escolar.</p>
+      </Card>
+
+      <!-- Card 3 -->
+      <Card variant="bordered" padding="lg" hover class="value-card">
+        <div class="icon-container color-yellow">
+          <Icon name="scale-balanced" size="lg" />
+        </div>
+        <h3>Princípios que Orientam</h3>
+        <p>Nossa prática educativa é guiada por valores sólidos, como honestidade, verdade, justiça e solidariedade em todas as etapas.</p>
+      </Card>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .christian-values {
+    position: relative;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .values-header {
+    text-align: center;
+    max-width: 56rem;
+    margin: 0 auto 4rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(246, 122, 33, 0.1);
+    color: var(--color-primary);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-secondary);
+    line-height: 1.1;
+  }
+
+  @media (min-width: 768px) {
+    .title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .values-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .value-card {
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(246, 122, 33, 0.3);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .color-orange {
+    background: rgba(246, 122, 33, 0.1);
+    color: var(--color-primary);
+  }
+
+  .color-blue {
+    background: rgba(21, 46, 101, 0.1);
+    color: var(--color-secondary);
+  }
+
+  .color-yellow {
+    background: rgba(249, 185, 26, 0.15);
+    color: var(--color-yellow);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
+  }
+
+  p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>

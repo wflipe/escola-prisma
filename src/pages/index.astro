@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import ProblemSolution from '../components/sections/ProblemSolution.astro';
 import Manifesto from '../components/sections/Manifesto.astro';
+import ChristianValues from '../components/sections/ChristianValues.astro';
 import DailyRoutine from '../components/sections/DailyRoutine.astro';
 import Phases from '../components/sections/Phases.astro';
 import Ecosystem from '../components/sections/Ecosystem.astro';
@@ -29,6 +30,7 @@ const schema = educationalOrganizationSchema();
   <Hero data={heroData} />
   <ProblemSolution />
   <Manifesto />
+  <ChristianValues />
   <DailyRoutine />
   <Phases phases={phasesData} />
   <Ecosystem items={ecosystemData.items} ctaLink={ecosystemData.ctaLink} />
