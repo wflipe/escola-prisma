@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #FF6602;
-  --color-primary-dark: #E85D00;
-  --color-primary-light: #FF8533;
-  --color-secondary: #0F172A; /* Midnight Blue */
-  --color-accent: #F59E0B; /* Gold */
+  --color-primary: #F67A21;
+  --color-primary-dark: #DC5208;
+  --color-primary-light: #FF9B4D;
+  --color-secondary: #152E65; /* Official Royal Navy */
+  --color-accent: #F9B91A; /* Official Gold/Yellow */
   --color-success: #10B981;
-  --color-yellow: #F59E0B;
+  --color-yellow: #F9B91A;
   --color-cyan: #06B6D4;
   --color-green: #10B981;
   --color-purple: #7C3AED;
@@ -41,8 +41,8 @@
   --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
   --shadow-lg: 0 12px 24px rgba(0,0,0,0.1);
   --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
-  --shadow-primary: 0 8px 32px rgba(255, 102, 2, 0.25);
-  --shadow-yellow: 0 8px 32px rgba(245, 158, 11, 0.25);
+  --shadow-primary: 0 8px 32px rgba(246, 122, 33, 0.25);
+  --shadow-yellow: 0 8px 32px rgba(249, 185, 26, 0.25);
   --shadow-cyan: 0 8px 32px rgba(6, 182, 212, 0.25);
   --shadow-green: 0 8px 32px rgba(16, 185, 129, 0.25);
 
