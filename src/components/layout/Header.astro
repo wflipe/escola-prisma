@@ -7,7 +7,10 @@ import Icon from '../ui/Icon.astro';
 <header class="header">
   <Container class="header-container">
     <a href="/" class="logo" aria-label="Escola Prisma - Página inicial">
-      <img src="/assets/logo.png" alt="Escola Prisma" style="height: 50px; width: auto;" />
+      <picture>
+        <source srcset="/assets/logo.webp" type="image/webp" />
+        <img src="/assets/logo.png" alt="Escola Prisma" width="150" height="50" style="height: 50px; width: auto;" />
+      </picture>
     </a>
 
     <nav class="nav" aria-label="Navegação principal">

@@ -10,11 +10,5 @@
     { "icon": "star", "text": "4.9 no Google" },
     { "icon": "calendar", "text": "29 anos de história" },
     { "icon": "location", "text": "Feira de Santana" }
-  ],
-  "sliderImages": [
-    { "src": "/assets/1.svg", "alt": "Estudantes focados no aprendizado" },
-    { "src": "/assets/2.svg", "alt": "Ambiente acolhedor e estimulante" },
-    { "src": "/assets/3.svg", "alt": "Atividades práticas e desenvolvimento" },
-    { "src": "/assets/4.svg", "alt": "Convívio e ensino de excelência" }
   ]
 }
