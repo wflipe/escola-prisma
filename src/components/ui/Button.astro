@@ -9,7 +9,8 @@ interface Props {
   'data-ga4-event'?: string;
   'data-ga4-location'?: string;
   class?: string;
-
+  id?: string;
+  style?: string;
 }
 
 const {
@@ -26,7 +27,6 @@ const {
 } = Astro.props;
 
 const isLink = !!href;
-const Tag = isLink ? 'a' : 'button';
 
 const ga4Attrs = ga4Event ? { 'data-ga4-event': ga4Event, 'data-ga4-location': ga4Location || '' } : {};
 
@@ -39,7 +39,7 @@ const classList = [
 ].filter(Boolean).join(' ');
 
 // Remove any object values or GA4 properties from rest attributes to prevent [object Object] in HTML
-const cleanedAttrs = {};
+const cleanedAttrs: Record<string, unknown> = {};
 for (const [key, value] of Object.entries(attrs)) {
   if (typeof value !== 'object' && key !== 'data-ga4-event' && key !== 'data-ga4-location') {
     cleanedAttrs[key] = value;

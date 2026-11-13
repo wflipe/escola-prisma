@@ -1,9 +1,10 @@
 ---
+import { whatsappLink } from "../../data/escola";
 import Icon from '../ui/Icon.astro';
 ---
 
 <a
-  href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20matr%C3%ADculas%20na%20Escola%20Prisma."
+  href={whatsappLink("informações sobre matrículas")}
   class="whatsapp-float"
   id="cta-whatsapp-float"
   target="_blank"

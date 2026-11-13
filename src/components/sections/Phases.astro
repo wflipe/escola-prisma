@@ -4,17 +4,8 @@ import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
-
-interface Phase {
-  title: string;
-  slug: string;
-  phaseLabel: string;
-  icon: string;
-  color: 'amarela' | 'laranja' | 'azul' | 'carvao';
-  description: string;
-  ctaText: string;
-  ctaLink: string;
-}
+import type { Phase } from '../../types/content';
+import { whatsappLink } from '../../data/escola';
 
 interface Props {
   phases: Phase[];
@@ -43,7 +34,7 @@ const colorStyles = {
     </div>
 
     <div class="fases-grid">
-      {phases.map((phase, index) => {
+      {phases.map((phase) => {
         const colors = colorStyles[phase.color];
         return (
           <Card variant="bordered" padding="lg" hover class="fase-card" style={`border-top-color: ${colors.text}; border-top-width: 6px; --fase-bg: ${colors.bg}; --fase-text: ${colors.text}; --fase-border: ${colors.border}; --fase-shadow: ${colors.shadow};`}>
@@ -59,7 +50,7 @@ const colorStyles = {
               <p>{phase.description}</p>
 
               <Button
-                href={phase.ctaLink}
+                href={whatsappLink(phase.whatsappAssunto)}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="outline"

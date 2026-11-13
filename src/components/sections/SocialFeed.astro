@@ -7,10 +7,10 @@ import Icon from '../ui/Icon.astro';
 <Section id="instagram" background="gray" padding="xl" class="social-feed">
   <Container>
     <div class="social-feed-header">
-      <div class="social-badge">
+      <a class="social-badge" href="https://www.instagram.com/escolaprisma_/" target="_blank" rel="noopener noreferrer">
         <Icon name="instagram" size="sm" />
-        <span>@escolaprisma</span>
-      </div>
+        <span>@escolaprisma_</span>
+      </a>
       <h2 class="title">
         Acompanhe nosso <span class="font-serif italic text-primary">dia a dia</span>
       </h2>
@@ -65,6 +65,7 @@ import Icon from '../ui/Icon.astro';
     color: var(--color-primary);
     margin-bottom: 1rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
   }
 
   .title {

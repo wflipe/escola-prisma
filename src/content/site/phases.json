@@ -7,7 +7,7 @@
     "color": "amarela",
     "description": "Alfabetização lúdica e estruturada, estímulo sensorial e socialização respeitosa. Onde a infância é respeitada e a independência dá os primeiros passos.",
     "ctaText": "Saber mais",
-    "ctaLink": "https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20vagas%20para%20a%20Educa%C3%A7%C3%A3o%20Infantil."
+    "whatsappAssunto": "informações sobre vagas para a Educação Infantil"
   },
   {
     "title": "Fundamental I",
@@ -17,7 +17,7 @@
     "color": "laranja",
     "description": "Hábito diário de estudos, raciocínio lógico, inglês integrado à formação e desenvolvimento da autonomia com acompanhamento pedagógico contínuo.",
     "ctaText": "Saber mais",
-    "ctaLink": "https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20vagas%20para%20o%20Ensino%20Fundamental%20I."
+    "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental I"
   },
   {
     "title": "Fundamental II",
@@ -27,7 +27,7 @@
     "color": "azul",
     "description": "Investigação científica, projetos interdisciplinares e amadurecimento socioemocional para enfrentar os desafios da adolescência com responsabilidade.",
     "ctaText": "Saber mais",
-    "ctaLink": "https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20vagas%20para%20o%20Ensino%20Fundamental%20II."
+    "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental II"
   },
   {
     "title": "Ensino Médio",
@@ -37,6 +37,6 @@
     "color": "carvao",
     "description": "Preparação acadêmica consistente para o ENEM, UEFS e principais vestibulares, combinada com orientação vocacional e suporte ao jovem.",
     "ctaText": "Saber mais",
-    "ctaLink": "https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20vagas%20para%20o%20Ensino%20M%C3%A9dio."
+    "whatsappAssunto": "informações sobre vagas para o Ensino Médio"
   }
 ]

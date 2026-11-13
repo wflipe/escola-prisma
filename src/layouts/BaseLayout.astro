@@ -12,7 +12,7 @@ interface Props {
   description: string;
   canonicalURL?: string;
   ogImage?: string;
-  schema?: SchemaOrg;
+  schema?: SchemaOrg | SchemaOrg[];
   noIndex?: boolean;
 }
 
@@ -25,8 +25,7 @@ const {
   noIndex = false,
 } = Astro.props;
 
-const currentYear = new Date().getFullYear();
-const structuredData = schema ? JSON.stringify(schema) : '';
+const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!DOCTYPE html>
@@ -58,14 +57,14 @@ const structuredData = schema ? JSON.stringify(schema) : '';
 
   <meta name="geo.region" content="BR-BA" />
   <meta name="geo.placename" content="Feira de Santana" />
-  <meta name="geo.position" content="-12.2858;-38.9556" />
-  <meta name="ICBM" content="-12.2858, -38.9556" />
+  <meta name="geo.position" content="-12.2949;-38.9457" />
+  <meta name="ICBM" content="-12.2949, -38.9457" />
 
   <meta name="theme-color" content="#F67A21" />
 
-  {structuredData && (
-    <script type="application/ld+json" set:html={structuredData} />
-  )}
+  {schemas.map((item) => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+  ))}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -93,8 +92,9 @@ const structuredData = schema ? JSON.stringify(schema) : '';
 
 
 
-  <script is:inline src="../scripts/mobile-menu.js"></script>
-  <script is:inline src="../scripts/back-to-top.js"></script>
-  <script is:inline src="../scripts/slider.js"></script>
+  <script>
+    import '../scripts/mobile-menu';
+    import '../scripts/back-to-top';
+  </script>
 </body>
 </html>

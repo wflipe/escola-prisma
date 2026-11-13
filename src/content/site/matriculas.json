@@ -1,0 +1,17 @@
+{
+  "ativo": true,
+  "selo": "Matrículas abertas",
+  "titulo": "Matrículas 2027 abertas",
+  "tituloDestaque": "2027",
+  "texto": "Da Educação Infantil ao Ensino Médio, com opção de turno integral. As vagas são limitadas por turma para preservar o acompanhamento próximo de cada aluno.",
+  "etapas": ["Educação Infantil", "Fundamental I", "Fundamental II", "Ensino Médio"],
+  "cta": {
+    "text": "Garantir a vaga do meu filho",
+    "whatsappAssunto": "informações sobre as matrículas 2027"
+  },
+  "ctaSecundario": {
+    "text": "Agendar uma visita",
+    "whatsappAssunto": "agendar uma visita antes de fazer a matrícula"
+  },
+  "observacao": "Atendimento pelo WhatsApp oficial da escola."
+}

@@ -7,13 +7,20 @@ import { Image } from 'astro:assets';
 import studentInfantil from '../../assets/images/Balé 1024 x 1024.webp';
 import studentFundamental from '../../assets/images/Karatê 1024 x 1024.webp';
 import studentMedio from '../../assets/images/Ensino Médio 1024 x 1024.webp';
-import type { HeroData } from '../../content/site/hero';
+import type { HeroData } from '../../types/content';
+import { whatsappLink } from '../../data/escola';
 
 interface Props {
   data: HeroData;
 }
 
 const { data } = Astro.props;
+
+// Divide o título para envolver o trecho de destaque em serifa itálica.
+const highlight = data.headlineHighlight ?? '';
+const highlightIndex = highlight ? data.headline.indexOf(highlight) : -1;
+const headlineBefore = highlightIndex >= 0 ? data.headline.slice(0, highlightIndex) : data.headline;
+const headlineAfter = highlightIndex >= 0 ? data.headline.slice(highlightIndex + highlight.length) : '';
 ---
 
 <Section id="inicio" class="hero" padding="none">
@@ -29,20 +36,18 @@ const { data } = Astro.props;
     <div class="hero-content">
       <div class="trust-badge">
         <Icon name="star" size="sm" />
-        <span>Formação humana · Acolhimento · Vestibular</span>
+        <span>{data.badge}</span>
       </div>
 
       <h1 class="hero-title">
-        Seu filho preparado para o mundo, com o <span class="font-serif italic text-accent">cuidado</span> que ele merece hoje.
+        {headlineBefore}{highlightIndex >= 0 && <span class="font-serif italic text-accent">{highlight}</span>}{headlineAfter}
       </h1>
 
-      <p class="hero-lead">
-        Da Educação Infantil ao Ensino Médio, combinamos ensino consistente, inglês avançado, esporte e acompanhamento próximo, em uma escola onde seu filho é reconhecido pelo nome.
-      </p>
+      <p class="hero-lead">{data.subheadline}</p>
 
       <div class="hero-actions">
         <Button
-          href={data.primaryCTA.link}
+          href={whatsappLink(data.primaryCTA.whatsappAssunto)}
           target="_blank"
           rel="noopener noreferrer"
           variant="primary"
