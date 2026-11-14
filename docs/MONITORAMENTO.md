@@ -30,11 +30,13 @@ No painel do Umami: **Events**. Os mesmos eventos vão para o Clarity. Cada even
 
 | Evento | Botão | `local` |
 | --- | --- | --- |
-| `click_matricula` | Banner de matrículas: "Garantir a vaga do meu filho" | `banner_matriculas` |
+| `click_matricula` | Banner de matrículas: "Garanta a vaga do seu filho" (celular: "Garanta a vaga") | `banner_matriculas` |
 | `click_agendar_visita` | Hero, banner (secundário) e CTA final | `hero`, `banner_matriculas`, `final_cta` |
 | `click_saber_mais_fase` | "Saber mais" das fases de ensino | `infantile`, `fundamental-1`, `fundamental-2`, `medio` |
 | `click_conhecer_estrutura` | "Quero conhecer a estrutura" | `ecossistema` |
 | `click_falar_coordenacao` | Cabeçalho e menu mobile | conforme o botão |
+| `click_faixa_matriculas` | Faixa "Matrículas 2027 abertas" no topo | `faixa_topo` |
+| `play_video_rotina` | Play no vídeo da rotina | `rotina` |
 | `click_whatsapp_float` | Botão verde flutuante | `global` |
 | `click_whatsapp` | Outros links de WhatsApp (Manifesto, rodapé) | id da seção ou `footer` |
 | `click_telefone` | Links de telefone fixo (topo, menu, rodapé) | id da seção, `header` ou `footer` |

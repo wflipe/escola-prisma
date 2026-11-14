@@ -1,7 +1,7 @@
 # Plano de correções — Site Escola Prisma
 
 Criado em 13/11/2026 a partir de uma leitura completa do código (commit `83f8a12`).
-Status: **etapas 1–4 executadas** em 13/11/2026 na branch `fix/correcoes-e-banner-matriculas` (ainda sem commit/PR).
+Status: **etapas 1–5 concluídas** em 13/11/2026 na branch `fix/correcoes-e-banner-matriculas` (commits `4d42f2b` e `1cfd751`). Branch e tags enviadas ao GitHub e [PR #1](https://github.com/wflipe/escola-prisma/pull/1) aberto. Falta a etapa 6: revisar o preview e fazer o merge. Histórico em [CHANGELOG.md](../CHANGELOG.md).
 
 ## Andamento
 
@@ -13,7 +13,13 @@ Status: **etapas 1–4 executadas** em 13/11/2026 na branch `fix/correcoes-e-ban
 - [x] **Extra:** dados oficiais centralizados em `src/data/escola.ts`; links do WhatsApp padronizados (ver `docs/WHATSAPP-SAUDACAO.md`); vídeo da rotina trocado para `qYuossXmZfc`; banner de matrículas criado (ver `docs/BANNER-MATRICULAS.md`).
 - [x] **Organização:** relatórios do Lighthouse e imagens sem uso (3 duplicadas apagadas) movidos para `arquivo/`; `.gitignore` atualizado.
 - [x] **Ponto de restauração:** commit + tags `restauracao/2026-11-13-antes-das-correcoes` e `restauracao/2026-11-13-correcoes-e-banner` (ver `docs/RESTAURACAO.md`).
-- [ ] **Etapa 6:** push, PR, revisão visual no preview da Vercel, Lighthouse e merge.
+- [x] **Domínio (commit `1cfd751`):** o domínio oficial é `www.escolaprisma.net.br`, e o site no ar apontava a canonical para `escolaprisma.com` (outro site). Corrigido; ver [SEO-GEO.md](SEO-GEO.md).
+- [x] **SEO/GEO (commit `1cfd751`):** `llms.txt`, título/descrição, `knowsAbout`, FAQ com 13 perguntas.
+- [x] **Monitoramento (commit `1cfd751`):** Umami + Clarity; ver [MONITORAMENTO.md](MONITORAMENTO.md).
+- [x] **Celular (commit `1cfd751`):** sem transbordo horizontal de 280px a 393px (testado no Chrome).
+- [x] **Etapa 6a:** push da branch e das tags; [PR #1](https://github.com/wflipe/escola-prisma/pull/1) aberto (13/11/2026).
+- [x] **Ajustes locais após o PR (ainda sem commit):** capa do vídeo (sem faixas pretas e sem nome do canal), faixa "Matrículas 2027 abertas" no topo, botão do banner "Garanta a vaga do seu filho" / "Garanta a vaga" sem setas. Ver [CHANGELOG.md](../CHANGELOG.md).
+- [ ] **Etapa 6b:** commit + push desses ajustes (o PR #1 se atualiza sozinho), revisão visual no preview da Vercel (checks do PR: Vercel ✔, Netlify ✔), Lighthouse e merge. Depois do deploy: pedir indexação no Search Console.
 - [ ] **Fora do código:** configurar a saudação no WhatsApp Business e trocar o link da bio do Instagram de `escolaprisma.com` para `escolaprisma.net.br`.
 
 ---

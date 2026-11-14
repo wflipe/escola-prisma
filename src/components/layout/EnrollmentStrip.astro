@@ -1,0 +1,119 @@
+---
+/**
+ * Faixa "Matrículas abertas" no topo do site, acima da barra azul.
+ * Texto em src/content/site/matriculas.json → "faixaTopo".
+ * Some quando "ativo": false no banner OU em "faixaTopo".
+ */
+import matriculasData from '../../content/site/matriculas.json';
+import type { MatriculasData } from '../../types/content';
+
+const data = matriculasData as MatriculasData;
+const faixa = data.faixaTopo;
+const visivel = data.ativo && faixa?.ativo;
+---
+
+{visivel && faixa && (
+  <a
+    href={faixa.link}
+    class="faixa-matriculas"
+    data-ga4-event="click_faixa_matriculas"
+    data-ga4-location="faixa_topo"
+  >
+    <span class="faixa-ponto" aria-hidden="true"></span>
+    <strong class="faixa-texto">{faixa.texto}</strong>
+    <span class="faixa-sep" aria-hidden="true">·</span>
+    <span class="faixa-chamada">
+      <span class="chamada-longa">{faixa.chamada}</span>
+      <span class="chamada-curta">{faixa.chamadaCurta}</span>
+      <span class="faixa-seta" aria-hidden="true">→</span>
+    </span>
+  </a>
+)}
+
+<style>
+  .faixa-matriculas {
+    position: relative;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.25rem;
+    padding: 0.4rem 1rem;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .faixa-matriculas:hover .faixa-chamada,
+  .faixa-matriculas:focus-visible .faixa-chamada {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .faixa-matriculas:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: -3px;
+  }
+
+  .faixa-ponto {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    animation: pulsoFaixa 2s ease-out infinite;
+  }
+
+  @keyframes pulsoFaixa {
+    0% { box-shadow: 0 0 0 0 rgba(21, 46, 101, 0.5); }
+    70% { box-shadow: 0 0 0 6px rgba(21, 46, 101, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(21, 46, 101, 0); }
+  }
+
+  .faixa-texto {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .faixa-chamada {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .faixa-seta {
+    display: inline-block;
+    margin-left: 0.15rem;
+    transition: transform var(--transition-fast);
+  }
+
+  .faixa-matriculas:hover .faixa-seta {
+    transform: translateX(3px);
+  }
+
+  /* Celular: chamada curta */
+  .chamada-longa { display: none; }
+  .chamada-curta { display: inline; }
+
+  @media (min-width: 640px) {
+    .faixa-matriculas { font-size: 0.875rem; }
+    .chamada-longa { display: inline; }
+    .chamada-curta { display: none; }
+  }
+
+  /* Telas muito estreitas: esconde o separador para caber */
+  @media (max-width: 340px) {
+    .faixa-sep { display: none; }
+    .faixa-matriculas { gap: 0.35rem; font-size: 0.75rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faixa-ponto { animation: none; }
+    .faixa-seta { transition: none; }
+  }
+</style>

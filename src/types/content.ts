@@ -3,6 +3,8 @@
 /** Botão que abre o WhatsApp. O link é montado por whatsappLink() em src/data/escola.ts. */
 export interface WhatsAppCTA {
   text: string;
+  /** Versão curta do texto, usada no celular (telas abaixo de 640px). Opcional. */
+  textCurto?: string;
   /** Completa a frase "Olá! Vim pelo site da Escola Prisma e gostaria de ___." */
   whatsappAssunto: string;
 }
@@ -61,4 +63,14 @@ export interface MatriculasData {
   cta: WhatsAppCTA;
   ctaSecundario?: WhatsAppCTA;
   observacao?: string;
+  /** Faixa fina no topo de todas as páginas. Só aparece se o banner (ativo) e a faixa (faixaTopo.ativo) estiverem ligados. */
+  faixaTopo?: {
+    ativo: boolean;
+    texto: string;
+    /** Chamada no computador/tablet. */
+    chamada: string;
+    /** Chamada no celular (telas estreitas). */
+    chamadaCurta: string;
+    link: string;
+  };
 }

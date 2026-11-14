@@ -11,6 +11,10 @@ Cada ponto de restauração é uma **tag do Git**: um "marcador" com nome fixo e
 
 Ver todos: `git tag -l "restauracao/*" -n1`
 
+> O commit `1cfd751` (SEO/GEO, domínio .net.br, Umami e Clarity) ainda **não tem tag**. Para voltar a ele, use o número do commit no lugar do nome da tag, por exemplo `git switch --detach 1cfd751`. As mudanças de cada versão estão no [CHANGELOG.md](../CHANGELOG.md).
+>
+> As duas tags acima já foram enviadas ao GitHub (13/11/2026). Tags novas só existem neste computador até rodar `git push origin --tags`.
+
 ## Como voltar para um ponto
 
 ### 1. Só olhar ou testar uma versão antiga (sem apagar nada)

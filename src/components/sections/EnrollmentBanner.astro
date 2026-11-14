@@ -51,7 +51,12 @@ const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
               data-ga4-location="banner_matriculas"
             >
               <Icon name="whatsapp" size="md" />
-              {data.cta.text}
+              {data.cta.textCurto ? (
+                <>
+                  <span class="texto-longo">{data.cta.text}</span>
+                  <span class="texto-curto">{data.cta.textCurto}</span>
+                </>
+              ) : data.cta.text}
             </a>
             {data.ctaSecundario && (
               <a
@@ -63,7 +68,6 @@ const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
                 data-ga4-location="banner_matriculas"
               >
                 {data.ctaSecundario.text}
-                <Icon name="arrow-right" size="sm" />
               </a>
             )}
           </div>
@@ -88,6 +92,8 @@ const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
   .matriculas {
     background: var(--color-surface);
     padding: 3rem 0;
+    /* Ao clicar na faixa do topo, o banner não fica escondido atrás do cabeçalho fixo. */
+    scroll-margin-top: 4rem;
   }
 
   /* ---------- Base: formato VERTICAL (celular) ---------- */
@@ -215,6 +221,15 @@ const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
   .btn-banner-principal:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 28px rgba(21, 46, 101, 0.4);
+  }
+
+  /* Texto do botão: curto no celular, longo a partir de 640px (mesmo padrão da faixa do topo) */
+  .texto-longo { display: none; }
+  .texto-curto { display: inline; }
+
+  @media (min-width: 640px) {
+    .texto-longo { display: inline; }
+    .texto-curto { display: none; }
   }
 
   .btn-banner-secundario {
