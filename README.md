@@ -87,6 +87,7 @@ Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** 
 - **Scripts do navegador:** `src/scripts/*.ts`, importados no `BaseLayout` e empacotados pelo Astro.
 - **Monitoramento (Umami + Clarity):** scripts no `BaseLayout`; cliques de conversão em `src/scripts/analytics.ts`, a partir dos atributos `data-ga4-event` e `data-ga4-location` dos botões. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
 - **Estilo dos textos:** frases diretas, maiúscula só no início dos títulos, sem emoji e sem frases de efeito repetindo o que o card já disse. Não invente dados: tudo o que aparece no site deve bater com `src/data/escola.ts` e com o que a escola confirmou.
+- **Depoimentos:** textos em `src/content/testimonials/testimonials.json`. O bloco está oculto; para mostrar, `MOSTRAR_DEPOIMENTOS = true` em `src/components/sections/SocialProof.astro` (só com depoimentos reais e autorizados).
 - **Perguntas frequentes:** `src/content/faqs/faqs.json` (13 perguntas; também viram schema `FAQPage`).
 - **Título e descrição da página (Google):** `src/pages/index.astro`.
 - **Resumo para IAs:** `public/llms.txt`, escrito à mão. Atualize quando mudar dados da escola.
