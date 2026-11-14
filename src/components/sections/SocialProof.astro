@@ -24,6 +24,9 @@ interface Props {
 }
 
 const { whyItems, testimonials } = Astro.props;
+
+/** Bloco "O que dizem as famílias". Oculto até a escola confirmar depoimentos reais e autorizados. Mude para true para mostrar. */
+const MOSTRAR_DEPOIMENTOS = false;
 ---
 
 <Section id="depoimentos" background="gray" padding="xl" class="prova-social">
@@ -49,6 +52,7 @@ const { whyItems, testimonials } = Astro.props;
       </div>
     </div>
 
+    {MOSTRAR_DEPOIMENTOS && testimonials.length > 0 && (
     <div class="testimonials-section">
       <h2>
         O que dizem as famílias
@@ -79,6 +83,7 @@ const { whyItems, testimonials } = Astro.props;
         ))}
       </div>
     </div>
+    )}
   </Container>
 </Section>
 
