@@ -2,6 +2,10 @@
 import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Icon from '../ui/Icon.astro';
+
+/** ID do vídeo no YouTube (parte depois de "watch?v=" no link). */
+const VIDEO_ID = 'qYuossXmZfc';
+const VIDEO_TITULO = 'Rotina na Escola Prisma';
 ---
 
 <Section id="rotina" background="white" padding="xl" class="rotina-real">
@@ -12,7 +16,7 @@ import Icon from '../ui/Icon.astro';
           Uma rotina que desenvolve seu filho e simplifica a sua.
         </h2>
         <p>
-          Mais experiências reais, menos aprendizado passivo. O dia a dia na Prisma é estruturado, engajador e focado no crescimento integral.
+          O dia a dia na Prisma é organizado e tem muitas atividades práticas, em que o aluno aprende fazendo.
         </p>
 
         <ul class="rotina-lista">
@@ -22,7 +26,7 @@ import Icon from '../ui/Icon.astro';
             </div>
             <div>
               <h3>Acolhimento desde a chegada</h3>
-              <p>Recebemos cada aluno com atenção, garantindo que o dia comece de forma positiva e organizada.</p>
+              <p>Recebemos cada aluno com atenção logo na entrada, para o dia começar tranquilo e organizado.</p>
             </div>
           </li>
 
@@ -32,7 +36,7 @@ import Icon from '../ui/Icon.astro';
             </div>
             <div>
               <h3>Ensino com profundidade</h3>
-              <p>Aulas com a metodologia do Sistema Positivo, focadas em compreensão real, não apenas memorização.</p>
+              <p>Aulas com a metodologia do Sistema Positivo, pensadas para o aluno entender a matéria em vez de decorar.</p>
             </div>
           </li>
 
@@ -42,24 +46,39 @@ import Icon from '../ui/Icon.astro';
             </div>
             <div>
               <h3>Corpo ativo, mente equilibrada</h3>
-              <p>Balé, Karatê, esportes e atividades artísticas que constroem disciplina, expressão e equilíbrio emocional.</p>
+              <p>Balé, Karatê, esportes e artes desenvolvem disciplina e expressão e ajudam no equilíbrio emocional.</p>
             </div>
           </li>
         </ul>
       </div>
 
-      <div class="rotina-video">
-        <iframe
-          width="100%"
-          height="450"
-          src="https://www.youtube.com/embed/q0hmY3pO44Q?si=IzQBl28Z53OXB6pS"
-          title="Rotina na Escola Prisma"
-          frameborder="0"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+      <!--
+        Vídeo com "capa": mostra só a imagem e o botão de play (sem nome do canal nem faixas pretas).
+        O player do YouTube (~1 MB) só carrega quando a pessoa clica. Para trocar o vídeo, mude VIDEO_ID no topo.
+      -->
+      <div class="rotina-video" data-video-id={VIDEO_ID} data-video-title={VIDEO_TITULO}>
+        <button
+          type="button"
+          class="video-capa"
+          aria-label={`Assistir ao vídeo: ${VIDEO_TITULO}`}
+          data-ga4-event="play_video_rotina"
+          data-ga4-location="rotina"
+        >
+          <picture>
+            <source srcset={`https://i.ytimg.com/vi_webp/${VIDEO_ID}/maxresdefault.webp`} type="image/webp" />
+            <img
+              src={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+              alt="Alunos da Escola Prisma em sala de aula"
+              width="1280"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <span class="video-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z" fill="currentColor" /></svg>
+          </span>
+        </button>
       </div>
     </div>
   </Container>
@@ -126,15 +145,75 @@ import Icon from '../ui/Icon.astro';
     color: var(--color-text-muted);
   }
 
+  /* Caixa sempre na proporção 16:9 do vídeo, sem faixas pretas */
   .rotina-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
     border-radius: 1.5rem;
     overflow: hidden;
+    background: var(--color-secondary);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
 
-  .rotina-video iframe {
+  .video-capa {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: none;
+  }
+
+  .video-capa img {
     display: block;
-    border-radius: 1.5rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.25rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 0 0 0.5rem rgba(255, 255, 255, 0.25), 0 12px 30px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-base), background var(--transition-base);
+  }
+
+  .video-capa:hover .video-play,
+  .video-capa:focus-visible .video-play {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--color-primary-dark);
+  }
+
+  .video-capa:hover img {
+    transform: scale(1.03);
+  }
+
+  .video-capa:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: -3px;
+  }
+
+  .rotina-video :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   @media (max-width: 992px) {
@@ -145,9 +224,30 @@ import Icon from '../ui/Icon.astro';
     .rotina-video {
       order: -1;
     }
+  }
 
-    .rotina-video iframe {
-      height: 300px;
+  @media (prefers-reduced-motion: reduce) {
+    .video-capa img,
+    .video-play {
+      transition: none;
     }
   }
 </style>
+
+<script>
+  // Troca a capa pelo player do YouTube no clique (youtube-nocookie = sem cookies até o play).
+  document.querySelectorAll<HTMLElement>('.rotina-video[data-video-id]').forEach((caixa) => {
+    const capa = caixa.querySelector<HTMLButtonElement>('.video-capa');
+    capa?.addEventListener('click', () => {
+      const params = new URLSearchParams({ autoplay: '1', rel: '0', playsinline: '1' });
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${caixa.dataset.videoId}?${params}`;
+      iframe.title = caixa.dataset.videoTitle ?? 'Vídeo';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      capa.replaceWith(iframe);
+      iframe.focus();
+    });
+  });
+</script>

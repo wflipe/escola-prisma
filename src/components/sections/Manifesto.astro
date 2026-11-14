@@ -1,4 +1,5 @@
 ---
+import { whatsappLink } from "../../data/escola";
 import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Button from '../ui/Button.astro';
@@ -14,11 +15,11 @@ import Button from '../ui/Button.astro';
       mais um <span class="font-serif italic text-primary">número</span> na chamada.
     </h2>
     <p class="manifesto-text">
-      Sabemos que sua rotina é corrida, que conciliar trabalho e família exige um esforço imenso, e que o futuro deles é a sua maior prioridade. Na Prisma, acolhemos a individualidade de cada estudante, garantindo excelência nos estudos e o carinho e segurança que você precisa para trabalhar em paz.
+      Sabemos que sua rotina é corrida e que, entre o trabalho e a família, o futuro do seu filho continua sendo a prioridade. Na Prisma, cada aluno é acompanhado do jeito dele, com estudo exigente e com o carinho e a segurança de que você precisa para trabalhar em paz.
     </p>
     <div class="manifesto-footer">
       <Button
-        href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20escola."
+        href={whatsappLink("saber mais sobre a escola")}
         target="_blank"
         rel="noopener noreferrer"
         variant="primary"

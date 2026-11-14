@@ -1,4 +1,5 @@
 ---
+import { whatsappLink } from "../../data/escola";
 import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Button from '../ui/Button.astro';
@@ -14,10 +15,10 @@ import Icon from '../ui/Icon.astro';
       <span class="font-serif italic text-primary">conheça</span> a escola.
     </h2>
     <p class="cta-text">
-      As turmas são planejadas para preservar o acompanhamento próximo que prometemos. Por isso, trabalhamos com um número limitado de vagas por turma a cada ciclo letivo.
+      Para manter o acompanhamento próximo que prometemos, cada turma tem um número limitado de vagas a cada ano letivo.
     </p>
     <Button
-      href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20visita%20para%20conhecer%20a%20Escola%20Prisma%20pessoalmente."
+      href={whatsappLink("agendar uma visita para conhecer a escola pessoalmente")}
       target="_blank"
       rel="noopener noreferrer"
       variant="primary"
@@ -30,7 +31,7 @@ import Icon from '../ui/Icon.astro';
     </Button>
     <p class="cta-apoio">
       Conheça a estrutura, converse com a coordenação e tire suas dúvidas pessoalmente.<br>
-      <span class="micro-copy">💬 Resposta rápida pelo WhatsApp oficial da Coordenação.</span>
+      <span class="micro-copy">Resposta rápida pelo WhatsApp oficial da coordenação.</span>
     </p>
   </Container>
 </Section>

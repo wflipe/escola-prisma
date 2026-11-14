@@ -1,37 +1,77 @@
+import { escola } from '../data/escola';
+
 export interface SchemaOrg {
   '@context': 'https://schema.org';
-  '@type': string;
+  '@type': string | string[];
   [key: string]: unknown;
 }
 
+/**
+ * Ficha da escola para buscadores e assistentes de IA.
+ * Os dados vêm de src/data/escola.ts e devem bater com o Perfil da Empresa no Google.
+ */
 export function educationalOrganizationSchema(): SchemaOrg {
   return {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    name: 'Escola Prisma',
-    url: 'https://www.escolaprisma.com',
-    logo: 'https://www.escolaprisma.com/assets/logo.png',
-    description: 'A Escola Prisma em Feira de Santana oferece desenvolvimento completo, acolhimento e excelência acadêmica. Do ensino infantil ao médio.',
+    '@type': 'School',
+    '@id': `${escola.site}/#escola`,
+    name: escola.nome,
+    url: escola.site,
+    logo: `${escola.site}/assets/logo.png`,
+    image: `${escola.site}/assets/escola-prisma-marca-1200x630.png`,
+    slogan: escola.slogan,
+    description:
+      'Escola particular em Feira de Santana (BA), da Educação Infantil ao Ensino Médio, com opção de turno integral. Ensino com o Sistema Positivo, inglês com Positivo English Solution, Balé, Karatê, esporte e acompanhamento próximo de cada aluno.',
+    telephone: escola.whatsapp.e164,
+    email: escola.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Caminho 16, Conjunto Feira VII, 16 - Tomba',
-      addressLocality: 'Feira de Santana',
-      addressRegion: 'BA',
-      postalCode: '44100-000',
-      addressCountry: 'BR',
+      streetAddress: escola.endereco.logradouro,
+      addressLocality: escola.endereco.cidade,
+      addressRegion: escola.endereco.uf,
+      postalCode: escola.endereco.cep,
+      addressCountry: escola.endereco.pais,
     },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+55-75-3622-9180',
-      contactType: 'Atendimento à Coordenação e Secretaria',
-      email: 'secretaria@escolaprisma.com',
-      areaServed: 'Feira de Santana',
-      availableLanguage: 'Portuguese',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: escola.geo.latitude,
+      longitude: escola.geo.longitude,
     },
-    sameAs: [
-      'https://www.instagram.com/escolaprisma_',
-      'https://www.facebook.com/prismafeiraVII',
+    hasMap: escola.mapaUrl,
+    areaServed: { '@type': 'City', name: 'Feira de Santana' },
+    ...(escola.anoFundacao ? { foundingDate: escola.anoFundacao } : {}),
+    knowsAbout: [
+      'Educação Infantil',
+      'Ensino Fundamental I',
+      'Ensino Fundamental II',
+      'Ensino Médio',
+      'Turno integral',
+      'Sistema Positivo',
+      'Positivo English Solution',
+      'Preparação para o ENEM e a UEFS',
+      'Balé',
+      'Karatê',
     ],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: escola.whatsapp.e164,
+        contactType: 'admissions',
+        name: 'Matrículas e atendimento (WhatsApp)',
+        areaServed: 'BR',
+        availableLanguage: 'Portuguese',
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: escola.telefoneFixo.e164,
+        contactType: 'customer service',
+        name: 'Secretaria e Coordenação (telefone fixo)',
+        email: escola.email,
+        areaServed: 'BR',
+        availableLanguage: 'Portuguese',
+      },
+    ],
+    sameAs: [escola.instagram.url, escola.facebook],
   };
 }
 
@@ -47,24 +87,5 @@ export function faqPageSchema(faqs: Array<{ question: string; answer: string }>)
         text: faq.answer,
       },
     })),
-  };
-}
-
-export function courseSchema(course: {
-  name: string;
-  description: string;
-  provider: string;
-  url: string;
-}): SchemaOrg {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Course',
-    name: course.name,
-    description: course.description,
-    provider: {
-      '@type': 'EducationalOrganization',
-      name: course.provider,
-    },
-    url: course.url,
   };
 }

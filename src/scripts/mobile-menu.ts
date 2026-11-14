@@ -1,4 +1,4 @@
-const hamburger = document.querySelector('.hamburger');
+const hamburger = document.querySelector<HTMLElement>('.hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileOverlay = document.getElementById('mobile-overlay');
 

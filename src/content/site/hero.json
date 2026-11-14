@@ -1,10 +1,11 @@
 {
-  "badge": "Formação humana · Excelência acadêmica · Tecnologia",
-  "headline": "Seu filho preparado para o futuro, com o cuidado que ele precisa hoje.",
-  "subheadline": "Da Educação Infantil ao Ensino Médio, uma formação que combina ensino consistente, inglês, tecnologia, esporte e acompanhamento próximo — em uma escola onde seu filho é conhecido pelo nome.",
+  "badge": "Formação humana · Acolhimento · Vestibular",
+  "headline": "Seu filho preparado para o mundo, com o cuidado que ele merece hoje.",
+  "headlineHighlight": "cuidado",
+  "subheadline": "Da Educação Infantil ao Ensino Médio, combinamos ensino consistente, inglês avançado, esporte e acompanhamento próximo, em uma escola onde seu filho é conhecido pelo nome.",
   "primaryCTA": {
     "text": "Agendar Visita",
-    "link": "https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20visita%20guiada%20na%20Escola%20Prisma."
+    "whatsappAssunto": "agendar uma visita guiada"
   },
   "trustIndicators": [
     { "icon": "star", "text": "4.9 no Google" },

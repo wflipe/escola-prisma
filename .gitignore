@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# relatórios locais do Lighthouse gerados na raiz (guarde os importantes em arquivo/lighthouse/)
+/lighthouse*.json
+/*.report.html
+/*.report.json
+
+# Windows
+Thumbs.db

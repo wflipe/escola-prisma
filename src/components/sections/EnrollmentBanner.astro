@@ -1,0 +1,340 @@
+---
+/**
+ * Banner "Matrículas abertas".
+ * - Celular (< 768px): formato vertical, tudo empilhado.
+ * - Tablet/computador (>= 768px): formato horizontal, texto à esquerda e etapas à direita.
+ * Conteúdo editável em src/content/site/matriculas.json ("ativo": false esconde o banner).
+ * O texto é HTML real (não imagem), então Google e assistentes de IA conseguem lê-lo.
+ */
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+import type { MatriculasData } from '../../types/content';
+import { whatsappLink } from '../../data/escola';
+
+interface Props {
+  data: MatriculasData;
+}
+
+const { data } = Astro.props;
+
+const destaque = data.tituloDestaque ?? '';
+const idx = destaque ? data.titulo.indexOf(destaque) : -1;
+const tituloAntes = idx >= 0 ? data.titulo.slice(0, idx) : data.titulo;
+const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
+---
+
+{data.ativo && (
+  <section id="matriculas" class="matriculas" aria-labelledby="matriculas-titulo">
+    <Container>
+      <div class="banner">
+        <span class="banner-marca" aria-hidden="true">{destaque}</span>
+
+        <div class="banner-conteudo">
+          <span class="banner-selo">
+            <span class="selo-ponto" aria-hidden="true"></span>
+            {data.selo}
+          </span>
+
+          <h2 id="matriculas-titulo" class="banner-titulo">
+            {tituloAntes}{idx >= 0 && <span class="titulo-destaque">{destaque}</span>}{tituloDepois}
+          </h2>
+
+          <p class="banner-texto">{data.texto}</p>
+
+          <div class="banner-acoes">
+            <a
+              href={whatsappLink(data.cta.whatsappAssunto)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-banner btn-banner-principal"
+              data-ga4-event="click_matricula"
+              data-ga4-location="banner_matriculas"
+            >
+              <Icon name="whatsapp" size="md" />
+              {data.cta.textCurto ? (
+                <>
+                  <span class="texto-longo">{data.cta.text}</span>
+                  <span class="texto-curto">{data.cta.textCurto}</span>
+                </>
+              ) : data.cta.text}
+            </a>
+            {data.ctaSecundario && (
+              <a
+                href={whatsappLink(data.ctaSecundario.whatsappAssunto)}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-banner btn-banner-secundario"
+                data-ga4-event="click_agendar_visita"
+                data-ga4-location="banner_matriculas"
+              >
+                {data.ctaSecundario.text}
+              </a>
+            )}
+          </div>
+
+          {data.observacao && <p class="banner-obs">{data.observacao}</p>}
+        </div>
+
+        <ul class="banner-etapas" aria-label="Etapas com matrículas abertas">
+          {data.etapas.map((etapa) => (
+            <li>
+              <span class="etapa-check" aria-hidden="true">✓</span>
+              {etapa}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </section>
+)}
+
+<style>
+  .matriculas {
+    background: var(--color-surface);
+    padding: 3rem 0;
+    /* Ao clicar na faixa do topo, o banner não fica escondido atrás do cabeçalho fixo. */
+    scroll-margin-top: 4rem;
+  }
+
+  /* ---------- Base: formato VERTICAL (celular) ---------- */
+  .banner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-2xl);
+    background: linear-gradient(160deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    color: var(--color-secondary);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .banner-marca {
+    position: absolute;
+    right: -0.5rem;
+    top: -1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 7rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: rgba(255, 255, 255, 0.18);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .banner-conteudo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner-selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-full);
+    background: var(--color-secondary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .selo-ponto {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    animation: pulsoSelo 2s ease-out infinite;
+  }
+
+  @keyframes pulsoSelo {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
+  .banner-titulo {
+    font-size: clamp(2rem, 8vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .titulo-destaque {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: white;
+  }
+
+  .banner-texto {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--color-secondary);
+    max-width: 36rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .banner-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .btn-banner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  }
+
+  .btn-banner:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+  }
+
+  .btn-banner-principal {
+    background: var(--color-secondary);
+    color: white;
+    box-shadow: 0 8px 20px rgba(21, 46, 101, 0.3);
+  }
+
+  .btn-banner-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(21, 46, 101, 0.4);
+  }
+
+  /* Texto do botão: curto no celular, longo a partir de 640px (mesmo padrão da faixa do topo) */
+  .texto-longo { display: none; }
+  .texto-curto { display: inline; }
+
+  @media (min-width: 640px) {
+    .texto-longo { display: inline; }
+    .texto-curto { display: none; }
+  }
+
+  .btn-banner-secundario {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-secondary);
+  }
+
+  .btn-banner-secundario:hover {
+    background: white;
+  }
+
+  .banner-obs {
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    opacity: 0.85;
+  }
+
+  .banner-etapas {
+    position: relative;
+    z-index: 1;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .banner-etapas li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-secondary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .etapa-check {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: var(--color-success);
+    color: white;
+    font-size: 0.75rem;
+  }
+
+  /* ---------- Formato HORIZONTAL (tablet e computador) ---------- */
+  @media (min-width: 768px) {
+    .matriculas {
+      padding: 4rem 0;
+    }
+
+    .banner {
+      flex-direction: row;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+      background: linear-gradient(110deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    }
+
+    .banner-marca {
+      top: auto;
+      bottom: -2.5rem;
+      right: 1rem;
+      font-size: 12rem;
+    }
+
+    .banner-conteudo {
+      flex: 1.5;
+    }
+
+    .banner-acoes {
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: auto;
+    }
+
+    .banner-etapas {
+      flex: 1;
+      grid-template-columns: 1fr;
+    }
+
+    .banner-etapas li {
+      font-size: 1rem;
+      padding: 0.9rem 1.1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .banner {
+      padding: 3.5rem 4rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .selo-ponto { animation: none; }
+    .btn-banner { transition: none; }
+    .btn-banner-principal:hover { transform: none; }
+  }
+</style>

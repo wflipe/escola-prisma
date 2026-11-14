@@ -1,4 +1,5 @@
 ---
+import EnrollmentStrip from '../components/layout/EnrollmentStrip.astro';
 import TopBar from '../components/layout/TopBar.astro';
 import Header from '../components/layout/Header.astro';
 import MobileMenu from '../components/layout/MobileMenu.astro';
@@ -12,21 +13,23 @@ interface Props {
   description: string;
   canonicalURL?: string;
   ogImage?: string;
-  schema?: SchemaOrg;
+  schema?: SchemaOrg | SchemaOrg[];
   noIndex?: boolean;
 }
 
 const {
   title,
   description,
-  canonicalURL = 'https://www.escolaprisma.com',
-  ogImage = '/assets/escola-prisma-marca-1200x630.png',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  ogImage: ogImagePath = '/assets/escola-prisma-marca-1200x630.png',
   schema,
   noIndex = false,
 } = Astro.props;
 
-const currentYear = new Date().getFullYear();
-const structuredData = schema ? JSON.stringify(schema) : '';
+// Open Graph (WhatsApp, Facebook, Instagram) exige URL absoluta da imagem.
+const ogImage = new URL(ogImagePath, Astro.site).href;
+
+const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!DOCTYPE html>
@@ -58,14 +61,37 @@ const structuredData = schema ? JSON.stringify(schema) : '';
 
   <meta name="geo.region" content="BR-BA" />
   <meta name="geo.placename" content="Feira de Santana" />
-  <meta name="geo.position" content="-12.2858;-38.9556" />
-  <meta name="ICBM" content="-12.2858, -38.9556" />
+  <meta name="geo.position" content="-12.2949;-38.9457" />
+  <meta name="ICBM" content="-12.2949, -38.9457" />
 
   <meta name="theme-color" content="#F67A21" />
 
-  {structuredData && (
-    <script type="application/ld+json" set:html={structuredData} />
-  )}
+  {schemas.map((item) => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+  ))}
+
+  <!-- Umami (estatísticas de visitas, sem cookies). data-domains: só conta o site oficial, não localhost nem previews da Vercel. -->
+  <script
+    is:inline
+    defer
+    src="https://cloud.umami.is/script.js"
+    data-website-id="531d3b02-006f-478e-896b-36b7a394d576"
+    data-domains="www.escolaprisma.net.br,escolaprisma.net.br"
+  ></script>
+
+  <!-- Microsoft Clarity (mapas de calor e gravações de sessão). Só no domínio oficial e depois do carregamento da página, para não pesar na performance. -->
+  <script is:inline>
+    (function (c, l, a, r, i, t, y) {
+      if (!/(^|\.)escolaprisma\.net\.br$/.test(l.location.hostname)) return;
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      function carregar() {
+        t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      }
+      if (l.readyState === 'complete') carregar();
+      else c.addEventListener('load', carregar);
+    })(window, document, 'clarity', 'script', 'zda9hbje8t');
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,6 +100,7 @@ const structuredData = schema ? JSON.stringify(schema) : '';
 <body>
 
 
+  <EnrollmentStrip />
   <TopBar />
   <Header />
   <MobileMenu />
@@ -93,8 +120,10 @@ const structuredData = schema ? JSON.stringify(schema) : '';
 
 
 
-  <script is:inline src="../scripts/mobile-menu.js"></script>
-  <script is:inline src="../scripts/back-to-top.js"></script>
-  <script is:inline src="../scripts/slider.js"></script>
+  <script>
+    import '../scripts/mobile-menu';
+    import '../scripts/back-to-top';
+    import '../scripts/analytics';
+  </script>
 </body>
 </html>

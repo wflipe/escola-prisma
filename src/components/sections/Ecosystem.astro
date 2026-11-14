@@ -4,19 +4,16 @@ import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
-
-interface EcoItem {
-  icon: string;
-  title: string;
-  description: string;
-}
+import type { EcosystemItem } from '../../types/content';
+import { whatsappLink } from '../../data/escola';
 
 interface Props {
-  items: EcoItem[];
-  ctaLink: string;
+  items: EcosystemItem[];
+  whatsappAssunto: string;
 }
 
-const { items, ctaLink } = Astro.props;
+const { items, whatsappAssunto } = Astro.props;
+const ctaLink = whatsappLink(whatsappAssunto);
 
 const ecoColors = [
   { bg: '#06B6D4', color: 'white' },   // Cyan
@@ -34,7 +31,7 @@ const ecoColors = [
         <span class="font-serif italic" style="color: var(--color-primary);">sala de aula.</span>
       </h2>
       <p>
-        Uma estrutura pensada para integrar conhecimento acadêmico, prática, tecnologia e formação do caráter.
+        A estrutura da escola junta estudo acadêmico, atividades práticas, tecnologia e formação do caráter.
       </p>
       <Button
         href={ctaLink}

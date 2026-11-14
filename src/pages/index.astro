@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
+import EnrollmentBanner from '../components/sections/EnrollmentBanner.astro';
 import ProblemSolution from '../components/sections/ProblemSolution.astro';
 import Manifesto from '../components/sections/Manifesto.astro';
 import ChristianValues from '../components/sections/ChristianValues.astro';
@@ -11,29 +12,37 @@ import SocialProof from '../components/sections/SocialProof.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import SocialFeed from '../components/sections/SocialFeed.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
-import { educationalOrganizationSchema } from '../utils/schema';
+import { educationalOrganizationSchema, faqPageSchema } from '../utils/schema';
+import type { EcosystemData, HeroData, MatriculasData, Phase } from '../types/content';
 import heroData from '../content/site/hero.json';
+import matriculasData from '../content/site/matriculas.json';
 import phasesData from '../content/site/phases.json';
 import ecosystemData from '../content/site/ecosystem.json';
 import whyItemsData from '../content/site/why-items.json';
 import testimonialsData from '../content/testimonials/testimonials.json';
 import faqsData from '../content/faqs/faqs.json';
 
-const schema = educationalOrganizationSchema();
+const hero = heroData as HeroData;
+const matriculas = matriculasData as MatriculasData;
+const phases = phasesData as Phase[];
+const ecosystem = ecosystemData as EcosystemData;
+
+const schema = [educationalOrganizationSchema(), faqPageSchema(faqsData)];
 ---
 
 <BaseLayout
-  title="Escola Prisma - Educar é ensinar a pensar sozinho"
-  description="A Escola Prisma em Feira de Santana oferece desenvolvimento completo, acolhimento e excelência acadêmica. O equilíbrio perfeito entre a aprovação no vestibular e o acolhimento que seu filho merece."
+  title="Escola Prisma | Escola particular em Feira de Santana (BA)"
+  description="Escola particular em Feira de Santana, da Educação Infantil ao Ensino Médio. Turno integral, Sistema Positivo, inglês, esporte e acompanhamento próximo."
   schema={schema}
 >
-  <Hero data={heroData} />
+  <Hero data={hero} />
+  <EnrollmentBanner data={matriculas} />
   <ProblemSolution />
   <Manifesto />
   <ChristianValues />
   <DailyRoutine />
-  <Phases phases={phasesData} />
-  <Ecosystem items={ecosystemData.items} ctaLink={ecosystemData.ctaLink} />
+  <Phases phases={phases} />
+  <Ecosystem items={ecosystem.items} whatsappAssunto={ecosystem.whatsappAssunto} />
   <SocialProof whyItems={whyItemsData} testimonials={testimonialsData} />
   <FAQ faqs={faqsData} />
   <SocialFeed />

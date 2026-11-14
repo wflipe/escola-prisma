@@ -1,4 +1,5 @@
 ---
+import { whatsappLink } from "../../data/escola";
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
@@ -33,7 +34,7 @@ import Icon from '../ui/Icon.astro';
 
     <div class="mobile-menu-cta">
       <Button
-        href="https://wa.me/5575998954848?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20falar%20com%20a%20Coordena%C3%A7%C3%A3o."
+        href={whatsappLink("falar com a Coordenação")}
         target="_blank"
         rel="noopener noreferrer"
         variant="primary"
