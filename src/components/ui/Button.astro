@@ -82,6 +82,15 @@ for (const [key, value] of Object.entries(attrs)) {
     text-decoration: none;
     gap: 0.5rem;
     white-space: nowrap;
+    max-width: 100%;
+  }
+
+  /* Celulares estreitos (ou com zoom): o texto do botão pode quebrar linha em vez de alargar a página. */
+  @media (max-width: 400px) {
+    .btn {
+      white-space: normal;
+      text-align: center;
+    }
   }
 
   .btn:focus-visible {
@@ -162,6 +171,11 @@ for (const [key, value] of Object.entries(attrs)) {
     padding: 1.25rem 2.5rem;
     font-size: 1.25rem;
     min-height: 64px;
+  }
+
+  @media (max-width: 400px) {
+    .btn-lg { padding: 0.9rem 1.5rem; }
+    .btn-xl { padding: 1.1rem 1.75rem; font-size: 1.125rem; }
   }
 
   .btn-full {

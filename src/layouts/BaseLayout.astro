@@ -19,11 +19,14 @@ interface Props {
 const {
   title,
   description,
-  canonicalURL = 'https://www.escolaprisma.com',
-  ogImage = '/assets/escola-prisma-marca-1200x630.png',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  ogImage: ogImagePath = '/assets/escola-prisma-marca-1200x630.png',
   schema,
   noIndex = false,
 } = Astro.props;
+
+// Open Graph (WhatsApp, Facebook, Instagram) exige URL absoluta da imagem.
+const ogImage = new URL(ogImagePath, Astro.site).href;
 
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
@@ -66,6 +69,29 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <script type="application/ld+json" set:html={JSON.stringify(item)} />
   ))}
 
+  <!-- Umami (estatísticas de visitas, sem cookies). data-domains: só conta o site oficial, não localhost nem previews da Vercel. -->
+  <script
+    is:inline
+    defer
+    src="https://cloud.umami.is/script.js"
+    data-website-id="531d3b02-006f-478e-896b-36b7a394d576"
+    data-domains="www.escolaprisma.net.br,escolaprisma.net.br"
+  ></script>
+
+  <!-- Microsoft Clarity (mapas de calor e gravações de sessão). Só no domínio oficial e depois do carregamento da página, para não pesar na performance. -->
+  <script is:inline>
+    (function (c, l, a, r, i, t, y) {
+      if (!/(^|\.)escolaprisma\.net\.br$/.test(l.location.hostname)) return;
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      function carregar() {
+        t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      }
+      if (l.readyState === 'complete') carregar();
+      else c.addEventListener('load', carregar);
+    })(window, document, 'clarity', 'script', 'zda9hbje8t');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" />
@@ -95,6 +121,7 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <script>
     import '../scripts/mobile-menu';
     import '../scripts/back-to-top';
+    import '../scripts/analytics';
   </script>
 </body>
 </html>

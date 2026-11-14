@@ -5,7 +5,7 @@ import compress from 'astro-compress';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://www.escolaprisma.com',
+  site: 'https://www.escolaprisma.net.br',
   integrations: [
     mdx(),
     sitemap(),

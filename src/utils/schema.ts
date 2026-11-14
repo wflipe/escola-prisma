@@ -39,6 +39,19 @@ export function educationalOrganizationSchema(): SchemaOrg {
     },
     hasMap: escola.mapaUrl,
     areaServed: { '@type': 'City', name: 'Feira de Santana' },
+    ...(escola.anoFundacao ? { foundingDate: escola.anoFundacao } : {}),
+    knowsAbout: [
+      'Educação Infantil',
+      'Ensino Fundamental I',
+      'Ensino Fundamental II',
+      'Ensino Médio',
+      'Turno integral',
+      'Sistema Positivo',
+      'Positivo English Solution',
+      'Preparação para o ENEM e a UEFS',
+      'Balé',
+      'Karatê',
+    ],
     contactPoint: [
       {
         '@type': 'ContactPoint',

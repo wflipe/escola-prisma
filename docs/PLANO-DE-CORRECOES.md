@@ -14,7 +14,7 @@ Status: **etapas 1–4 executadas** em 13/11/2026 na branch `fix/correcoes-e-ban
 - [x] **Organização:** relatórios do Lighthouse e imagens sem uso (3 duplicadas apagadas) movidos para `arquivo/`; `.gitignore` atualizado.
 - [x] **Ponto de restauração:** commit + tags `restauracao/2026-11-13-antes-das-correcoes` e `restauracao/2026-11-13-correcoes-e-banner` (ver `docs/RESTAURACAO.md`).
 - [ ] **Etapa 6:** push, PR, revisão visual no preview da Vercel, Lighthouse e merge.
-- [ ] **Fora do código:** configurar a saudação no WhatsApp Business e trocar o site do Perfil no Google para `escolaprisma.com`.
+- [ ] **Fora do código:** configurar a saudação no WhatsApp Business e trocar o link da bio do Instagram de `escolaprisma.com` para `escolaprisma.net.br`.
 
 ---
 
@@ -159,7 +159,7 @@ Comparação feita em 13/11/2026 com o Perfil no Google (Maps e busca) e o Insta
 | --- | --- | --- | --- |
 | Endereço | `Caminho 16, Conjunto Feira VII, Nº 16 - Tomba`, CEP 44100-000 | `Caminho 16 - Tomba, Feira de Santana - BA, 44091-554` | Corrigir no site (4.1) |
 | Telefone principal | Schema e TopBar: fixo `(75) 3622-9180`; WhatsApp `(75) 99895-4848` no rodapé e nos CTAs | Só `(75) 99895-4848` | No schema, usar `+55-75-99895-4848` como `telephone` principal. **Confirmar se o fixo ainda funciona**: se sim, manter como segundo contato; se não, remover do TopBar, do MobileMenu e do Footer. |
-| Site | `www.escolaprisma.com` | Perfil no Maps aponta para **`escolaprisma.net.br`** | **Fora do código:** atualizar o Perfil da Empresa no Google para `https://www.escolaprisma.com` (ou garantir que o `.net.br` redireciona para o `.com`). |
+| Site | Canonical, schema e sitemap apontavam para `www.escolaprisma.com` (outro site) | Perfil no Google: `escolaprisma.net.br` ✔ · Bio do Instagram: `escolaprisma.com` ✘ | **Corrigido em 13/11/2026:** domínio oficial é `https://www.escolaprisma.net.br` (Vercel). Falta trocar o link da bio do Instagram. |
 | Instagram | `SocialFeed.astro:12` mostra `@escolaprisma` | O perfil é `@escolaprisma_` | Corrigir o texto para `@escolaprisma_`. O link no schema já está certo. |
 | Horário | Não informado | Abre seg. às 06:50 | Adicionar `openingHoursSpecification` quando a escola informar o horário de fechamento. |
 | Fundação | "29 anos de história" | "Há 29 anos formando para a vida" | `foundingDate: "1997"`, a confirmar. |
@@ -234,7 +234,8 @@ lighthouse*.json
 
 **Fora do código (responsável: quem administra o Perfil da Empresa no Google):**
 
-- [ ] Trocar o site do perfil de `escolaprisma.net.br` para `https://www.escolaprisma.com`.
+- [x] Perfil no Google já aponta para `escolaprisma.net.br`, que é o domínio oficial (nada a fazer).
+- [ ] Trocar o link da bio do Instagram de `www.escolaprisma.com` para `www.escolaprisma.net.br`.
 
 ## Hospedagem
 

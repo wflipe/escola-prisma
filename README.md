@@ -1,7 +1,7 @@
 # Site Escola Prisma
 
 Landing page institucional da **Escola Prisma** (Feira de Santana, BA), da Educação Infantil ao Ensino Médio.
-Produção: <https://www.escolaprisma.com>
+Produção: <https://www.escolaprisma.net.br> (o domínio sem `www` redireciona para ele)
 
 Código no GitHub, com deploy automático na **Vercel** (site estático: `astro build` → `dist/`). Cada PR gera um deploy de preview.
 
@@ -13,7 +13,7 @@ Mantenha estes dados **idênticos** no site, no Perfil da Empresa no Google e na
 - **Coordenadas:** -12.2949, -38.9457 (Plus Code P343+2P)
 - **WhatsApp:** (75) 99895-4848
 - **Instagram:** [@escolaprisma_](https://www.instagram.com/escolaprisma_/) (com underline no final)
-- **Site:** https://www.escolaprisma.com
+- **Site:** https://www.escolaprisma.net.br (domínio oficial na Vercel; `escolaprisma.com` é **outro** site, antigo)
 
 ## Stack
 
@@ -82,7 +82,7 @@ Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** 
 - **WhatsApp:** nunca escreva links `wa.me` à mão. Use `whatsappLink("assunto")` de `src/data/escola.ts` (ou o campo `whatsappAssunto` nos JSON). Ele gera "Olá! Vim pelo site da Escola Prisma e gostaria de <assunto>." Ver [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md).
 - **Vídeo da rotina:** `src/components/sections/DailyRoutine.astro` (embed do YouTube).
 - **Scripts do navegador:** `src/scripts/*.ts`, importados no `BaseLayout` e empacotados pelo Astro.
-- **Rastreamento:** botões de conversão usam `data-ga4-event` e `data-ga4-location`.
+- **Monitoramento (Umami + Clarity):** scripts no `BaseLayout`; cliques de conversão em `src/scripts/analytics.ts`, a partir dos atributos `data-ga4-event` e `data-ga4-location` dos botões. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
 - **Imagens:** colocar em `src/assets/images/` em `.webp` e usar o componente `<Image>` de `astro:assets`.
 
 ## Links externos usados
@@ -97,6 +97,7 @@ Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** 
 - [docs/PLANO-DE-CORRECOES.md](docs/PLANO-DE-CORRECOES.md): correções feitas e pendentes
 - [docs/BANNER-MATRICULAS.md](docs/BANNER-MATRICULAS.md): banner de matrículas (como editar e desligar)
 - [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md): mensagens do WhatsApp e saudação automática
+- [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md): monitoramento: Umami (visitas e cliques) e Clarity (mapas de calor e gravações)
 - [docs/RESTAURACAO.md](docs/RESTAURACAO.md): **pontos de restauração**, como voltar a uma versão salva
 - [arquivo/README.md](arquivo/README.md): o que está guardado em `arquivo/`
 

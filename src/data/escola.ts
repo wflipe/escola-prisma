@@ -7,8 +7,10 @@
  */
 export const escola = {
   nome: 'Escola Prisma',
-  site: 'https://www.escolaprisma.com',
+  site: 'https://www.escolaprisma.net.br',
   slogan: 'Educar é ensinar a pensar sozinho.',
+  /** Ano de fundação (ex.: '1997'). Vazio = não informado. Preencher só com o ano confirmado. */
+  anoFundacao: '' as string,
   endereco: {
     logradouro: 'Caminho 16 - Tomba',
     cidade: 'Feira de Santana',

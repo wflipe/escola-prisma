@@ -77,7 +77,7 @@ import Icon from '../ui/Icon.astro';
 
   .top-bar-right {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 0.5rem;
     width: 100%;
   }
@@ -104,6 +104,16 @@ import Icon from '../ui/Icon.astro';
 
   .top-bar-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Telas muito estreitas (ex.: Galaxy Fold dobrado ou zoom alto): o texto quebra em vez de transbordar. */
+  @media (max-width: 340px) {
+    .top-bar-link {
+      white-space: normal;
+      text-align: center;
+      line-height: 1.2;
+      padding: 0.375rem 0.25rem;
+    }
   }
 
   @media (min-width: 768px) {
