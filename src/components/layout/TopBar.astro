@@ -1,4 +1,5 @@
 ---
+import { escola } from '../../data/escola';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 ---
@@ -7,14 +8,14 @@ import Icon from '../ui/Icon.astro';
   <Container>
     <div class="top-bar-inner">
       <div class="top-bar-left">
-        <a href="tel:+557536229180" class="top-bar-phone" aria-label="Ligar para a escola">
+        <a href={`tel:${escola.telefoneFixo.e164}`} class="top-bar-phone" aria-label="Ligar para a escola">
           <Icon name="phone" size="sm" />
-          (75) 3622-9180
+          {escola.telefoneFixo.exibicao}
         </a>
       </div>
 
       <div class="top-bar-right">
-        <a href="tel:+557536229180" class="top-bar-phone-mobile" aria-label="Ligar para a escola">
+        <a href={`tel:${escola.telefoneFixo.e164}`} class="top-bar-phone-mobile" aria-label="Ligar para a escola">
           <Icon name="phone" size="sm" />
         </a>
 

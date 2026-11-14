@@ -5,7 +5,9 @@ import Header from '../components/layout/Header.astro';
 import MobileMenu from '../components/layout/MobileMenu.astro';
 import Footer from '../components/layout/Footer.astro';
 import WhatsAppFloat from '../components/layout/WhatsAppFloat.astro';
+import { Font } from 'astro:assets';
 import type { SchemaOrg } from '../utils/schema';
+import { escola } from '../data/escola';
 import '../styles/globals.css';
 
 interface Props {
@@ -30,6 +32,9 @@ const {
 const ogImage = new URL(ogImagePath, Astro.site).href;
 
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+// JSON-LD dentro de <script>: escapa "<" para um texto com "</script>" não quebrar o bloco.
+const jsonLd = (item: SchemaOrg) => JSON.stringify(item).replace(/</g, '\\u003c');
 ---
 
 <!DOCTYPE html>
@@ -37,6 +42,20 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tag do Google (contêiner GTM-N4T2LBTX, ligado ao Google Analytics). Logo no início do <head>, como o Google pede.
+       Só carrega no domínio oficial, para não contar localhost nem previews da Vercel. -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    if (/(^|\.)escolaprisma\.net\.br$/.test(location.hostname)) {
+      gtag('js', new Date());
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-N4T2LBTX';
+      document.head.appendChild(s);
+    }
+  </script>
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -49,25 +68,36 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <link rel="canonical" href={canonicalURL} />
 
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content={escola.nome} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${escola.nome}, escola particular em Feira de Santana`} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={`${escola.nome}, escola particular em Feira de Santana`} />
 
   <meta name="geo.region" content="BR-BA" />
   <meta name="geo.placename" content="Feira de Santana" />
-  <meta name="geo.position" content="-12.2949;-38.9457" />
-  <meta name="ICBM" content="-12.2949, -38.9457" />
+  <meta name="geo.position" content={`${escola.geo.latitude};${escola.geo.longitude}`} />
+  <meta name="ICBM" content={`${escola.geo.latitude}, ${escola.geo.longitude}`} />
 
   <meta name="theme-color" content="#F67A21" />
 
+  <!-- Fontes do próprio site; preload só da fonte dos títulos (Bricolage é variável: um arquivo para todos os pesos). -->
+  <Font cssVariable="--font-bricolage" preload />
+  <Font cssVariable="--font-montserrat" />
+  <Font cssVariable="--font-instrument" />
+
   {schemas.map((item) => (
-    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    <script type="application/ld+json" set:html={jsonLd(item)} />
   ))}
 
   <!-- Umami (estatísticas de visitas, sem cookies). data-domains: só conta o site oficial, não localhost nem previews da Vercel. -->
@@ -92,10 +122,6 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       else c.addEventListener('load', carregar);
     })(window, document, 'clarity', 'script', 'zda9hbje8t');
   </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" />
 </head>
 <body>
 

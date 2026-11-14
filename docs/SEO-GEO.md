@@ -25,7 +25,7 @@ Se o domínio mudar, atualize também: `public/robots.txt`, `public/llms.txt`, U
 | --- | --- | --- |
 | `<title>` e `meta description` | `src/pages/index.astro` | Texto do resultado no Google. Contém a busca principal: "escola particular em Feira de Santana". |
 | Canonical + Open Graph (URL absoluta) | `src/layouts/BaseLayout.astro` | Endereço oficial da página; imagem e texto ao compartilhar no WhatsApp/Facebook. |
-| Meta geo (`geo.position`, `ICBM`) | `BaseLayout.astro` | Coordenadas da escola (-12.2949, -38.9457). |
+| Meta geo (`geo.position`, `ICBM`) | `BaseLayout.astro` | Coordenadas da escola (-12.29491, -38.94568), lidas de `escola.geo`. |
 | Schema `School` | `src/utils/schema.ts` | Ficha da escola: endereço, coordenadas, telefones, mapa, redes, `knowsAbout` (etapas, Sistema Positivo, ENEM/UEFS, Balé, Karatê…). |
 | Schema `FAQPage` | `schema.ts` + `src/content/faqs/faqs.json` | As 13 perguntas da FAQ em formato que IAs e o Bing leem diretamente. |
 | `sitemap-index.xml` | gerado pelo `@astrojs/sitemap` | Lista de páginas para o Google. |
@@ -54,7 +54,7 @@ Os dados abaixo devem ser **idênticos** no site (`src/data/escola.ts`), no `llm
 | Dado | Valor oficial | Perfil no Google | Instagram |
 | --- | --- | --- | --- |
 | Nome | Escola Prisma | ✔ | ✔ |
-| Endereço | Caminho 16 - Tomba, Feira de Santana - BA, 44091-554 | ✔ | — |
+| Endereço | Caminho 16 - Tomba, Feira de Santana - BA, 44091-554 (falta confirmar nº e "Conjunto Feira VII") | ✔ | — |
 | Telefone principal | (75) 99895-4848 | ✔ | — |
 | Site | www.escolaprisma.net.br | ✔ | ✘ bio aponta para `escolaprisma.com` |
 
@@ -71,4 +71,6 @@ Os dados abaixo devem ser **idênticos** no site (`src/data/escola.ts`), no `llm
 - [ ] Horário de funcionamento (abre seg. 06:50; fechamento a confirmar) → `openingHoursSpecification`.
 - [ ] Confirmar se o e-mail `secretaria@escolaprisma.com` e o portal `pais.escolaprisma.com` continuam no domínio `.com`.
 - [ ] Depois do deploy: no **Google Search Console**, inspecionar `https://www.escolaprisma.net.br/` e pedir indexação; enviar o sitemap `https://www.escolaprisma.net.br/sitemap-index.xml`.
-- [ ] Validar o schema em <https://search.google.com/test/rich-results> e <https://validator.schema.org/>.
+- [ ] Validar o schema em <https://search.google.com/test/rich-results> e <https://validator.schema.org/>. Desde 14/11/2026 devem aparecer 4 itens: `School`, `WebSite`, `WebPage` (no mesmo `@graph`) e `FAQPage`.
+- [ ] Domínio antigo `www.escolaprisma.com` ainda responde com o site antigo: redirecionar com 301 (ver [AUDITORIA-SEO-2026-11.md](AUDITORIA-SEO-2026-11.md)).
+- [ ] Endereço divergente nos diretórios (Melhor Escola, escol.as/INEP, Telelistas): ver a seção 1.2 da auditoria.

@@ -21,7 +21,7 @@ import Icon from '../ui/Icon.astro';
 
     <div class="feed-container">
       <!-- Place <div> tag where you want the feed to appear -->
-      <div id="curator-feed"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+      <div id="curator-feed"><a href="https://curator.io" target="_blank" rel="nofollow noopener noreferrer" class="crt-logo crt-tag">Powered by Curator.io</a></div>
     </div>
   </Container>
 
@@ -91,5 +91,17 @@ import Icon from '../ui/Icon.astro';
     background: white;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
     padding: 1rem;
+  }
+
+  /* Reserva espaço para o feed do Instagram, que é injetado por JS ao rolar a página:
+     sem isso o conteúdo abaixo "pula" quando o feed aparece (CLS). */
+  #curator-feed {
+    min-height: 520px;
+  }
+
+  @media (min-width: 768px) {
+    #curator-feed {
+      min-height: 420px;
+    }
   }
 </style>

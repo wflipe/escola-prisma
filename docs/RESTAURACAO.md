@@ -9,6 +9,7 @@ Cada ponto de restauração é uma **tag do Git**: um "marcador" com nome fixo e
 | `restauracao/2026-11-13-antes-das-correcoes` | 13/11/2026 | Site como estava antes das correções (commit `83f8a12`, igual à `main` daquela data). |
 | `restauracao/2026-11-13-correcoes-e-banner` | 13/11/2026 | Correções das etapas 1–4, dados oficiais centralizados, WhatsApp padronizado, novo vídeo, banner "Matrículas 2027 abertas" e projeto organizado. |
 | `restauracao/2026-11-13-publicacao-textos-revisados` | 13/11/2026 | Versão publicada com o PR #1: SEO/GEO e domínio .net.br, Umami e Clarity, faixa no topo, capa do vídeo e textos revisados. |
+| `restauracao/2026-11-14-seo-auditoria-tecnica` | 14/11/2026 | Versão publicada com o PR #3: correções de código da auditoria de SEO (schema em grafo, fontes no próprio site, 404, `vercel.json`, hero e feed) e tag do Google Tag Manager. Inclui o PR #2 (depoimentos ocultos). |
 
 Ver todos: `git tag -l "restauracao/*" -n1`
 

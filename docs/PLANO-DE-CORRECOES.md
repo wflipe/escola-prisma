@@ -1,7 +1,7 @@
 # Plano de correções — Site Escola Prisma
 
 Criado em 13/11/2026 a partir de uma leitura completa do código (commit `83f8a12`).
-Status: **etapas 1–5 concluídas** em 13/11/2026 na branch `fix/correcoes-e-banner-matriculas` (commits `4d42f2b` e `1cfd751`). Branch e tags enviadas ao GitHub e [PR #1](https://github.com/wflipe/escola-prisma/pull/1) aberto. Falta a etapa 6: revisar o preview e fazer o merge. Histórico em [CHANGELOG.md](../CHANGELOG.md).
+Status: **todas as etapas concluídas e publicadas.** [PR #1](https://github.com/wflipe/escola-prisma/pull/1) (13/11/2026), [PR #2](https://github.com/wflipe/escola-prisma/pull/2) (depoimentos ocultos) e [PR #3](https://github.com/wflipe/escola-prisma/pull/3) (correções de código da [auditoria de SEO](AUDITORIA-SEO-2026-11.md), 14/11/2026). Histórico em [CHANGELOG.md](../CHANGELOG.md).
 
 ## Andamento
 
@@ -16,10 +16,13 @@ Status: **etapas 1–5 concluídas** em 13/11/2026 na branch `fix/correcoes-e-ba
 - [x] **Domínio (commit `1cfd751`):** o domínio oficial é `www.escolaprisma.net.br`, e o site no ar apontava a canonical para `escolaprisma.com` (outro site). Corrigido; ver [SEO-GEO.md](SEO-GEO.md).
 - [x] **SEO/GEO (commit `1cfd751`):** `llms.txt`, título/descrição, `knowsAbout`, FAQ com 13 perguntas.
 - [x] **Monitoramento (commit `1cfd751`):** Umami + Clarity; ver [MONITORAMENTO.md](MONITORAMENTO.md).
+- [x] **Google Tag Manager `GTM-N4T2LBTX` (PR #3, 14/11/2026):** tag do Google no `<head>`, cliques no `dataLayer`. Pendente no painel do Google: tag GA4 (`G-...`) dentro do contêiner, eventos personalizados e conversões (passo a passo em [MONITORAMENTO.md](MONITORAMENTO.md)).
 - [x] **Celular (commit `1cfd751`):** sem transbordo horizontal de 280px a 393px (testado no Chrome).
 - [x] **Etapa 6a:** push da branch e das tags; [PR #1](https://github.com/wflipe/escola-prisma/pull/1) aberto (13/11/2026).
 - [x] **Ajustes locais após o PR (ainda sem commit):** capa do vídeo (sem faixas pretas e sem nome do canal), faixa "Matrículas 2027 abertas" no topo, botão do banner "Garanta a vaga do seu filho" / "Garanta a vaga" sem setas. Ver [CHANGELOG.md](../CHANGELOG.md).
-- [ ] **Etapa 6b:** commit + push desses ajustes (o PR #1 se atualiza sozinho), revisão visual no preview da Vercel (checks do PR: Vercel ✔, Netlify ✔), Lighthouse e merge. Depois do deploy: pedir indexação no Search Console.
+- [x] **Etapa 6b:** ajustes enviados e PR #1 mesclado na `main` em 14/11/2026 (publicado na Vercel).
+- [x] **Auditoria de SEO (14/11/2026):** ver [AUDITORIA-SEO-2026-11.md](AUDITORIA-SEO-2026-11.md). Correções de código publicadas no PR #3; o que depende da escola está na seção 7 da auditoria.
+- [ ] **Search Console:** pedir indexação da home e reenviar o sitemap.
 - [ ] **Fora do código:** configurar a saudação no WhatsApp Business e trocar o link da bio do Instagram de `escolaprisma.com` para `escolaprisma.net.br`.
 
 ---
@@ -224,7 +227,7 @@ lighthouse*.json
 **Tomadas em 13/11/2026:**
 
 - [x] Endereço oficial: Caminho 16 - Tomba, Feira de Santana - BA, **44091-554**, sem "Conjunto Feira VII, nº 16" (Etapa 4.1).
-- [x] Coordenadas: `-12.2949, -38.9457` (Plus Code `P343+2P`) (Etapa 4.2).
+- [x] Coordenadas: `-12.2949, -38.9457` (Plus Code `P343+2P`) (Etapa 4.2). Em 14/11/2026 passaram a 5 casas: `-12.29491, -38.94568`.
 - [x] Arquivos pesados que não vão para o site ficam no GitHub (Etapa 5).
 - [x] `courseSchema` será removido; o esforço vai para a ficha da organização e o schema da FAQ (Etapa 4.3).
 
@@ -241,6 +244,12 @@ lighthouse*.json
 1. Horário de fechamento (para `openingHoursSpecification`) e ano de fundação (`foundingDate`).
 2. Depoimentos: o bloco "O que dizem as famílias" está **oculto desde 14/11/2026**. Antes de mostrar de novo, confirmar que os depoimentos (hoje Mariana, 4º ano; Carlos, 8º ano) são de famílias reais e autorizados, ou trocar por depoimentos verdadeiros em `testimonials.json`, e mudar `MOSTRAR_DEPOIMENTOS` para `true` em `SocialProof.astro`.
 3. Depois do deploy: reenviar o sitemap e pedir indexação no Google Search Console.
+
+**Da auditoria de SEO (14/11/2026), fora do código.** Detalhes em [AUDITORIA-SEO-2026-11.md](AUDITORIA-SEO-2026-11.md):
+
+- [ ] **Domínio antigo `www.escolaprisma.com` ainda no ar** (200, outro conteúdo). Redirecionar com 301 para `https://www.escolaprisma.net.br/`, sem mexer em `pais.escolaprisma.com` nem nos registros de e-mail (MX).
+- [ ] Definir o endereço canônico completo (número, "Conjunto Feira VII") e corrigir nos diretórios (Melhor Escola diz Mangabeira; escol.as/INEP diz Panorama; ambos com e-mail hotmail) e no Educacenso.
+- [ ] Coletar com a escola: horários, idade mínima, ano de fundação, equipe, CNPJ, média do ENEM, passos da matrícula, fotos da estrutura.
 
 **Fora do código (responsável: quem administra o Perfil da Empresa no Google):**
 

@@ -12,7 +12,7 @@ import SocialProof from '../components/sections/SocialProof.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import SocialFeed from '../components/sections/SocialFeed.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
-import { educationalOrganizationSchema, faqPageSchema } from '../utils/schema';
+import { siteGraphSchema, faqPageSchema } from '../utils/schema';
 import type { EcosystemData, HeroData, MatriculasData, Phase } from '../types/content';
 import heroData from '../content/site/hero.json';
 import matriculasData from '../content/site/matriculas.json';
@@ -27,12 +27,18 @@ const matriculas = matriculasData as MatriculasData;
 const phases = phasesData as Phase[];
 const ecosystem = ecosystemData as EcosystemData;
 
-const schema = [educationalOrganizationSchema(), faqPageSchema(faqsData)];
+const pagina = {
+  title: 'Escola Prisma | Escola particular em Feira de Santana (BA)',
+  description:
+    'Escola particular em Feira de Santana, da Educação Infantil ao Ensino Médio. Turno integral, Sistema Positivo, inglês, esporte e acompanhamento próximo.',
+};
+
+const schema = [siteGraphSchema(pagina), faqPageSchema(faqsData)];
 ---
 
 <BaseLayout
-  title="Escola Prisma | Escola particular em Feira de Santana (BA)"
-  description="Escola particular em Feira de Santana, da Educação Infantil ao Ensino Médio. Turno integral, Sistema Positivo, inglês, esporte e acompanhamento próximo."
+  title={pagina.title}
+  description={pagina.description}
   schema={schema}
 >
   <Hero data={hero} />

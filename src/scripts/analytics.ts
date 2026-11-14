@@ -1,5 +1,6 @@
 /**
- * Eventos de conversão para o Umami (https://cloud.umami.is) e o Microsoft Clarity.
+ * Eventos de conversão para o Umami (https://cloud.umami.is), o Microsoft Clarity e o
+ * Google Tag Manager/GA4 (via dataLayer: evento com parâmetro "local").
  *
  * Registra cliques em:
  *  - elementos com data-ga4-event (nome do evento) e data-ga4-location (onde fica);
@@ -11,6 +12,7 @@
  */
 type UmamiTracker = { track: (event: string, data?: Record<string, string>) => void };
 type ClarityFn = (...args: unknown[]) => void;
+type DataLayer = Record<string, unknown>[];
 
 function localDoElemento(el: Element): string {
   const explicito = el.getAttribute('data-ga4-location');
@@ -22,8 +24,8 @@ function localDoElemento(el: Element): string {
 document.addEventListener(
   'click',
   (e) => {
-    const w = window as unknown as { umami?: UmamiTracker; clarity?: ClarityFn };
-    if (!w.umami && !w.clarity) return;
+    const w = window as unknown as { umami?: UmamiTracker; clarity?: ClarityFn; dataLayer?: DataLayer };
+    if (!w.umami && !w.clarity && !w.dataLayer) return;
 
     const alvo = (e.target as Element | null)?.closest('a, button');
     if (!alvo) return;
@@ -36,6 +38,8 @@ document.addEventListener(
 
     const local = localDoElemento(alvo);
     w.umami?.track(evento, { local });
+    // No GTM: acionador "Evento personalizado" com o nome do evento; "local" vira variável da camada de dados.
+    w.dataLayer?.push({ event: evento, local });
     // No Clarity, o evento marca a gravação: dá para filtrar "sessões que clicaram no WhatsApp".
     w.clarity?.('event', evento);
     w.clarity?.('set', 'ultimo_clique_local', local);

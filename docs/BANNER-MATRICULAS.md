@@ -59,7 +59,7 @@ Em `src/content/site/matriculas.json`:
 
 Depois de editar: commit → push → a Vercel publica sozinha. Confira no deploy de preview.
 
-## Rastreamento (GA4)
+## Rastreamento (Umami, Clarity e GTM)
 
 | Botão | `data-ga4-event` | `data-ga4-location` |
 | --- | --- | --- |
