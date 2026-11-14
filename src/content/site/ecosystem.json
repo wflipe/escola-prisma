@@ -4,22 +4,22 @@
     {
       "icon": "language",
       "title": "Inglês (Positivo English Solution)",
-      "description": "Inglês presente na formação escolar, com experiências que ampliam o contato do aluno com o idioma desde cedo."
+      "description": "O inglês faz parte da grade desde cedo, com atividades que ampliam o contato do aluno com o idioma."
     },
     {
       "icon": "flask",
-      "title": "Cultura Maker & Laboratório",
-      "description": "Projetos práticos e ciência aplicada. Alunos desenvolvem raciocínio lógico e criatividade colocando a mão na massa."
+      "title": "Cultura maker e laboratório",
+      "description": "Nos projetos práticos e no laboratório, os alunos aplicam ciência e desenvolvem raciocínio lógico e criatividade com a mão na massa."
     },
     {
       "icon": "hands-holding-child",
-      "title": "Princípios e Valores Cristãos",
-      "description": "Educação também é formação de caráter. Respeito, responsabilidade, honestidade e cooperação como princípios que orientam o convívio escolar."
+      "title": "Princípios e valores cristãos",
+      "description": "Respeito, responsabilidade, honestidade e cooperação orientam a convivência na escola e fazem parte da formação do caráter."
     },
     {
       "icon": "volleyball",
-      "title": "Esporte e Arte (Balé, Karatê)",
-      "description": "Disciplina corporal, consciência artística e equilíbrio emocional como parte da formação, dentro da própria escola."
+      "title": "Esporte e arte (Balé, Karatê)",
+      "description": "As aulas acontecem dentro da própria escola e trabalham a disciplina do corpo, a sensibilidade artística e o equilíbrio emocional."
     }
   ]
 }

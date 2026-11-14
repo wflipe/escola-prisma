@@ -5,7 +5,7 @@
     "phaseLabel": "1ª Descobrir",
     "icon": "heart",
     "color": "amarela",
-    "description": "Alfabetização lúdica e estruturada, estímulo sensorial e socialização respeitosa. Onde a infância é respeitada e a independência dá os primeiros passos.",
+    "description": "Alfabetização lúdica e estruturada, estímulo sensorial e convivência respeitosa com outras crianças. É quando a criança começa a ganhar independência, no tempo dela.",
     "ctaText": "Saber mais",
     "whatsappAssunto": "informações sobre vagas para a Educação Infantil"
   },
@@ -15,7 +15,7 @@
     "phaseLabel": "2ª Autonomia",
     "icon": "book-open",
     "color": "laranja",
-    "description": "Hábito diário de estudos, raciocínio lógico, inglês integrado à formação e desenvolvimento da autonomia com acompanhamento pedagógico contínuo.",
+    "description": "A criança cria o hábito de estudar todo dia, desenvolve raciocínio lógico e autonomia e tem inglês na grade, com acompanhamento pedagógico constante.",
     "ctaText": "Saber mais",
     "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental I"
   },
@@ -25,7 +25,7 @@
     "phaseLabel": "3ª Pensar criticamente",
     "icon": "flask",
     "color": "azul",
-    "description": "Investigação científica, projetos interdisciplinares e amadurecimento socioemocional para enfrentar os desafios da adolescência com responsabilidade.",
+    "description": "Investigação científica e projetos que juntam várias disciplinas. O lado socioemocional também é trabalhado, para o aluno atravessar a adolescência com responsabilidade.",
     "ctaText": "Saber mais",
     "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental II"
   },
@@ -35,7 +35,7 @@
     "phaseLabel": "4ª Preparar o futuro",
     "icon": "graduation-cap",
     "color": "carvao",
-    "description": "Preparação acadêmica consistente para o ENEM, UEFS e principais vestibulares, combinada com orientação vocacional e suporte ao jovem.",
+    "description": "Preparação consistente para o ENEM, a UEFS e os principais vestibulares, com orientação vocacional e apoio ao jovem.",
     "ctaText": "Saber mais",
     "whatsappAssunto": "informações sobre vagas para o Ensino Médio"
   }
