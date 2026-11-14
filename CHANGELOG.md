@@ -3,6 +3,10 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
+## 14/11/2026 · branch `fix/ocultar-depoimentos`
+
+- Bloco "O que dizem as famílias" oculto até a escola confirmar depoimentos reais e autorizados. Para voltar a mostrar: `MOSTRAR_DEPOIMENTOS = true` em `src/components/sections/SocialProof.astro`. Os textos continuam em `src/content/testimonials/testimonials.json`.
+
 ## 13/11/2026 · [PR #1](https://github.com/wflipe/escola-prisma/pull/1) · publicado na `main` · tag `restauracao/2026-11-13-publicacao-textos-revisados`
 
 ### `dcd478f`: textos do site revisados
