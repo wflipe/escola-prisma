@@ -8,12 +8,13 @@ Cada ponto de restauração é uma **tag do Git**: um "marcador" com nome fixo e
 | --- | --- | --- |
 | `restauracao/2026-11-13-antes-das-correcoes` | 13/11/2026 | Site como estava antes das correções (commit `83f8a12`, igual à `main` daquela data). |
 | `restauracao/2026-11-13-correcoes-e-banner` | 13/11/2026 | Correções das etapas 1–4, dados oficiais centralizados, WhatsApp padronizado, novo vídeo, banner "Matrículas 2027 abertas" e projeto organizado. |
+| `restauracao/2026-11-13-publicacao-textos-revisados` | 13/11/2026 | Versão publicada com o PR #1: SEO/GEO e domínio .net.br, Umami e Clarity, faixa no topo, capa do vídeo e textos revisados. |
 
 Ver todos: `git tag -l "restauracao/*" -n1`
 
-> O commit `1cfd751` (SEO/GEO, domínio .net.br, Umami e Clarity) ainda **não tem tag**. Para voltar a ele, use o número do commit no lugar do nome da tag, por exemplo `git switch --detach 1cfd751`. As mudanças de cada versão estão no [CHANGELOG.md](../CHANGELOG.md).
+> Para voltar a um commit sem tag, use o número dele no lugar do nome da tag, por exemplo `git switch --detach 1cfd751`. As mudanças de cada versão estão no [CHANGELOG.md](../CHANGELOG.md).
 >
-> As duas tags acima já foram enviadas ao GitHub (13/11/2026). Tags novas só existem neste computador até rodar `git push origin --tags`.
+> As tags acima já foram enviadas ao GitHub (13/11/2026). Tags novas só existem neste computador até rodar `git push origin --tags`.
 
 ## Como voltar para um ponto
 

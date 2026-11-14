@@ -234,9 +234,13 @@ lighthouse*.json
 - [x] WhatsApp: o site envia a mensagem do pai; a frase de boas-vindas vira saudação automática do WhatsApp Business.
 - [x] Banner de matrículas: faixa após o Hero, criada no site, horizontal/vertical.
 
+- [x] Textos do site revisados (commit `dcd478f`), mantendo título do Hero, botões e slogan.
+
 **Ainda pendentes (opcionais):**
 
 1. Horário de fechamento (para `openingHoursSpecification`) e ano de fundação (`foundingDate`).
+2. Confirmar se os depoimentos (Mariana, 4º ano; Carlos, 8º ano) são de famílias reais e autorizados. Se não forem, trocar por depoimentos verdadeiros.
+3. Depois do deploy: reenviar o sitemap e pedir indexação no Google Search Console.
 
 **Fora do código (responsável: quem administra o Perfil da Empresa no Google):**
 

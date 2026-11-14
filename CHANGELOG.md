@@ -3,7 +3,13 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
-## 13/11/2026 · branch `fix/correcoes-e-banner-matriculas` · [PR #1](https://github.com/wflipe/escola-prisma/pull/1) aberto, ainda não está em produção
+## 13/11/2026 · [PR #1](https://github.com/wflipe/escola-prisma/pull/1) · publicado na `main` · tag `restauracao/2026-11-13-publicacao-textos-revisados`
+
+### `dcd478f`: textos do site revisados
+- Textos das seções e da FAQ reescritos para soar menos genéricos: sem contrastes do tipo "não é X, é Y", sem frase de efeito repetindo o card, sem listas de três forçadas, títulos com maiúscula só no início e sem emoji no texto final. Os fatos não mudaram.
+- Depoimentos: "Por que escolher a Prisma" e "O que dizem as famílias" (o título "seu filho não é apenas mais um" ficou só no Manifesto).
+- Rodapé: "Nossa Localização" → "Onde estamos".
+- Mantidos de propósito: título do Hero, botões, menu, slogan, "Avançar de fase é evoluir." e o texto dos depoimentos (citações).
 
 ### Faixa no topo, capa do vídeo e documentação
 - Botão principal do banner no mesmo padrão da faixa: "Garanta a vaga do seu filho" no computador e "Garanta a vaga" no celular; botões do banner sem seta (`cta.textCurto`).

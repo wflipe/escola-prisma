@@ -86,6 +86,7 @@ Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** 
 - **Vídeo da rotina:** `VIDEO_ID` no topo de `src/components/sections/DailyRoutine.astro`. Mostra uma capa (imagem do YouTube + play laranja) e só carrega o player ao clicar: sem faixas pretas, sem nome do canal antes do play e ~1 MB a menos no carregamento.
 - **Scripts do navegador:** `src/scripts/*.ts`, importados no `BaseLayout` e empacotados pelo Astro.
 - **Monitoramento (Umami + Clarity):** scripts no `BaseLayout`; cliques de conversão em `src/scripts/analytics.ts`, a partir dos atributos `data-ga4-event` e `data-ga4-location` dos botões. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
+- **Estilo dos textos:** frases diretas, maiúscula só no início dos títulos, sem emoji e sem frases de efeito repetindo o que o card já disse. Não invente dados: tudo o que aparece no site deve bater com `src/data/escola.ts` e com o que a escola confirmou.
 - **Perguntas frequentes:** `src/content/faqs/faqs.json` (13 perguntas; também viram schema `FAQPage`).
 - **Título e descrição da página (Google):** `src/pages/index.astro`.
 - **Resumo para IAs:** `public/llms.txt`, escrito à mão. Atualize quando mudar dados da escola.
