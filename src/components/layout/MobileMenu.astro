@@ -1,5 +1,5 @@
 ---
-import { whatsappLink } from "../../data/escola";
+import { escola, whatsappLink } from '../../data/escola';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
@@ -18,9 +18,9 @@ import Icon from '../ui/Icon.astro';
     </ul>
 
     <div class="mobile-menu-utils">
-      <a href="tel:+557536229180" class="mobile-util-phone">
+      <a href={`tel:${escola.telefoneFixo.e164}`} class="mobile-util-phone">
         <Icon name="phone" size="md" />
-        (75) 3622-9180
+        {escola.telefoneFixo.exibicao}
       </a>
       <a href="https://pais.escolaprisma.com/login" target="_blank" rel="noopener noreferrer" class="mobile-util-pais">
         <Icon name="users" size="md" />

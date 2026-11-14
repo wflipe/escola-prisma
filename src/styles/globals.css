@@ -17,9 +17,10 @@
   --color-text-muted: #64748B;
   --color-border: #E2E8F0;
 
-  --font-heading: "Bricolage Grotesque", sans-serif;
-  --font-serif: "Instrument Serif", serif;
-  --font-body: "Montserrat", sans-serif;
+  /* As famílias vêm da API de fontes do Astro (astro.config.mjs), servidas pelo próprio site. */
+  --font-heading: var(--font-bricolage), sans-serif;
+  --font-serif: var(--font-instrument), serif;
+  --font-body: var(--font-montserrat), sans-serif;
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;

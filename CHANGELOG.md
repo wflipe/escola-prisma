@@ -3,7 +3,24 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
-## 14/11/2026 · branch `fix/ocultar-depoimentos`
+## 14/11/2026 · [PR #3](https://github.com/wflipe/escola-prisma/pull/3) · branch `fix/seo-auditoria-tecnica` · tag `restauracao/2026-11-14-seo-auditoria-tecnica`
+
+Correções de código da [auditoria de SEO de 14/11/2026](docs/AUDITORIA-SEO-2026-11.md):
+- **Schema em grafo único** (`@graph`): `School` + `WebSite` + `WebPage` ligados por `@id`; `url` com a barra final (igual à canonical); logo como `ImageObject` quadrado (512×512); `availableLanguage: pt-BR`. Função nova: `siteGraphSchema()` em `src/utils/schema.ts`.
+- **Coordenadas com 5 casas decimais** (`-12.29491, -38.94568`, as mesmas do mapa do rodapé), também nas metas `geo.position`/`ICBM`, que agora leem `escola.ts`.
+- **Fontes servidas pelo próprio site** (API de fontes do Astro, `astro.config.mjs`): sem `fonts.googleapis.com` no carregamento, fallback com métricas ajustadas e preload da fonte dos títulos.
+- **Hero:** as três fotos carregam na hora (`loading="eager"`; a primeira com `fetchpriority="high"`) e com versão 2x para telas retina.
+- **Feed do Instagram:** altura reservada (o conteúdo abaixo não "pula" quando o feed aparece) e `rel="nofollow"` no link do Curator.
+- **Página 404 própria** (`src/pages/404.astro`, `noindex`), com botões para o início e o WhatsApp.
+- **`vercel.json`:** cabeçalhos de segurança (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`) e CSP em modo **Report-Only** (só avisa no console, não bloqueia nada); cache de 1 dia para `/assets/*` (antes: 1 ano "immutable").
+- Open Graph com `og:locale`, `og:site_name` e dimensões/descrição da imagem.
+- Botões "Saber mais" de cada fase com `aria-label` próprio.
+- Telefone fixo do topo e do menu do celular lido de `escola.ts` (antes estava escrito à mão).
+- Sitemap com `lastmod`; `prefetch` removido (inútil em página única).
+- JSON-LD escapa `<` (proteção caso um texto da FAQ contenha `</script>`).
+- **Tag do Google (GTM `GTM-N4T2LBTX`)** no início do `<head>`, só no domínio oficial; cliques de conversão também enviados ao `dataLayer`; CSP libera GTM/GA4. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
+
+## 14/11/2026 · [PR #2](https://github.com/wflipe/escola-prisma/pull/2) · branch `fix/ocultar-depoimentos`
 
 - Bloco "O que dizem as famílias" oculto até a escola confirmar depoimentos reais e autorizados. Para voltar a mostrar: `MOSTRAR_DEPOIMENTOS = true` em `src/components/sections/SocialProof.astro`. Os textos continuam em `src/content/testimonials/testimonials.json`.
 

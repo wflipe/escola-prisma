@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import { whatsappLink } from '../data/escola';
+---
+
+<BaseLayout
+  title="Página não encontrada | Escola Prisma"
+  description="A página que você procurou não existe. Volte para o site da Escola Prisma, em Feira de Santana."
+  noIndex={true}
+>
+  <section class="not-found">
+    <Container>
+      <p class="code">404</p>
+      <h1>Esta página não existe</h1>
+      <p class="lead">
+        O endereço pode ter mudado ou ter sido digitado errado. Volte para o início ou fale com a gente pelo WhatsApp.
+      </p>
+      <div class="actions">
+        <Button href="/" variant="primary" size="lg">
+          Ir para o início
+        </Button>
+        <Button
+          href={whatsappLink('tirar uma dúvida')}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="outline"
+          size="lg"
+          data-ga4-event="click_whatsapp"
+          data-ga4-location="404"
+        >
+          <Icon name="whatsapp" size="sm" />
+          Falar pelo WhatsApp
+        </Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  .code {
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 12vw, 7rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+</style>

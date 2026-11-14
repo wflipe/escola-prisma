@@ -18,8 +18,8 @@ export const escola = {
     cep: '44091-554',
     pais: 'BR',
   },
-  /** Ponto do Perfil no Google (Plus Code P343+2P). */
-  geo: { latitude: -12.2949, longitude: -38.9457 },
+  /** Ponto do Perfil no Google (Plus Code P343+2P; mesmas coordenadas do mapa do rodapé), 5 casas decimais. */
+  geo: { latitude: -12.29491, longitude: -38.94568 },
   mapaUrl: 'https://maps.google.com/?cid=11423172969059973375',
   telefoneFixo: { exibicao: '(75) 3622-9180', e164: '+557536229180' },
   whatsapp: { exibicao: '(75) 99895-4848', numero: '5575998954848', e164: '+5575998954848' },

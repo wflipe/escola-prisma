@@ -12,7 +12,7 @@ Código no GitHub ([wflipe/escola-prisma](https://github.com/wflipe/escola-prism
 Mantenha estes dados **idênticos** no site, no Perfil da Empresa no Google e nas redes sociais:
 
 - **Endereço:** Caminho 16 - Tomba, Feira de Santana - BA, CEP 44091-554
-- **Coordenadas:** -12.2949, -38.9457 (Plus Code P343+2P)
+- **Coordenadas:** -12.29491, -38.94568 (Plus Code P343+2P; mesmo ponto do mapa do rodapé)
 - **WhatsApp:** (75) 99895-4848
 - **Instagram:** [@escolaprisma_](https://www.instagram.com/escolaprisma_/) (com underline no final)
 - **Site:** https://www.escolaprisma.net.br (domínio oficial na Vercel; `escolaprisma.com` é **outro** site, antigo)
@@ -43,6 +43,7 @@ public/
   favicon*, robots.txt, verificação do Google Search Console
 src/
   pages/index.astro  página única: monta as seções em ordem
+  pages/404.astro    página de "não encontrada" (noindex)
   layouts/BaseLayout.astro   <head> (SEO, Open Graph, geo, JSON-LD), header, footer, WhatsApp
   components/
     layout/          EnrollmentStrip (faixa de matrículas), TopBar, Header, MobileMenu,
@@ -53,11 +54,12 @@ src/
   content/           textos editáveis em JSON (hero, matrículas, fases, ecossistema, depoimentos, FAQs)
   data/escola.ts     dados oficiais da escola + gerador de links do WhatsApp
   types/content.ts   tipos dos JSON de conteúdo
-  scripts/           menu mobile, botão "voltar ao topo" e eventos do Umami/Clarity (TypeScript)
+  scripts/           menu mobile, botão "voltar ao topo" e eventos do Umami/Clarity/GTM (TypeScript)
   assets/images/     fotos otimizadas pelo Astro (usar .webp)
   styles/globals.css tokens da marca (@theme do Tailwind) e estilos base
-  utils/schema.ts    geradores de dados estruturados schema.org
-docs/                documentação interna (plano, SEO/GEO, banner, WhatsApp, monitoramento, restauração)
+  utils/schema.ts    dados estruturados schema.org (grafo School + WebSite + WebPage, e FAQPage)
+vercel.json          cabeçalhos de segurança e de cache na Vercel (CSP em modo Report-Only)
+docs/                documentação interna (plano, SEO/GEO, auditoria, banner, WhatsApp, monitoramento, restauração)
 arquivo/             relatórios do Lighthouse e imagens originais/não usadas — não vão para o site
 Documentos/          PDFs institucionais (PPP etc.) — não vão para o site
 ```
@@ -74,7 +76,7 @@ Os tokens ficam em `src/styles/globals.css` (`@theme`):
 | `--color-secondary` | `#152E65` | Azul-marinho oficial, fundos escuros |
 | `--color-accent` | `#F9B91A` | Dourado oficial, destaques |
 
-Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** (destaques em itálico), **Montserrat** (texto).
+Fontes: **Bricolage Grotesque** (títulos), **Instrument Serif** (destaques em itálico), **Montserrat** (texto). Configuradas em `fonts` no `astro.config.mjs` (API de fontes do Astro): baixadas do Google Fonts no build e servidas pelo próprio site. Para trocar pesos ou famílias, mude lá; os nomes usados no CSS são `--font-heading`, `--font-serif` e `--font-body` (`src/styles/globals.css`).
 
 ## Como editar conteúdo
 
@@ -85,7 +87,7 @@ Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** 
 - **WhatsApp:** nunca escreva links `wa.me` à mão. Use `whatsappLink("assunto")` de `src/data/escola.ts` (ou o campo `whatsappAssunto` nos JSON). Ele gera "Olá! Vim pelo site da Escola Prisma e gostaria de <assunto>." Ver [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md).
 - **Vídeo da rotina:** `VIDEO_ID` no topo de `src/components/sections/DailyRoutine.astro`. Mostra uma capa (imagem do YouTube + play laranja) e só carrega o player ao clicar: sem faixas pretas, sem nome do canal antes do play e ~1 MB a menos no carregamento.
 - **Scripts do navegador:** `src/scripts/*.ts`, importados no `BaseLayout` e empacotados pelo Astro.
-- **Monitoramento (Umami + Clarity):** scripts no `BaseLayout`; cliques de conversão em `src/scripts/analytics.ts`, a partir dos atributos `data-ga4-event` e `data-ga4-location` dos botões. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
+- **Monitoramento (Umami + Clarity + Google Tag Manager `GTM-N4T2LBTX`):** scripts no `BaseLayout` (só no domínio oficial); cliques de conversão em `src/scripts/analytics.ts`, a partir dos atributos `data-ga4-event` e `data-ga4-location` dos botões, enviados também ao `dataLayer`. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
 - **Estilo dos textos:** frases diretas, maiúscula só no início dos títulos, sem emoji e sem frases de efeito repetindo o que o card já disse. Não invente dados: tudo o que aparece no site deve bater com `src/data/escola.ts` e com o que a escola confirmou.
 - **Depoimentos:** textos em `src/content/testimonials/testimonials.json`. O bloco está oculto; para mostrar, `MOSTRAR_DEPOIMENTOS = true` em `src/components/sections/SocialProof.astro` (só com depoimentos reais e autorizados).
 - **Perguntas frequentes:** `src/content/faqs/faqs.json` (13 perguntas; também viram schema `FAQPage`).
@@ -108,9 +110,10 @@ Fontes (Google Fonts): **Bricolage Grotesque** (títulos), **Instrument Serif** 
 - [CHANGELOG.md](CHANGELOG.md): histórico de versões (o que mudou em cada commit)
 - [docs/PLANO-DE-CORRECOES.md](docs/PLANO-DE-CORRECOES.md): correções feitas e pendentes
 - [docs/SEO-GEO.md](docs/SEO-GEO.md): domínio oficial, Google, IAs (`llms.txt`, schema, FAQ) e consistência de dados
+- [docs/AUDITORIA-SEO-2026-11.md](docs/AUDITORIA-SEO-2026-11.md): auditoria de SEO de 14/11/2026 (notas, achados, o que foi corrigido e o que falta)
 - [docs/BANNER-MATRICULAS.md](docs/BANNER-MATRICULAS.md): banner de matrículas (como editar e desligar)
 - [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md): mensagens do WhatsApp e saudação automática
-- [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md): monitoramento: Umami (visitas e cliques) e Clarity (mapas de calor e gravações)
+- [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md): monitoramento: Umami (visitas e cliques), Clarity (mapas de calor e gravações) e Google Tag Manager/GA4
 - [docs/RESTAURACAO.md](docs/RESTAURACAO.md): **pontos de restauração**, como voltar a uma versão salva
 - [arquivo/README.md](arquivo/README.md): o que está guardado em `arquivo/`
 

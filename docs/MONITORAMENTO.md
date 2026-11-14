@@ -1,11 +1,12 @@
 # Monitoramento do site
 
-O site usa duas ferramentas que se complementam:
+O site usa três ferramentas que se complementam:
 
 | Ferramenta | Responde | Painel |
 | --- | --- | --- |
 | **Umami** | *Quantos?* Visitas, origem, dispositivos, cliques de conversão | <https://cloud.umami.is> |
 | **Microsoft Clarity** | *Como?* Mapas de calor, gravações das sessões, onde as pessoas travam | <https://clarity.microsoft.com> |
+| **Google Tag Manager + Analytics** | Integração com Google Ads, Search Console e relatórios do GA4 | <https://tagmanager.google.com> / <https://analytics.google.com> |
 
 Juntas, elas mostram, por exemplo, que o banner teve 200 visualizações e 12 cliques (Umami) e o que as pessoas fizeram antes de clicar ou desistir (Clarity).
 
@@ -22,7 +23,7 @@ O Umami mede visitas, páginas, origem do tráfego (Google, Instagram, direto), 
 - **Script:** no `<head>` de `src/layouts/BaseLayout.astro`.
 - **`data-domains="www.escolaprisma.net.br,escolaprisma.net.br"`:** só conta visitas do site oficial. Visitas em `localhost` e nos previews da Vercel **não** entram nas estatísticas.
   - Se o domínio mudar, atualize esse atributo, senão o Umami para de contar.
-- **Eventos de clique:** `src/scripts/analytics.ts`. Ele lê os atributos `data-ga4-event` e `data-ga4-location` que já existem nos botões. O nome "ga4" é histórico: não há Google Analytics instalado.
+- **Eventos de clique:** `src/scripts/analytics.ts`. Ele lê os atributos `data-ga4-event` e `data-ga4-location` que já existem nos botões. Os mesmos eventos também vão para o `dataLayer` do Google Tag Manager (ver seção do Google, no fim).
 
 ## Eventos
 
@@ -89,3 +90,36 @@ Diferente do Umami, o **Clarity usa cookies e grava as sessões** (movimento do 
 1. Com o site publicado, abra-o em uma aba anônima e navegue por um minuto.
 2. No Clarity, a sessão aparece em **Recordings** em até ~30 minutos. Mapas de calor podem levar algumas horas.
 3. Bloqueadores de anúncio podem impedir o Clarity, assim como o Umami.
+
+---
+
+# Google Tag Manager / Google Analytics
+
+Contêiner `GTM-N4T2LBTX` (código fornecido pelo Google Analytics em "Configurar uma tag do Google" → "Instalar manualmente"). Instalado em 14/11/2026.
+
+## Instalação
+
+- **Script:** primeiro item do `<head>` de `src/layouts/BaseLayout.astro`, como o Google pede. Uma única tag do Google por página.
+- **Só carrega no domínio oficial** (`escolaprisma.net.br` e subdomínios), igual ao Clarity. Em `localhost` e nos previews da Vercel o `dataLayer` existe, mas o `gtm.js` não é baixado.
+- **CSP:** `vercel.json` libera `www.googletagmanager.com` e os domínios de coleta do GA4 (`*.google-analytics.com`, `*.analytics.google.com`). Se adicionar outras tags no GTM (Meta Pixel, Google Ads etc.), acrescente os domínios delas no CSP.
+
+## Eventos no GTM
+
+`src/scripts/analytics.ts` faz `dataLayer.push({ event: '<nome>', local: '<seção>' })` em todo clique da tabela de eventos do Umami. Para levar ao GA4:
+
+1. **Variáveis → Nova → Variável da camada de dados**, nome `local`.
+2. **Acionadores → Novo → Evento personalizado**, nome do evento `^click_|^play_` com "Usar correspondência de regex".
+3. **Tags → Nova → Google Analytics: evento do GA4**, nome do evento `{{Event}}`, parâmetro `local` = `{{local}}`, com o acionador acima.
+4. No GA4, marque `click_matricula`, `click_agendar_visita` e `click_whatsapp*` como **eventos principais (conversões)**.
+
+A tag de configuração do GA4 (ID `G-...`) também precisa existir dentro do contêiner, senão nada chega ao Analytics. Publique o contêiner depois de cada alteração.
+
+## Como testar
+
+1. No GTM, clique em **Visualizar** (Tag Assistant) e informe `https://www.escolaprisma.net.br`.
+2. Clique em um botão de WhatsApp: o evento `click_whatsapp` deve aparecer na linha do tempo do Tag Assistant.
+3. No GA4, **Relatórios → Tempo real** mostra a visita em segundos.
+
+## Privacidade (LGPD)
+
+O GA4 usa cookies. Vale o mesmo do Clarity: citar o Google Analytics na Política de Privacidade e, se a escola quiser seguir à risca, carregar só após consentimento (Consent Mode do Google).
