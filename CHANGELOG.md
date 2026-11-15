@@ -3,6 +3,11 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
+## 15/11/2026 · [PR #5](https://github.com/wflipe/escola-prisma/pull/5) · branch `fix/clarity-via-gtm`
+
+- **Microsoft Clarity removido do código** (`BaseLayout`): passou a ser carregado só pelo Google Tag Manager (tag "Microsoft Clarity - Official"), que já tinha o mesmo projeto `zda9hbje8t`. Evita gravar cada sessão em dobro. Os eventos de clique do `analytics.ts` continuam indo para o Clarity.
+- Docs: tags publicadas no contêiner `GTM-NRQ8DB4L` (GA4 `G-B7C6WH3HK9` + Clarity).
+
 ## 15/11/2026 · [PR #4](https://github.com/wflipe/escola-prisma/pull/4) · branch `fix/gtm-novo-conteiner`
 
 - **Contêiner do Google Tag Manager trocado:** `GTM-N4T2LBTX` → `GTM-NRQ8DB4L` (código novo fornecido pelo Google Analytics). Continua uma única tag por página, só no domínio oficial. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).

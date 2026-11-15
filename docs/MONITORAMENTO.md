@@ -66,9 +66,10 @@ Projeto `zda9hbje8t`. Grátis e sem limite de sessões.
 
 ## Instalação
 
-- **Script:** no `<head>` de `src/layouts/BaseLayout.astro`, com duas diferenças em relação ao código padrão da Microsoft:
-  1. **Só carrega no domínio oficial** (`escolaprisma.net.br` e subdomínios). Testes em `localhost` e previews da Vercel não geram gravações.
-  2. **Só carrega depois que a página termina de carregar** (evento `load`), para não piorar a nota do Lighthouse nem a velocidade percebida.
+- **Desde 15/11/2026, carregado pelo Google Tag Manager** (`GTM-NRQ8DB4L`, tag "Microsoft Clarity - Official", acionador All Pages). Não há mais script do Clarity no código do site: **não reinstale no `BaseLayout`**, senão ele carrega em dobro.
+  - Como o GTM só carrega no domínio oficial, o Clarity também só grava sessões de `escolaprisma.net.br`. Testes em `localhost` e previews da Vercel não geram gravações.
+  - Antes (PR #1 a #4) o script ficava no `BaseLayout` e só carregava depois do evento `load`. Pelo GTM ele carrega no ritmo do contêiner; se a nota do Lighthouse cair, troque o acionador da tag para "Janela carregada" (Window Loaded).
+  - Para pausar ou remover o Clarity: no GTM, pause a tag e publique o contêiner. Não precisa mexer no código.
 - **Eventos:** o mesmo `src/scripts/analytics.ts` envia ao Clarity os eventos da tabela do Umami (`clarity("event", ...)`) e a etiqueta `ultimo_clique_local`.
 
 ## O que olhar no painel
@@ -97,10 +98,17 @@ Diferente do Umami, o **Clarity usa cookies e grava as sessões** (movimento do 
 
 Contêiner `GTM-NRQ8DB4L` (código fornecido pelo Google Analytics em "Configurar uma tag do Google" → "Instalar manualmente"). Instalado em 15/11/2026, substituindo o contêiner anterior `GTM-N4T2LBTX` (14/11/2026), que não deve mais ser usado.
 
+Tags publicadas no contêiner (15/11/2026):
+
+| Tag | Tipo | Acionador | ID |
+| --- | --- | --- | --- |
+| Google Analytics Novo | Tag do Google (GA4) | Initialization - All Pages | `G-B7C6WH3HK9` (propriedade "Escola Prisma GA4", fluxo "Meu site Escola Prisma", 16338990029) |
+| Microsoft Clarity - Official | Microsoft Clarity | All Pages | `zda9hbje8t` |
+
 ## Instalação
 
 - **Script:** primeiro item do `<head>` de `src/layouts/BaseLayout.astro`, como o Google pede. Uma única tag do Google por página.
-- **Só carrega no domínio oficial** (`escolaprisma.net.br` e subdomínios), igual ao Clarity. Em `localhost` e nos previews da Vercel o `dataLayer` existe, mas o `gtm.js` não é baixado.
+- **Só carrega no domínio oficial** (`escolaprisma.net.br` e subdomínios), e com ele todas as tags do contêiner (GA4 e Clarity). Em `localhost` e nos previews da Vercel o `dataLayer` existe, mas o `gtm.js` não é baixado.
 - **CSP:** `vercel.json` libera `www.googletagmanager.com` e os domínios de coleta do GA4 (`*.google-analytics.com`, `*.analytics.google.com`). Se adicionar outras tags no GTM (Meta Pixel, Google Ads etc.), acrescente os domínios delas no CSP.
 
 ## Eventos no GTM
@@ -112,7 +120,7 @@ Contêiner `GTM-NRQ8DB4L` (código fornecido pelo Google Analytics em "Configura
 3. **Tags → Nova → Google Analytics: evento do GA4**, nome do evento `{{Event}}`, parâmetro `local` = `{{local}}`, com o acionador acima.
 4. No GA4, marque `click_matricula`, `click_agendar_visita` e `click_whatsapp*` como **eventos principais (conversões)**.
 
-A tag de configuração do GA4 (ID `G-...`) também precisa existir dentro do contêiner, senão nada chega ao Analytics. Publique o contêiner depois de cada alteração.
+A tag do GA4 (`G-B7C6WH3HK9`) já está no contêiner. Publique o contêiner depois de cada alteração.
 
 ## Como testar
 
