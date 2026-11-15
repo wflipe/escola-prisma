@@ -3,6 +3,10 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
+## 15/11/2026 · [PR #4](https://github.com/wflipe/escola-prisma/pull/4) · branch `fix/gtm-novo-conteiner`
+
+- **Contêiner do Google Tag Manager trocado:** `GTM-N4T2LBTX` → `GTM-NRQ8DB4L` (código novo fornecido pelo Google Analytics). Continua uma única tag por página, só no domínio oficial. Ver [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md).
+
 ## 14/11/2026 · [PR #3](https://github.com/wflipe/escola-prisma/pull/3) · branch `fix/seo-auditoria-tecnica` · tag `restauracao/2026-11-14-seo-auditoria-tecnica`
 
 Correções de código da [auditoria de SEO de 14/11/2026](docs/AUDITORIA-SEO-2026-11.md):

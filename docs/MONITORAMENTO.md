@@ -95,7 +95,7 @@ Diferente do Umami, o **Clarity usa cookies e grava as sessões** (movimento do 
 
 # Google Tag Manager / Google Analytics
 
-Contêiner `GTM-N4T2LBTX` (código fornecido pelo Google Analytics em "Configurar uma tag do Google" → "Instalar manualmente"). Instalado em 14/11/2026.
+Contêiner `GTM-NRQ8DB4L` (código fornecido pelo Google Analytics em "Configurar uma tag do Google" → "Instalar manualmente"). Instalado em 15/11/2026, substituindo o contêiner anterior `GTM-N4T2LBTX` (14/11/2026), que não deve mais ser usado.
 
 ## Instalação
 
