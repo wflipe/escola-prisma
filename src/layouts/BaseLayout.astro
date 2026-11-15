@@ -109,19 +109,7 @@ const jsonLd = (item: SchemaOrg) => JSON.stringify(item).replace(/</g, '\\u003c'
     data-domains="www.escolaprisma.net.br,escolaprisma.net.br"
   ></script>
 
-  <!-- Microsoft Clarity (mapas de calor e gravações de sessão). Só no domínio oficial e depois do carregamento da página, para não pesar na performance. -->
-  <script is:inline>
-    (function (c, l, a, r, i, t, y) {
-      if (!/(^|\.)escolaprisma\.net\.br$/.test(l.location.hostname)) return;
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-      function carregar() {
-        t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
-        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-      }
-      if (l.readyState === 'complete') carregar();
-      else c.addEventListener('load', carregar);
-    })(window, document, 'clarity', 'script', 'zda9hbje8t');
-  </script>
+  <!-- Microsoft Clarity (zda9hbje8t) é carregado pelo Google Tag Manager (tag "Microsoft Clarity - Official"), não aqui. -->
 </head>
 <body>
 

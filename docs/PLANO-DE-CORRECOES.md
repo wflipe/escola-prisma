@@ -16,7 +16,7 @@ Status: **todas as etapas concluídas e publicadas.** [PR #1](https://github.com
 - [x] **Domínio (commit `1cfd751`):** o domínio oficial é `www.escolaprisma.net.br`, e o site no ar apontava a canonical para `escolaprisma.com` (outro site). Corrigido; ver [SEO-GEO.md](SEO-GEO.md).
 - [x] **SEO/GEO (commit `1cfd751`):** `llms.txt`, título/descrição, `knowsAbout`, FAQ com 13 perguntas.
 - [x] **Monitoramento (commit `1cfd751`):** Umami + Clarity; ver [MONITORAMENTO.md](MONITORAMENTO.md).
-- [x] **Google Tag Manager `GTM-NRQ8DB4L` (PR #3 em 14/11/2026 com `GTM-N4T2LBTX`; trocado pelo contêiner atual em 15/11/2026, PR #4):** tag do Google no `<head>`, cliques no `dataLayer`. Pendente no painel do Google: tag GA4 (`G-...`) dentro do contêiner, eventos personalizados e conversões (passo a passo em [MONITORAMENTO.md](MONITORAMENTO.md)).
+- [x] **Google Tag Manager `GTM-NRQ8DB4L` (PR #3 em 14/11/2026 com `GTM-N4T2LBTX`; trocado pelo contêiner atual em 15/11/2026, PR #4; Clarity passou a ser carregado só pelo GTM, PR #5):** tag do Google no `<head>`, cliques no `dataLayer`. Contêiner publicado com GA4 `G-B7C6WH3HK9` e Clarity. Pendente no painel do Google: eventos personalizados e conversões (passo a passo em [MONITORAMENTO.md](MONITORAMENTO.md)).
 - [x] **Celular (commit `1cfd751`):** sem transbordo horizontal de 280px a 393px (testado no Chrome).
 - [x] **Etapa 6a:** push da branch e das tags; [PR #1](https://github.com/wflipe/escola-prisma/pull/1) aberto (13/11/2026).
 - [x] **Ajustes locais após o PR (ainda sem commit):** capa do vídeo (sem faixas pretas e sem nome do canal), faixa "Matrículas 2027 abertas" no topo, botão do banner "Garanta a vaga do seu filho" / "Garanta a vaga" sem setas. Ver [CHANGELOG.md](../CHANGELOG.md).

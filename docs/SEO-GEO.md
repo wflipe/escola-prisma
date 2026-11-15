@@ -17,7 +17,7 @@ O domínio é definido em **dois lugares**, que precisam ser iguais:
 | `astro.config.mjs` | `site` | canonical, `og:url`, `og:image`, sitemap |
 | `src/data/escola.ts` | `escola.site` | dados estruturados (schema), `llms.txt` (manual) |
 
-Se o domínio mudar, atualize também: `public/robots.txt`, `public/llms.txt`, Umami (`data-domains`) e o filtro do Clarity no `BaseLayout` (ver [MONITORAMENTO.md](MONITORAMENTO.md)).
+Se o domínio mudar, atualize também: `public/robots.txt`, `public/llms.txt`, Umami (`data-domains`) o filtro de domínio do Google Tag Manager no `BaseLayout` (ver [MONITORAMENTO.md](MONITORAMENTO.md)).
 
 ## O que o site entrega para buscadores e IAs
 
