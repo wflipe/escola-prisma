@@ -7,7 +7,7 @@ Este manual é para quem vai editar o conteúdo do site da Escola Prisma. Não �
 O painel é uma página com formulários onde você muda os textos, botões, fotos e dados do site.
 
 - Endereço: **https://www.escolaprisma.net.br/keystatic**
-- Ele só funciona depois que o responsável técnico terminar a configuração (ligar o painel ao GitHub). Até lá, o endereço mostra uma tela de configuração em inglês: não mexa nela.
+- No alto do menu da esquerda aparece **main**: é a versão do site que está no ar. Deixe sempre em `main` e não use o botão **New branch…** (ele cria uma cópia de rascunho que não é publicada).
 
 ### O que você precisa
 
@@ -20,8 +20,10 @@ O painel é uma página com formulários onde você muda os textos, botões, fot
 1. Abra https://www.escolaprisma.net.br/keystatic.
 2. Clique no botão para entrar com o GitHub ("Log in with GitHub").
 3. Entre com seu usuário, senha e código de verificação do GitHub.
-4. O GitHub pergunta se você autoriza o aplicativo do painel. Clique em **Authorize** (Autorizar).
-5. Você volta para o painel, já logado. Nas próximas vezes o login é mais rápido.
+4. O GitHub pergunta se você autoriza o aplicativo do painel (**escola-prisma-painel**). Clique em **Authorize** (Autorizar).
+5. Você volta para o painel, já logado, numa tela de boas-vindas ("Hello, ...") com todas as telas em botões. Nas próximas vezes o login é mais rápido.
+
+Se aparecer uma página de erro ("Esta página não está funcionando", erro 500) ao clicar em entrar, avise o responsável técnico: é configuração, não algo que você fez (ver a Etapa 3 em [PLANO-PAINEL-ADMIN.md](PLANO-PAINEL-ADMIN.md)).
 
 ## 2. Como publicar uma mudança
 
