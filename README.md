@@ -30,7 +30,7 @@ Mantenha estes dados **idênticos** no site, no Perfil da Empresa no Google e na
 | Comando | O que faz |
 | --- | --- |
 | `npm install` | Instala as dependências |
-| `npm run dev` | Servidor local em `localhost:4321` (para agentes: `astro dev --background`). Painel em `localhost:4321/keystatic`, gravando direto nos arquivos de `src/content/` |
+| `npm run dev` | Servidor local em `localhost:4321` (agentes: ver [AGENTS.md](AGENTS.md)). Painel em `localhost:4321/keystatic`, gravando direto nos arquivos de `src/content/` |
 | `npm run build` | Gera o site em `dist/client/` (páginas estáticas) e `.vercel/output/` (pacote da Vercel, com a função do painel) |
 | `npm run preview` | Não funciona com o adapter da Vercel (o Astro recusa). Para conferir o build estático: `npx serve dist/client` |
 | `npm run check` / `npm run lint` | `astro check` (tipos e diagnósticos) |
@@ -74,7 +74,8 @@ src/
 keystatic.config.ts  telas do painel /keystatic: cada uma edita um JSON de src/content/
 vercel.json          cabeçalhos de segurança e de cache na Vercel (CSP em modo Report-Only; noindex e sem cache no painel)
 netlify.toml         build dos previews do Netlify (publica dist/client)
-docs/                documentação interna (plano, SEO/GEO, auditoria, banner, WhatsApp, monitoramento, restauração)
+docs/                documentação interna (lista em "Documentação interna", abaixo)
+AGENTS.md            regras do projeto para agentes de IA (CLAUDE.md aponta para ele)
 arquivo/             relatórios do Lighthouse e imagens originais/não usadas — não vão para o site
 Documentos/          PDFs institucionais (PPP etc.) — não vão para o site
 ```
@@ -102,7 +103,7 @@ Fontes: **Bricolage Grotesque** (títulos), **Instrument Serif** (destaques em i
 
   No site publicado (`www.escolaprisma.net.br/keystatic`) o painel grava no GitHub: cada "Save" vira um commit na `main` e a Vercel publica em 1–2 minutos. O login usa o GitHub App `escola-prisma-painel` e 4 variáveis de ambiente na Vercel; como refazer, trocar o segredo e resolver erros de login está na Etapa 3 de [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md). Manual de quem edita: [docs/PAINEL-ADMIN.md](docs/PAINEL-ADMIN.md). O painel grava os JSON no formato `JSON.stringify(dados, null, 2)`, omite campos de texto vazios e **apaga chaves que não estão na tela** (para manter uma chave fora do painel, use `fields.ignored()`); edições à mão devem seguir o mesmo formato para não gerar diferenças à toa. O painel fica fora do Google (`robots.txt`, `X-Robots-Tag: noindex` e fora do sitemap).
 
-  **Visual do painel:** o Keystatic não tem API de tema. As cores e a fonte da marca entram por `public/painel/painel.css`, que só troca as variáveis CSS `--kui-color-scale-indigo*` (cor de destaque: laranja `#c2410c`, que passa no contraste AA com texto branco) e `--kui-color-scale-slate*` (cinzas puxados para o azul-marinho), com tema claro e escuro; o `src/middleware.ts` coloca esse CSS só nas páginas `/keystatic*`. Ao atualizar o `@keystatic/core`, confira se essas variáveis ainda existem (se sumirem, o painel volta ao visual padrão, sem quebrar). Em `keystatic.config.ts`: interface em `pt-BR` (`locale`), logo no menu (`ui.brand.mark`), um bloco "Onde aparece / Ver no site" no início de cada tela (campo `verNoSite`, um `fields.empty()` que não grava nada no JSON) e `layout` (colunas) nos grupos. ⚠️ O Tailwind do site lê `keystatic.config.ts`: não escreva ali estilos inline com valores que tenham nome de classe do Tailwind (ex.: a posição absoluta ou o display em bloco), senão a classe entra no CSS do site (o Tailwind também lê o README); use classes de `painel.css`.
+  **Visual do painel (estilo editorial):** o Keystatic não tem API de tema. O visual entra por `public/painel/painel.css`, que só troca variáveis CSS do Keystar UI: `--kui-color-scale-indigo*` (destaque: botão Save marrom `#3b281d`, links cobre `#a84d16`), `--kui-color-scale-slate*` (neutros quentes: branco, creme `#f7f4f1`, grafite) e `--kui-typography-font-family-base` (Inter), com tema claro e escuro (tons de café). Nomes dos grupos em IBM Plex Mono maiúsculo. As fontes ficam em `public/painel/` (a CSP do painel só aceita fontes do próprio domínio). As contas de contraste estão no topo do `painel.css`: refaça se mudar uma cor; o `src/middleware.ts` coloca esse CSS só nas páginas `/keystatic*`. Ao atualizar o `@keystatic/core`, confira se essas variáveis ainda existem (se sumirem, o painel volta ao visual padrão, sem quebrar). Em `keystatic.config.ts`: interface em `pt-BR` (`locale`), logo no menu (`ui.brand.mark`), um bloco "Onde aparece / Ver no site" no início de cada tela (campo `verNoSite`, um `fields.empty()` que não grava nada no JSON) e `layout` (colunas) nos grupos. ⚠️ O Tailwind do site lê `keystatic.config.ts`: não escreva ali estilos inline com valores que tenham nome de classe do Tailwind (ex.: a posição absoluta ou o display em bloco), senão a classe entra no CSS do site (o Tailwind também lê o README); use classes de `painel.css`.
 - **Dados oficiais da escola** (endereço, CEP, telefones, WhatsApp, Instagram, coordenadas, slogan do rodapé): `src/content/site/escola.json` (descrição dos campos em `EscolaData`, `src/types/content.ts`; lido por `src/data/escola.ts`). É a fonte única, usada pelo rodapé, menu, seção Instagram e dados estruturados (`src/utils/schema.ts`). Latitude e longitude ficam como **número** no JSON; o painel edita como texto (4 a 7 casas, sem arredondar).
 - **Textos das seções:** `src/content/**.json`, com os tipos em `src/types/content.ts`. Todo JSON tem um objeto na raiz; listas ficam em `{ "items": [...] }` ou numa chave própria (`cartoes`, `itens`, `menu`). Títulos usam `titulo` + `tituloDestaque` (trecho em itálico colorido; quebra de linha no título vira `<br />`, ver `src/utils/titulo.ts`). As seções sem JSON próprio antes do painel ganharam um arquivo `src/content/site/secao-*.json`.
   - **Seções da página:** `src/content/site/secoes.json` liga/desliga (`"ativo"`) e ordena as seções depois do Hero e do banner de matrículas, que ficam fixos no topo. Seção repetida vale só na primeira posição; seção ausente da lista fica escondida (`src/data/secoes.ts`). O item do menu de uma seção desligada some sozinho (topo e celular).
@@ -135,14 +136,21 @@ Fontes: **Bricolage Grotesque** (títulos), **Instrument Serif** (destaques em i
 
 ## Documentação interna
 
-- [CHANGELOG.md](CHANGELOG.md): histórico de versões (o que mudou em cada commit)
-- [docs/PLANO-DE-CORRECOES.md](docs/PLANO-DE-CORRECOES.md): correções feitas e pendentes
-- [docs/SEO-GEO.md](docs/SEO-GEO.md): domínio oficial, Google, IAs (`llms.txt`, schema, FAQ) e consistência de dados
-- [docs/AUDITORIA-SEO-2026-11.md](docs/AUDITORIA-SEO-2026-11.md): auditoria de SEO de 14/11/2026 (notas, achados, o que foi corrigido e o que falta)
+**Para quem edita o conteúdo**
+- [docs/PAINEL-ADMIN.md](docs/PAINEL-ADMIN.md): manual do painel `/keystatic` (entrar, editar, salvar, fotos, desfazer)
 - [docs/BANNER-MATRICULAS.md](docs/BANNER-MATRICULAS.md): banner de matrículas (como editar e desligar)
 - [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md): mensagens do WhatsApp e saudação automática
-- [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md): monitoramento: Umami (visitas e cliques), Clarity (mapas de calor e gravações) e Google Tag Manager/GA4
+
+**Técnico (manutenção do site)**
+- [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md): como o painel foi montado, GitHub App, variáveis na Vercel, troca do segredo e erros de login
+- [docs/SEO-GEO.md](docs/SEO-GEO.md): domínio oficial, Google, IAs (`llms.txt`, schema, FAQ) e consistência de dados
+- [docs/MONITORAMENTO.md](docs/MONITORAMENTO.md): Umami (visitas e cliques), Clarity (mapas de calor e gravações) e Google Tag Manager/GA4
 - [docs/RESTAURACAO.md](docs/RESTAURACAO.md): **pontos de restauração**, como voltar a uma versão salva
+
+**Histórico**
+- [CHANGELOG.md](CHANGELOG.md): o que mudou em cada versão
+- [docs/PLANO-DE-CORRECOES.md](docs/PLANO-DE-CORRECOES.md): plano de correções de 13/11/2026 (concluído)
+- [docs/AUDITORIA-SEO-2026-11.md](docs/AUDITORIA-SEO-2026-11.md): auditoria de SEO de 14/11/2026 (notas, achados, o que foi corrigido e o que falta)
 - [arquivo/README.md](arquivo/README.md): o que está guardado em `arquivo/`
 
 ## Fluxo de trabalho

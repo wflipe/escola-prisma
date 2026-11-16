@@ -1,6 +1,12 @@
 # Plano — Painel de edição do site (ADM)
 
-Criado em 15/11/2026. Status: **no ar desde 15/11/2026** ([PR #7](https://github.com/wflipe/escola-prisma/pull/7)). Etapas 1 a 5 concluídas; o login em produção funciona com o GitHub App `escola-prisma-painel` (primeira edição real pelo painel: commit `07ba0a0`). Falta só o treino com o ADM.
+Criado em 15/11/2026. Status: **no ar desde 15/11/2026** ([PR #7](https://github.com/wflipe/escola-prisma/pull/7)). Etapas 1 a 5 concluídas; o login em produção funciona com o GitHub App `escola-prisma-painel` (primeira edição real pelo painel: commit `07ba0a0`). Em 16/11/2026: visual e organização das telas ([PR #10](https://github.com/wflipe/escola-prisma/pull/10)) e estilo editorial ([PR #11](https://github.com/wflipe/escola-prisma/pull/11)). Falta o treino com o ADM e a rotina de segurança do GitHub App (ver "Pendências de segurança", abaixo).
+
+### Pendências de segurança (16/11/2026)
+
+- [ ] No GitHub App `escola-prisma-painel`: instalação só no repositório `escola-prisma` (**Only select repositories**), não em todos.
+- [ ] Apagar a *private key* do app no GitHub e o arquivo `.pem` baixado (o Keystatic não usa).
+- [ ] Gerar um novo *client secret* (o atual apareceu num print), trocar `KEYSTATIC_GITHUB_CLIENT_SECRET` na Vercel e fazer **Redeploy** (passo a passo em "Trocar o client secret", abaixo).
 
 Objetivo: um painel compacto, em `www.escolaprisma.net.br/keystatic`, onde o administrador edita **tudo** que aparece no site (textos, botões, ligar/desligar seções, imagens, dados de contato, SEO) sem mexer em código. Cada "Salvar" vira um commit no GitHub e a Vercel publica em 1–2 minutos, como já acontece hoje com os PRs.
 
