@@ -242,7 +242,7 @@ lighthouse*.json
 **Ainda pendentes (opcionais):**
 
 1. Horário de fechamento (para `openingHoursSpecification`) e ano de fundação (`foundingDate`).
-2. Depoimentos: o bloco "O que dizem as famílias" está **oculto desde 14/11/2026**. Antes de mostrar de novo, confirmar que os depoimentos (hoje Mariana, 4º ano; Carlos, 8º ano) são de famílias reais e autorizados, ou trocar por depoimentos verdadeiros em `testimonials.json`, e mudar `MOSTRAR_DEPOIMENTOS` para `true` em `SocialProof.astro`.
+2. Depoimentos: o bloco "O que dizem as famílias" está **oculto desde 14/11/2026**. Antes de mostrar de novo, confirmar que os depoimentos (hoje Mariana, 4º ano; Carlos, 8º ano) são de famílias reais e autorizados, ou trocar por depoimentos verdadeiros em `testimonials.json`, e mudar `"mostrarDepoimentos"` para `true` em `src/content/site/secoes.json`.
 3. Depois do deploy: reenviar o sitemap e pedir indexação no Google Search Console.
 
 **Da auditoria de SEO (14/11/2026), fora do código.** Detalhes em [AUDITORIA-SEO-2026-11.md](AUDITORIA-SEO-2026-11.md):

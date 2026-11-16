@@ -1,0 +1,23 @@
+{
+  "selo": "Por que a Escola Prisma?",
+  "titulo": "Você quer que seu filho esteja preparado para o futuro. Mas também quer tranquilidade enquanto trabalha.",
+  "tituloDestaque": "tranquilidade",
+  "texto": "A escola do seu filho não deveria ser mais uma preocupação no seu dia. A rotina da Prisma foi montada para você conciliar trabalho, família e a formação dos seus filhos com mais segurança.",
+  "cartoes": [
+    {
+      "icone": "shield-halved",
+      "titulo": "Confiança para a sua rotina",
+      "texto": "Portaria controlada, equipe acompanhando os alunos e uma rotina organizada para cuidar do bem-estar de cada um."
+    },
+    {
+      "icone": "clock",
+      "titulo": "Desenvolvimento de verdade",
+      "texto": "O dia tem esportes, inglês, projetos práticos, estudo orientado e momentos de descanso, para seu filho crescer ativo e motivado."
+    },
+    {
+      "icone": "user-check",
+      "titulo": "Seu filho conhecido pelo nome",
+      "texto": "As turmas têm tamanho planejado. A coordenação conhece o ritmo, as dificuldades e as conquistas de cada estudante e mantém você informado."
+    }
+  ]
+}

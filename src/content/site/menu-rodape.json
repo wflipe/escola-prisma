@@ -1,0 +1,50 @@
+{
+  "menu": [
+    {
+      "texto": "A Escola",
+      "secao": "ProblemSolution"
+    },
+    {
+      "texto": "Fases",
+      "secao": "Phases"
+    },
+    {
+      "texto": "Diferenciais",
+      "secao": "Ecosystem"
+    },
+    {
+      "texto": "Famílias",
+      "secao": "SocialProof"
+    },
+    {
+      "texto": "Dúvidas",
+      "secao": "FAQ"
+    }
+  ],
+  "botaoContato": {
+    "text": "Fale Conosco",
+    "whatsappAssunto": "falar com a Coordenação"
+  },
+  "portalPais": {
+    "texto": "Serviço aos Pais",
+    "link": "https://pais.escolaprisma.com/login"
+  },
+  "portalAluno": {
+    "texto": "Portal do Aluno",
+    "link": "https://grafiteweb.infocraft.com.br/prismafeira"
+  },
+  "botaoFlutuante": {
+    "rotulo": "Fale conosco pelo WhatsApp",
+    "whatsappAssunto": "informações sobre matrículas"
+  },
+  "rodape": {
+    "tituloContato": "Fale Conosco",
+    "sufixoFixo": "(Fixo)",
+    "sufixoWhatsapp": "(WhatsApp)",
+    "whatsappAssunto": "falar com a escola",
+    "tituloMapa": "Onde estamos",
+    "mapaRotulo": "Localização da Escola Prisma",
+    "mapaEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.3098707311688!2d-38.9456826!3d-12.294906899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71436f7e1195c27%3A0x9e87434af4a9f8ff!2sEscola%20Prisma!5e0!3m2!1spt-BR!2sbr!4v1784898990687!5m2!1spt-BR!2sbr",
+    "direitos": "2026 Escola Prisma. Todos os direitos reservados."
+  }
+}

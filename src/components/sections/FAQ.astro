@@ -1,20 +1,22 @@
 ---
 import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
-import type { FAQItem } from '../../types/content';
+import type { FAQData } from '../../types/content';
 
 interface Props {
-  faqs: FAQItem[];
+  /** src/content/faqs/faqs.json (painel: "Dúvidas (perguntas frequentes)"). */
+  data: FAQData;
 }
 
-const { faqs } = Astro.props;
+const { data } = Astro.props;
+const faqs = data.items;
 ---
 
 <Section id="faq" background="white" padding="xl" class="faq">
   <Container>
     <div class="section-header">
       <h2>
-        As perguntas que você faria antes de matricular.
+        {data.titulo}
       </h2>
     </div>
 

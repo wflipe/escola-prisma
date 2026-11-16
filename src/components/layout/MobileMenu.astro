@@ -1,40 +1,49 @@
 ---
 import { escola, whatsappLink } from '../../data/escola';
+import { itensMenu, menuRodape } from '../../data/menu';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+
+// Itens do menu, portais e botão em src/content/site/menu-rodape.json (painel: "Menu e rodapé").
+const { botaoContato, portalPais, portalAluno } = menuRodape;
+
+interface Props {
+  /** "" na home (links "#secao"); "/" em outras páginas (links "/#secao"). Ver BaseLayout. */
+  prefixoMenu?: string;
+}
+const { prefixoMenu = '' } = Astro.props;
 ---
 
 <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
 
 <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" role="navigation">
   <Container class="mobile-menu-container">
-    <ul class="mobile-menu-nav">
-      <li><a href="#proposta">A Escola</a></li>
-      <li><a href="#etapas">Fases</a></li>
-      <li><a href="#ecossistema">Diferenciais</a></li>
-      <li><a href="#depoimentos">Famílias</a></li>
-      <li><a href="#faq">Dúvidas</a></li>
-    </ul>
+    {/* Menu vazio: some a lista; o botão do menu continua, porque telefone, portais e WhatsApp só ficam aqui no celular. */}
+    {itensMenu.length > 0 && (
+      <ul class="mobile-menu-nav">
+        {itensMenu.map((item) => <li><a href={`${prefixoMenu}${item.href}`}>{item.texto}</a></li>)}
+      </ul>
+    )}
 
     <div class="mobile-menu-utils">
       <a href={`tel:${escola.telefoneFixo.e164}`} class="mobile-util-phone">
         <Icon name="phone" size="md" />
         {escola.telefoneFixo.exibicao}
       </a>
-      <a href="https://pais.escolaprisma.com/login" target="_blank" rel="noopener noreferrer" class="mobile-util-pais">
+      <a href={portalPais.link} target="_blank" rel="noopener noreferrer" class="mobile-util-pais">
         <Icon name="users" size="md" />
-        Serviço aos Pais
+        {portalPais.texto}
       </a>
-      <a href="https://grafiteweb.infocraft.com.br/prismafeira" target="_blank" rel="noopener noreferrer" class="mobile-util-aluno">
+      <a href={portalAluno.link} target="_blank" rel="noopener noreferrer" class="mobile-util-aluno">
         <Icon name="graduation-cap" size="md" />
-        Portal do Aluno
+        {portalAluno.texto}
       </a>
     </div>
 
     <div class="mobile-menu-cta">
       <Button
-        href={whatsappLink("falar com a Coordenação")}
+        href={whatsappLink(botaoContato.whatsappAssunto)}
         target="_blank"
         rel="noopener noreferrer"
         variant="primary"
@@ -44,7 +53,7 @@ import Icon from '../ui/Icon.astro';
         class="mobile-cta-btn"
       >
         <Icon name="whatsapp" size="md" />
-        Fale Conosco
+        {botaoContato.text}
       </Button>
     </div>
   </Container>

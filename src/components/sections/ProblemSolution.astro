@@ -3,44 +3,44 @@ import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import Icon from '../ui/Icon.astro';
+import type { PropostaData } from '../../types/content';
+import propostaData from '../../content/site/secao-proposta.json';
+import { partesDoTitulo } from '../../utils/titulo';
+
+/** Textos em src/content/site/secao-proposta.json (painel: "A Escola (proposta)"). */
+const data = propostaData as PropostaData;
+const titulo = partesDoTitulo(data.titulo, data.tituloDestaque);
+
+/** Cor de cada cartão, pela posição (repete a partir do 4º). */
+const cores = [
+  '--card-color: #F67A21; --card-bg: rgba(246, 122, 33, 0.1);',
+  '--card-color: #06B6D4; --card-bg: rgba(6, 182, 212, 0.1);',
+  '--card-color: #10B981; --card-bg: rgba(16, 185, 129, 0.1);',
+];
 ---
 
 <Section id="proposta" background="gray" padding="xl" class="problema-solucao">
   <Container>
     <div class="section-header">
-      <span class="section-tagline">Por que a Escola Prisma?</span>
+      <span class="section-tagline">{data.selo}</span>
       <h2>
-        Você quer que seu filho esteja preparado para o futuro. Mas também quer <span class="font-serif italic text-primary">tranquilidade</span> enquanto trabalha.
+        {titulo.map((p) => p.quebra ? <br /> : p.destaque ? <span class="font-serif italic text-primary">{p.texto}</span> : p.texto)}
       </h2>
       <p>
-        A escola do seu filho não deveria ser mais uma preocupação no seu dia. A rotina da Prisma foi montada para você conciliar trabalho, família e a formação dos seus filhos com mais segurança.
+        {data.texto}
       </p>
     </div>
 
     <div class="features-grid">
-      <Card variant="bordered" padding="lg" hover class="feature-card" style="--card-color: #F67A21; --card-bg: rgba(246, 122, 33, 0.1);">
-        <div class="feature-icon">
-          <Icon name="shield-halved" size="xl" />
-        </div>
-        <h3>Confiança para a sua rotina</h3>
-        <p>Portaria controlada, equipe acompanhando os alunos e uma rotina organizada para cuidar do bem-estar de cada um.</p>
-      </Card>
-
-      <Card variant="bordered" padding="lg" hover class="feature-card" style="--card-color: #06B6D4; --card-bg: rgba(6, 182, 212, 0.1);">
-        <div class="feature-icon">
-          <Icon name="clock" size="xl" />
-        </div>
-        <h3>Desenvolvimento de verdade</h3>
-        <p>O dia tem esportes, inglês, projetos práticos, estudo orientado e momentos de descanso, para seu filho crescer ativo e motivado.</p>
-      </Card>
-
-      <Card variant="bordered" padding="lg" hover class="feature-card" style="--card-color: #10B981; --card-bg: rgba(16, 185, 129, 0.1);">
-        <div class="feature-icon">
-          <Icon name="user-check" size="xl" />
-        </div>
-        <h3>Seu filho conhecido pelo nome</h3>
-        <p>As turmas têm tamanho planejado. A coordenação conhece o ritmo, as dificuldades e as conquistas de cada estudante e mantém você informado.</p>
-      </Card>
+      {data.cartoes.map((cartao, index) => (
+        <Card variant="bordered" padding="lg" hover class="feature-card" style={cores[index % cores.length]}>
+          <div class="feature-icon">
+            <Icon name={cartao.icone} size="xl" />
+          </div>
+          <h3>{cartao.titulo}</h3>
+          <p>{cartao.texto}</p>
+        </Card>
+      ))}
     </div>
   </Container>
 </Section>

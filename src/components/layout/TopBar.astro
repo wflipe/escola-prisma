@@ -1,7 +1,11 @@
 ---
 import { escola } from '../../data/escola';
+import { menuRodape } from '../../data/menu';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
+
+// Portais em src/content/site/menu-rodape.json (painel: "Menu e rodapé").
+const { portalPais, portalAluno } = menuRodape;
 ---
 
 <div class="top-bar-wrapper">
@@ -19,14 +23,14 @@ import Icon from '../ui/Icon.astro';
           <Icon name="phone" size="sm" />
         </a>
 
-        <a href="https://pais.escolaprisma.com/login" target="_blank" rel="noopener noreferrer" class="top-bar-link" aria-label="Serviço aos Pais">
+        <a href={portalPais.link} target="_blank" rel="noopener noreferrer" class="top-bar-link" aria-label={portalPais.texto}>
           <Icon name="users" size="sm" />
-          <span>Serviço aos Pais</span>
+          <span>{portalPais.texto}</span>
         </a>
 
-        <a href="https://grafiteweb.infocraft.com.br/prismafeira" target="_blank" rel="noopener noreferrer" class="top-bar-link" aria-label="Portal do Aluno">
+        <a href={portalAluno.link} target="_blank" rel="noopener noreferrer" class="top-bar-link" aria-label={portalAluno.texto}>
           <Icon name="graduation-cap" size="sm" />
-          <span>Portal do Aluno</span>
+          <span>{portalAluno.texto}</span>
         </a>
       </div>
     </div>

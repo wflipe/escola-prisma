@@ -3,6 +3,21 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
+## 15/11/2026 · branch `feat/painel-admin` (ainda sem PR) · tag `restauracao/2026-11-15-antes-do-painel`
+
+- **Painel de edição em `/keystatic`** (Keystatic, [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md)): 18 telas em `keystatic.config.ts`, cada uma editando um JSON de `src/content/`. Todo texto visível do site, os assuntos das mensagens do WhatsApp, as fotos do Hero, a ordem e a visibilidade das seções, o menu, o rodapé, a página 404, os dados da escola e o SEO saíram do código para esses JSON. Manual para quem edita: [docs/PAINEL-ADMIN.md](docs/PAINEL-ADMIN.md). Falta ligar ao GitHub (Etapa 3 do plano).
+- O HTML da home e o sitemap continuam iguais aos da `main`; o `llms.txt` também (byte a byte).
+- Correções da revisão do painel:
+  - **Fotos:** a extensão é lida sem diferenciar maiúsculas (`.JPG` não quebra mais o build, `src/utils/imagens.ts`); foto nova enviada pelo painel ganha nome único (nome original sem `#`, `%`, `?` + sufixo de data/hora + extensão minúscula), então não substitui mais outra foto de mesmo nome; gif e heic são recusados no envio, com aviso.
+  - **Coordenadas:** `-12.29000` era gravado como `-12.29` e depois a própria tela não salvava mais; agora o painel relê com 5 casas e aceita de 5 a 7 casas.
+  - **`llms.txt` gerado no build** (`src/pages/llms.txt.ts`) a partir de `escola.json` e `matriculas.json`, em vez de escrito à mão em `public/`.
+  - **Link da faixa de matrículas** só aceita `/`, `#` ou `https://` (bloqueia `javascript:`).
+  - **Listas vazias** não geram bloco vazio: linha de indicadores do Hero, lista de etapas do banner, menu (some a lista; o botão do menu do celular fica) e `knowsAbout` do schema.
+  - Limites de cada lista no painel alinhados com a ajuda e o layout (indicadores do Hero até 3; etapas de matrícula 1 a 6; depoimentos 1 a 6; temas 1 a 20); as cores dos cartões de A Escola e Valores se repetem a partir do 4º cartão.
+  - Identificador (`id`) dos depoimentos saiu da tela (não é usado no site); o valor que já existe nos JSON é mantido.
+  - **Página 404:** os links do menu passam a ser `/#proposta`, `/#etapas`… (antes `#proposta`, que não existe nessa página). Na home continuam `#proposta`.
+- Docs: plano, manual, [docs/SEO-GEO.md](docs/SEO-GEO.md) (`llms.txt`), [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md) (assuntos vêm do painel) e [docs/RESTAURACAO.md](docs/RESTAURACAO.md) (tag nova, ainda só neste computador).
+
 ## 15/11/2026 · [PR #5](https://github.com/wflipe/escola-prisma/pull/5) · branch `fix/clarity-via-gtm`
 
 - **Microsoft Clarity removido do código** (`BaseLayout`): passou a ser carregado só pelo Google Tag Manager (tag "Microsoft Clarity - Official"), que já tinha o mesmo projeto `zda9hbje8t`. Evita gravar cada sessão em dobro. Os eventos de clique do `analytics.ts` continuam indo para o Clarity.

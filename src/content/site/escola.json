@@ -1,0 +1,32 @@
+{
+  "nome": "Escola Prisma",
+  "site": "https://www.escolaprisma.net.br",
+  "slogan": "Educar é ensinar a pensar sozinho.",
+  "endereco": {
+    "logradouro": "Caminho 16 - Tomba",
+    "cidade": "Feira de Santana",
+    "uf": "BA",
+    "cep": "44091-554",
+    "pais": "BR"
+  },
+  "geo": {
+    "latitude": -12.29491,
+    "longitude": -38.94568
+  },
+  "mapaUrl": "https://maps.google.com/?cid=11423172969059973375",
+  "telefoneFixo": {
+    "exibicao": "(75) 3622-9180",
+    "e164": "+557536229180"
+  },
+  "whatsapp": {
+    "exibicao": "(75) 99895-4848",
+    "numero": "5575998954848",
+    "e164": "+5575998954848"
+  },
+  "email": "secretaria@escolaprisma.com",
+  "instagram": {
+    "usuario": "@escolaprisma_",
+    "url": "https://www.instagram.com/escolaprisma_/"
+  },
+  "facebook": "https://www.facebook.com/prismafeiraVII"
+}

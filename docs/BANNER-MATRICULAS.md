@@ -52,7 +52,7 @@ Em `src/content/site/matriculas.json`:
 | `cta.text` | `Garanta a vaga do seu filho` | Texto do botão principal (azul) no computador/tablet. |
 | `cta.textCurto` | `Garanta a vaga` | Texto do botão principal no celular (abaixo de 640px), igual à faixa do topo. Apague para usar sempre o `text`. |
 | `cta.whatsappAssunto` | ... | Assunto da mensagem do WhatsApp do botão principal. |
-| `ctaSecundario` | ... | Botão branco. Apague o bloco para esconder. |
+| `ctaSecundario` | ... | Botão branco. Para esconder: desmarque "Mostrar o botão secundário" no painel (grava `"mostrar": false`); apagar o bloco também esconde. |
 | `observacao` | ... | Texto pequeno abaixo dos botões. Apague para esconder. |
 
 **Virada de ano:** troque `2027` em `titulo`, `tituloDestaque` e `cta.whatsappAssunto`.

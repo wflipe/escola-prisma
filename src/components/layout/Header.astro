@@ -1,32 +1,40 @@
 ---
-import { whatsappLink } from "../../data/escola";
+import { escola, whatsappLink } from "../../data/escola";
+import { itensMenu, menuRodape } from '../../data/menu';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+
+// Itens do menu e botão em src/content/site/menu-rodape.json (painel: "Menu e rodapé").
+const { botaoContato } = menuRodape;
+
+interface Props {
+  /** "" na home (links "#secao"); "/" em outras páginas (links "/#secao"). Ver BaseLayout. */
+  prefixoMenu?: string;
+}
+const { prefixoMenu = '' } = Astro.props;
 ---
 
 <header class="header">
   <Container class="header-container">
-    <a href="/" class="logo" aria-label="Escola Prisma - Página inicial">
+    <a href="/" class="logo" aria-label={`${escola.nome} - Página inicial`}>
       <picture>
         <source srcset="/assets/logo.webp" type="image/webp" />
-        <img src="/assets/logo.png" alt="Escola Prisma" width="150" height="50" style="height: 50px; width: auto;" />
+        <img src="/assets/logo.png" alt={escola.nome} width="150" height="50" style="height: 50px; width: auto;" />
       </picture>
     </a>
 
-    <nav class="nav" aria-label="Navegação principal">
-      <ul class="nav-links">
-        <li><a href="#proposta">A Escola</a></li>
-        <li><a href="#etapas">Fases</a></li>
-        <li><a href="#ecossistema">Diferenciais</a></li>
-        <li><a href="#depoimentos">Famílias</a></li>
-        <li><a href="#faq">Dúvidas</a></li>
-      </ul>
-    </nav>
+    {itensMenu.length > 0 && (
+      <nav class="nav" aria-label="Navegação principal">
+        <ul class="nav-links">
+          {itensMenu.map((item) => <li><a href={`${prefixoMenu}${item.href}`}>{item.texto}</a></li>)}
+        </ul>
+      </nav>
+    )}
 
     <div class="header-cta">
       <Button
-        href={whatsappLink("falar com a Coordenação")}
+        href={whatsappLink(botaoContato.whatsappAssunto)}
         target="_blank"
         rel="noopener noreferrer"
         variant="primary"
@@ -36,7 +44,7 @@ import Icon from '../ui/Icon.astro';
         data-ga4-location="header"
       >
         <Icon name="whatsapp" size="sm" />
-        Fale Conosco
+        {botaoContato.text}
       </Button>
     </div>
 

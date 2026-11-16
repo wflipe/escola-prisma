@@ -1,4 +1,14 @@
 ---
+/**
+ * Página inicial. Todo o conteúdo vem de src/content/**.json (cada arquivo é
+ * uma tela do painel /keystatic, ver keystatic.config.ts):
+ * - site/seo.json: título, descrição e imagem de compartilhamento;
+ * - site/secoes.json: quais seções aparecem e em que ordem (Hero e Matrículas
+ *   ficam sempre no topo; o banner de matrículas tem o "ativo" próprio em
+ *   site/matriculas.json). Seção repetida vale só na primeira posição
+ *   (src/data/secoes.ts);
+ * - demais arquivos: textos de cada seção (as seções sem props leem o próprio JSON).
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import EnrollmentBanner from '../components/sections/EnrollmentBanner.astro';
@@ -12,8 +22,18 @@ import SocialProof from '../components/sections/SocialProof.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import SocialFeed from '../components/sections/SocialFeed.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
-import { siteGraphSchema, faqPageSchema } from '../utils/schema';
-import type { EcosystemData, HeroData, MatriculasData, Phase } from '../types/content';
+import { siteGraphSchema, faqPageSchema, type SchemaOrg } from '../utils/schema';
+import { secoes, secoesAtivas } from '../data/secoes';
+import type {
+  EcosystemData,
+  FAQData,
+  HeroData,
+  MatriculasData,
+  PhasesData,
+  SeoData,
+  TestimonialsData,
+  WhyItemsData,
+} from '../types/content';
 import heroData from '../content/site/hero.json';
 import matriculasData from '../content/site/matriculas.json';
 import phasesData from '../content/site/phases.json';
@@ -21,19 +41,23 @@ import ecosystemData from '../content/site/ecosystem.json';
 import whyItemsData from '../content/site/why-items.json';
 import testimonialsData from '../content/testimonials/testimonials.json';
 import faqsData from '../content/faqs/faqs.json';
+import seoData from '../content/site/seo.json';
 
 const hero = heroData as HeroData;
 const matriculas = matriculasData as MatriculasData;
-const phases = phasesData as Phase[];
+const phases = phasesData as PhasesData;
 const ecosystem = ecosystemData as EcosystemData;
+const porQue = whyItemsData as WhyItemsData;
+const depoimentos = testimonialsData as TestimonialsData;
+const faq = faqsData as FAQData;
+const seo = seoData as SeoData;
 
-const pagina = {
-  title: 'Escola Prisma | Escola particular em Feira de Santana (BA)',
-  description:
-    'Escola particular em Feira de Santana, da Educação Infantil ao Ensino Médio. Turno integral, Sistema Positivo, inglês, esporte e acompanhamento próximo.',
-};
+const pagina = { title: seo.titulo, description: seo.descricao };
 
-const schema = [siteGraphSchema(pagina), faqPageSchema(faqsData)];
+// O schema FAQPage só entra quando a seção de perguntas está visível e tem
+// perguntas (o Google pede que o conteúdo marcado apareça na página).
+const schema: SchemaOrg[] = [siteGraphSchema(pagina)];
+if (secoesAtivas.includes('FAQ') && faq.items.length > 0) schema.push(faqPageSchema(faq.items));
 ---
 
 <BaseLayout
@@ -43,14 +67,19 @@ const schema = [siteGraphSchema(pagina), faqPageSchema(faqsData)];
 >
   <Hero data={hero} />
   <EnrollmentBanner data={matriculas} />
-  <ProblemSolution />
-  <Manifesto />
-  <ChristianValues />
-  <DailyRoutine />
-  <Phases phases={phases} />
-  <Ecosystem items={ecosystem.items} whatsappAssunto={ecosystem.whatsappAssunto} />
-  <SocialProof whyItems={whyItemsData} testimonials={testimonialsData} />
-  <FAQ faqs={faqsData} />
-  <SocialFeed />
-  <FinalCTA />
+  {secoesAtivas.map((secao) => {
+    switch (secao) {
+      case 'ProblemSolution': return <ProblemSolution />;
+      case 'Manifesto': return <Manifesto />;
+      case 'ChristianValues': return <ChristianValues />;
+      case 'DailyRoutine': return <DailyRoutine />;
+      case 'Phases': return <Phases data={phases} />;
+      case 'Ecosystem': return <Ecosystem data={ecosystem} />;
+      case 'SocialProof': return <SocialProof porQue={porQue} depoimentos={depoimentos} mostrarDepoimentos={secoes.mostrarDepoimentos} />;
+      case 'FAQ': return <FAQ data={faq} />;
+      case 'SocialFeed': return <SocialFeed />;
+      case 'FinalCTA': return <FinalCTA />;
+      default: return null;
+    }
+  })}
 </BaseLayout>

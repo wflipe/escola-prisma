@@ -1,32 +1,25 @@
 /**
- * Fonte única dos dados oficiais da Escola Prisma.
+ * Dados oficiais da Escola Prisma e gerador de links do WhatsApp.
  *
+ * Os dados ficam em src/content/site/escola.json (editável pelo painel);
+ * a descrição de cada campo está na interface EscolaData, em src/types/content.ts.
  * Mantenha estes dados IDÊNTICOS aos do Perfil da Empresa no Google e das redes
  * sociais: buscadores e assistentes de IA confiam mais quando nome, endereço,
  * telefone e site batem em todos os lugares.
  */
-export const escola = {
-  nome: 'Escola Prisma',
-  site: 'https://www.escolaprisma.net.br',
-  slogan: 'Educar é ensinar a pensar sozinho.',
-  /** Ano de fundação (ex.: '1997'). Vazio = não informado. Preencher só com o ano confirmado. */
-  anoFundacao: '' as string,
-  endereco: {
-    logradouro: 'Caminho 16 - Tomba',
-    cidade: 'Feira de Santana',
-    uf: 'BA',
-    cep: '44091-554',
-    pais: 'BR',
-  },
-  /** Ponto do Perfil no Google (Plus Code P343+2P; mesmas coordenadas do mapa do rodapé), 5 casas decimais. */
-  geo: { latitude: -12.29491, longitude: -38.94568 },
-  mapaUrl: 'https://maps.google.com/?cid=11423172969059973375',
-  telefoneFixo: { exibicao: '(75) 3622-9180', e164: '+557536229180' },
-  whatsapp: { exibicao: '(75) 99895-4848', numero: '5575998954848', e164: '+5575998954848' },
-  email: 'secretaria@escolaprisma.com',
-  instagram: { usuario: '@escolaprisma_', url: 'https://www.instagram.com/escolaprisma_/' },
-  facebook: 'https://www.facebook.com/prismafeiraVII',
-} as const;
+import type { EscolaData } from '../types/content';
+import escolaData from '../content/site/escola.json';
+
+export const escola: EscolaData = escolaData;
+
+// "site" fica fora do painel (fields.ignored) e precisa ser igual ao `site` do
+// astro.config.mjs, usado na canonical e no sitemap. Diferença = build falha.
+const siteDoAstro = String(import.meta.env.SITE ?? '').replace(/\/+$/, '');
+if (siteDoAstro && escola.site !== siteDoAstro) {
+  throw new Error(
+    `O "site" de src/content/site/escola.json (${escola.site}) é diferente do "site" do astro.config.mjs (${siteDoAstro}). Deixe os dois iguais.`,
+  );
+}
 
 export const enderecoCompleto = `${escola.endereco.logradouro}, ${escola.endereco.cidade} - ${escola.endereco.uf}, ${escola.endereco.cep}`;
 

@@ -1,0 +1,45 @@
+{
+  "items": [
+    {
+      "secao": "ProblemSolution",
+      "ativo": true
+    },
+    {
+      "secao": "Manifesto",
+      "ativo": true
+    },
+    {
+      "secao": "ChristianValues",
+      "ativo": true
+    },
+    {
+      "secao": "DailyRoutine",
+      "ativo": true
+    },
+    {
+      "secao": "Phases",
+      "ativo": true
+    },
+    {
+      "secao": "Ecosystem",
+      "ativo": true
+    },
+    {
+      "secao": "SocialProof",
+      "ativo": true
+    },
+    {
+      "secao": "FAQ",
+      "ativo": true
+    },
+    {
+      "secao": "SocialFeed",
+      "ativo": true
+    },
+    {
+      "secao": "FinalCTA",
+      "ativo": true
+    }
+  ],
+  "mostrarDepoimentos": false
+}

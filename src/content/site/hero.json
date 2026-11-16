@@ -8,8 +8,37 @@
     "whatsappAssunto": "agendar uma visita guiada"
   },
   "trustIndicators": [
-    { "icon": "star", "text": "4.9 no Google" },
-    { "icon": "calendar", "text": "29 anos de história" },
-    { "icon": "location", "text": "Feira de Santana" }
-  ]
+    {
+      "text": "4.9 no Google"
+    },
+    {
+      "text": "29 anos de história"
+    },
+    {
+      "text": "Feira de Santana"
+    }
+  ],
+  "cartoes": {
+    "cartao1": {
+      "rotulo": "Balé Infantil",
+      "estrela": true,
+      "frase": "EXPRESSÃO & DISCIPLINA",
+      "imagem": "Balé 1024 x 1024.webp",
+      "textoAlternativo": "Aluna do Balé Prisma"
+    },
+    "cartao2": {
+      "rotulo": "Karatê Esportivo",
+      "estrela": false,
+      "frase": "FOCO & RESPEITO",
+      "imagem": "Karatê 1024 x 1024.webp",
+      "textoAlternativo": "Aluno do Karatê Prisma"
+    },
+    "cartao3": {
+      "rotulo": "Ensino Médio",
+      "estrela": false,
+      "frase": "PREPARAÇÃO & VESTIBULAR",
+      "imagem": "Ensino Médio 1024 x 1024.webp",
+      "textoAlternativo": "Aluno do Ensino Médio Prisma"
+    }
+  }
 }

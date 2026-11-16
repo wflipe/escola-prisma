@@ -1,0 +1,19 @@
+{
+  "titulo": "Escola Prisma | Escola particular em Feira de Santana (BA)",
+  "descricao": "Escola particular em Feira de Santana, da Educação Infantil ao Ensino Médio. Turno integral, Sistema Positivo, inglês, esporte e acompanhamento próximo.",
+  "ogImage": "/assets/escola-prisma-marca-1200x630.png",
+  "ogImageAlt": "Escola Prisma, escola particular em Feira de Santana",
+  "descricaoEscola": "Escola particular em Feira de Santana (BA), da Educação Infantil ao Ensino Médio, com opção de turno integral. Ensino com o Sistema Positivo, inglês com Positivo English Solution, Balé, Karatê, esporte e acompanhamento próximo de cada aluno.",
+  "temas": [
+    "Educação Infantil",
+    "Ensino Fundamental I",
+    "Ensino Fundamental II",
+    "Ensino Médio",
+    "Turno integral",
+    "Sistema Positivo",
+    "Positivo English Solution",
+    "Preparação para o ENEM e a UEFS",
+    "Balé",
+    "Karatê"
+  ]
+}

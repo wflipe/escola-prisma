@@ -1,0 +1,7 @@
+# Previews do Netlify (o site oficial fica na Vercel).
+# Com o adapter da Vercel (@astrojs/vercel, usado pelo painel /keystatic), o
+# build passou a gravar as páginas estáticas em dist/client/ em vez de dist/.
+# O painel /keystatic NÃO funciona nos previews do Netlify (só na Vercel).
+[build]
+  command = "npm run build"
+  publish = "dist/client"

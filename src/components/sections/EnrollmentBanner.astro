@@ -58,7 +58,7 @@ const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
                 </>
               ) : data.cta.text}
             </a>
-            {data.ctaSecundario && (
+            {data.ctaSecundario && data.ctaSecundario.mostrar !== false && (
               <a
                 href={whatsappLink(data.ctaSecundario.whatsappAssunto)}
                 target="_blank"
@@ -75,14 +75,16 @@ const tituloDepois = idx >= 0 ? data.titulo.slice(idx + destaque.length) : '';
           {data.observacao && <p class="banner-obs">{data.observacao}</p>}
         </div>
 
-        <ul class="banner-etapas" aria-label="Etapas com matrículas abertas">
-          {data.etapas.map((etapa) => (
-            <li>
-              <span class="etapa-check" aria-hidden="true">✓</span>
-              {etapa}
-            </li>
-          ))}
-        </ul>
+        {data.etapas.length > 0 && (
+          <ul class="banner-etapas" aria-label="Etapas com matrículas abertas">
+            {data.etapas.map((etapa) => (
+              <li>
+                <span class="etapa-check" aria-hidden="true">✓</span>
+                {etapa}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </Container>
   </section>

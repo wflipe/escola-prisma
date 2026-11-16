@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /keystatic
+Disallow: /api/
 
 Sitemap: https://www.escolaprisma.net.br/sitemap-index.xml

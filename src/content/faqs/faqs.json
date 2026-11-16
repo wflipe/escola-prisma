@@ -1,54 +1,57 @@
-[
-  {
-    "question": "Quais etapas de ensino a Escola Prisma oferece?",
-    "answer": "A Escola Prisma atende da Educação Infantil ao Ensino Médio: Educação Infantil, Ensino Fundamental I, Ensino Fundamental II e Ensino Médio, com opção de turno integral."
-  },
-  {
-    "question": "Onde fica a Escola Prisma?",
-    "answer": "A Escola Prisma fica no Caminho 16, no bairro Tomba, em Feira de Santana (BA), CEP 44091-554. O telefone fixo é (75) 3622-9180 e o WhatsApp é (75) 99895-4848."
-  },
-  {
-    "question": "Qual material didático a escola usa?",
-    "answer": "A Prisma usa o Sistema Positivo de Ensino e, no inglês, o Positivo English Solution, integrado à grade curricular."
-  },
-  {
-    "question": "A escola prepara para o ENEM e a UEFS?",
-    "answer": "Sim. O Ensino Médio da Prisma tem preparação acadêmica para o ENEM, a UEFS e os principais vestibulares, com orientação vocacional e acompanhamento próximo de cada aluno."
-  },
-  {
-    "question": "O turno integral não vai deixar meu filho exausto?",
-    "answer": "O dia no integral alterna estudo orientado, esportes, descanso, alimentação e lazer. Como parte do estudo já é feita na escola, com acompanhamento pedagógico, a família aproveita melhor o tempo em casa."
-  },
-  {
-    "question": "A escola realmente acompanha cada aluno individualmente?",
-    "answer": "Sim. As turmas têm tamanho planejado e a escola tem equipe psicopedagógica. Avaliamos o ritmo de cada estudante e conversamos diretamente com os pais."
-  },
-  {
-    "question": "Como funciona a adaptação de uma criança que vem de outra escola?",
-    "answer": "A coordenação pedagógica acompanha de perto as primeiras semanas, respeita o tempo de cada criança e mantém os pais informados sobre como ela está se adaptando."
-  },
-  {
-    "question": "Como a escola trabalha situações de conflito e bullying?",
-    "answer": "Temos protocolos de convivência e uma equipe preparada para mediar conflitos com respeito, diálogo e firmeza."
-  },
-  {
-    "question": "Como funciona o acompanhamento para os pais?",
-    "answer": "Os pais têm acesso direto à coordenação pelo WhatsApp e pelo portal Serviço aos Pais, além de reuniões periódicas e comunicados sobre o desempenho e comportamento do aluno."
-  },
-  {
-    "question": "Como funciona o inglês na escola?",
-    "answer": "Usamos o Positivo English Solution, com aulas integradas à grade curricular. O inglês faz parte da rotina e aparece também em atividades fora do livro."
-  },
-  {
-    "question": "Quais atividades estão incluídas no período integral?",
-    "answer": "Estudo orientado, esportes, Balé, Karatê, projetos práticos e momentos de convivência e descanso."
-  },
-  {
-    "question": "Como funciona a visita à escola?",
-    "answer": "Você conhece a estrutura e a proposta pedagógica, conversa com a coordenação e tira suas dúvidas sobre a rotina e as etapas de ensino antes de decidir."
-  },
-  {
-    "question": "Como agendar uma visita?",
-    "answer": "Clique no botão de WhatsApp nesta página e nossa equipe marca um horário com você."
-  }
-]
+{
+  "titulo": "As perguntas que você faria antes de matricular.",
+  "items": [
+    {
+      "question": "Quais etapas de ensino a Escola Prisma oferece?",
+      "answer": "A Escola Prisma atende da Educação Infantil ao Ensino Médio: Educação Infantil, Ensino Fundamental I, Ensino Fundamental II e Ensino Médio, com opção de turno integral."
+    },
+    {
+      "question": "Onde fica a Escola Prisma?",
+      "answer": "A Escola Prisma fica no Caminho 16, no bairro Tomba, em Feira de Santana (BA), CEP 44091-554. O telefone fixo é (75) 3622-9180 e o WhatsApp é (75) 99895-4848."
+    },
+    {
+      "question": "Qual material didático a escola usa?",
+      "answer": "A Prisma usa o Sistema Positivo de Ensino e, no inglês, o Positivo English Solution, integrado à grade curricular."
+    },
+    {
+      "question": "A escola prepara para o ENEM e a UEFS?",
+      "answer": "Sim. O Ensino Médio da Prisma tem preparação acadêmica para o ENEM, a UEFS e os principais vestibulares, com orientação vocacional e acompanhamento próximo de cada aluno."
+    },
+    {
+      "question": "O turno integral não vai deixar meu filho exausto?",
+      "answer": "O dia no integral alterna estudo orientado, esportes, descanso, alimentação e lazer. Como parte do estudo já é feita na escola, com acompanhamento pedagógico, a família aproveita melhor o tempo em casa."
+    },
+    {
+      "question": "A escola realmente acompanha cada aluno individualmente?",
+      "answer": "Sim. As turmas têm tamanho planejado e a escola tem equipe psicopedagógica. Avaliamos o ritmo de cada estudante e conversamos diretamente com os pais."
+    },
+    {
+      "question": "Como funciona a adaptação de uma criança que vem de outra escola?",
+      "answer": "A coordenação pedagógica acompanha de perto as primeiras semanas, respeita o tempo de cada criança e mantém os pais informados sobre como ela está se adaptando."
+    },
+    {
+      "question": "Como a escola trabalha situações de conflito e bullying?",
+      "answer": "Temos protocolos de convivência e uma equipe preparada para mediar conflitos com respeito, diálogo e firmeza."
+    },
+    {
+      "question": "Como funciona o acompanhamento para os pais?",
+      "answer": "Os pais têm acesso direto à coordenação pelo WhatsApp e pelo portal Serviço aos Pais, além de reuniões periódicas e comunicados sobre o desempenho e comportamento do aluno."
+    },
+    {
+      "question": "Como funciona o inglês na escola?",
+      "answer": "Usamos o Positivo English Solution, com aulas integradas à grade curricular. O inglês faz parte da rotina e aparece também em atividades fora do livro."
+    },
+    {
+      "question": "Quais atividades estão incluídas no período integral?",
+      "answer": "Estudo orientado, esportes, Balé, Karatê, projetos práticos e momentos de convivência e descanso."
+    },
+    {
+      "question": "Como funciona a visita à escola?",
+      "answer": "Você conhece a estrutura e a proposta pedagógica, conversa com a coordenação e tira suas dúvidas sobre a rotina e as etapas de ensino antes de decidir."
+    },
+    {
+      "question": "Como agendar uma visita?",
+      "answer": "Clique no botão de WhatsApp nesta página e nossa equipe marca um horário com você."
+    }
+  ]
+}

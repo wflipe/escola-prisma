@@ -3,40 +3,33 @@ import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import Icon from '../ui/Icon.astro';
-
-interface Testimonial {
-  id: string;
-  initial: string;
-  name: string;
-  role: string;
-  text: string;
-}
-
-interface WhyItem {
-  icon: string;
-  title: string;
-  description: string;
-}
+import type { TestimonialsData, WhyItemsData } from '../../types/content';
 
 interface Props {
-  whyItems: WhyItem[];
-  testimonials: Testimonial[];
+  /** src/content/site/why-items.json (painel: "Famílias: por que a Prisma"). */
+  porQue: WhyItemsData;
+  /** src/content/testimonials/testimonials.json (painel: "Famílias: depoimentos"). */
+  depoimentos: TestimonialsData;
+  /**
+   * Bloco "O que dizem as famílias". Ligado/desligado em src/content/site/secoes.json
+   * ("mostrarDepoimentos"). Só ligar com depoimentos reais e autorizados.
+   */
+  mostrarDepoimentos?: boolean;
 }
 
-const { whyItems, testimonials } = Astro.props;
-
-/** Bloco "O que dizem as famílias". Oculto até a escola confirmar depoimentos reais e autorizados. Mude para true para mostrar. */
-const MOSTRAR_DEPOIMENTOS = false;
+const { porQue, depoimentos, mostrarDepoimentos = false } = Astro.props;
+const whyItems = porQue.items;
+const testimonials = depoimentos.items;
 ---
 
 <Section id="depoimentos" background="gray" padding="xl" class="prova-social">
   <Container>
     <div class="por-que-prisma">
       <h2>
-        Por que escolher a Prisma
+        {porQue.titulo}
       </h2>
       <p class="subtitle">
-        O que as famílias encontram aqui, da primeira infância ao vestibular.
+        {porQue.texto}
       </p>
 
       <div class="features-grid">
@@ -52,13 +45,13 @@ const MOSTRAR_DEPOIMENTOS = false;
       </div>
     </div>
 
-    {MOSTRAR_DEPOIMENTOS && testimonials.length > 0 && (
+    {mostrarDepoimentos && testimonials.length > 0 && (
     <div class="testimonials-section">
       <h2>
-        O que dizem as famílias
+        {depoimentos.titulo}
       </h2>
       <p class="subtitle">
-        Depoimentos de mães e pais de Feira de Santana.
+        {depoimentos.texto}
       </p>
 
       <div class="depoimentos-grid">

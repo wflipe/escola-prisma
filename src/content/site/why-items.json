@@ -1,17 +1,21 @@
-[
-  {
-    "icon": "scale-balanced",
-    "title": "Alta exigência sem perder o cuidado",
-    "description": "Cobramos resultado acadêmico com seriedade e cuidamos do bem-estar do aluno ao mesmo tempo."
-  },
-  {
-    "icon": "comments",
-    "title": "Coordenação acessível",
-    "description": "Os pais têm acesso direto à coordenação para conversar, tirar dúvidas e acompanhar a jornada escolar."
-  },
-  {
-    "icon": "route",
-    "title": "Continuidade da jornada",
-    "description": "Do Grupo 2 ao 3º ano do Ensino Médio, seu filho segue o mesmo projeto pedagógico, acompanhado de perto."
-  }
-]
+{
+  "titulo": "Por que escolher a Prisma",
+  "texto": "O que as famílias encontram aqui, da primeira infância ao vestibular.",
+  "items": [
+    {
+      "icon": "scale-balanced",
+      "title": "Alta exigência sem perder o cuidado",
+      "description": "Cobramos resultado acadêmico com seriedade e cuidamos do bem-estar do aluno ao mesmo tempo."
+    },
+    {
+      "icon": "comments",
+      "title": "Coordenação acessível",
+      "description": "Os pais têm acesso direto à coordenação para conversar, tirar dúvidas e acompanhar a jornada escolar."
+    },
+    {
+      "icon": "route",
+      "title": "Continuidade da jornada",
+      "description": "Do Grupo 2 ao 3º ano do Ensino Médio, seu filho segue o mesmo projeto pedagógico, acompanhado de perto."
+    }
+  ]
+}
