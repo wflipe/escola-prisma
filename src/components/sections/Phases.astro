@@ -4,14 +4,18 @@ import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
-import type { Phase } from '../../types/content';
+import type { PhasesData } from '../../types/content';
 import { whatsappLink } from '../../data/escola';
+import { partesDoTitulo } from '../../utils/titulo';
 
 interface Props {
-  phases: Phase[];
+  /** src/content/site/phases.json (painel: "Fases de ensino"). */
+  data: PhasesData;
 }
 
-const { phases } = Astro.props;
+const { data } = Astro.props;
+const phases = data.items;
+const titulo = partesDoTitulo(data.titulo, data.tituloDestaque);
 
 const colorStyles = {
   amarela: { bg: 'rgba(245, 158, 11, 0.15)', text: '#b45309', border: 'rgba(245, 158, 11, 0.3)', shadow: '0 12px 32px rgba(245, 158, 11, 0.15)' },
@@ -24,12 +28,12 @@ const colorStyles = {
 <Section id="etapas" background="white" padding="xl" class="fases-ensino">
   <Container>
     <div class="section-header">
-      <span class="section-tagline">Fases de ensino</span>
+      <span class="section-tagline">{data.selo}</span>
       <h2>
-        Acompanhamos o crescimento completo do seu <span class="font-serif italic text-primary">filho</span>.
+        {titulo.map((p) => p.quebra ? <br /> : p.destaque ? <span class="font-serif italic text-primary">{p.texto}</span> : p.texto)}
       </h2>
       <p>
-        Seu filho pode fazer toda a vida escolar aqui, da primeira infância ao Ensino Médio, com acompanhamento em cada fase.
+        {data.texto}
       </p>
     </div>
 
@@ -72,7 +76,7 @@ const colorStyles = {
     </div>
 
     <div class="assinatura-fases">
-      <p class="font-serif italic text-2xl text-secondary">Avançar de fase é evoluir.</p>
+      <p class="font-serif italic text-2xl text-secondary">{data.assinatura}</p>
     </div>
   </Container>
 </Section>

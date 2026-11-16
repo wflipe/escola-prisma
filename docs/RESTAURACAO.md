@@ -10,12 +10,13 @@ Cada ponto de restauração é uma **tag do Git**: um "marcador" com nome fixo e
 | `restauracao/2026-11-13-correcoes-e-banner` | 13/11/2026 | Correções das etapas 1–4, dados oficiais centralizados, WhatsApp padronizado, novo vídeo, banner "Matrículas 2027 abertas" e projeto organizado. |
 | `restauracao/2026-11-13-publicacao-textos-revisados` | 13/11/2026 | Versão publicada com o PR #1: SEO/GEO e domínio .net.br, Umami e Clarity, faixa no topo, capa do vídeo e textos revisados. |
 | `restauracao/2026-11-14-seo-auditoria-tecnica` | 14/11/2026 | Versão publicada com o PR #3: correções de código da auditoria de SEO (schema em grafo, fontes no próprio site, 404, `vercel.json`, hero e feed) e tag do Google Tag Manager. Inclui o PR #2 (depoimentos ocultos). |
+| `restauracao/2026-11-15-antes-do-painel` | 15/11/2026 | Site como estava antes do painel de edição (`/keystatic`): commit `3c05aea`, igual à `main` com os PRs #4 a #6 (GTM `GTM-NRQ8DB4L`, Clarity só pelo GTM, etapas do banner empilhadas no celular). **Só neste computador:** ainda não enviada ao GitHub (`git push origin restauracao/2026-11-15-antes-do-painel`). |
 
 Ver todos: `git tag -l "restauracao/*" -n1`
 
 > Para voltar a um commit sem tag, use o número dele no lugar do nome da tag, por exemplo `git switch --detach 1cfd751`. As mudanças de cada versão estão no [CHANGELOG.md](../CHANGELOG.md).
 >
-> As tags acima já foram enviadas ao GitHub (13/11/2026). Tags novas só existem neste computador até rodar `git push origin --tags`.
+> As tags acima já foram enviadas ao GitHub (13/11/2026). Tags novas só existem neste computador até rodar `git push origin --tags`. Em 15/11/2026, a `restauracao/2026-11-15-antes-do-painel` ainda não foi enviada.
 
 ## Como voltar para um ponto
 

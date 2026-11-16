@@ -2,10 +2,14 @@
 import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Icon from '../ui/Icon.astro';
+import type { RotinaData } from '../../types/content';
+import rotinaData from '../../content/site/secao-rotina.json';
 
+/** Textos e vídeo em src/content/site/secao-rotina.json (painel: "Rotina e vídeo"). */
+const data = rotinaData as RotinaData;
 /** ID do vídeo no YouTube (parte depois de "watch?v=" no link). */
-const VIDEO_ID = 'qYuossXmZfc';
-const VIDEO_TITULO = 'Rotina na Escola Prisma';
+const VIDEO_ID = data.video.youtubeId;
+const VIDEO_TITULO = data.video.titulo;
 ---
 
 <Section id="rotina" background="white" padding="xl" class="rotina-real">
@@ -13,48 +17,30 @@ const VIDEO_TITULO = 'Rotina na Escola Prisma';
     <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
       <div class="rotina-content">
         <h2>
-          Uma rotina que desenvolve seu filho e simplifica a sua.
+          {data.titulo}
         </h2>
         <p>
-          O dia a dia na Prisma é organizado e tem muitas atividades práticas, em que o aluno aprende fazendo.
+          {data.texto}
         </p>
 
         <ul class="rotina-lista">
-          <li>
-            <div class="rotina-icone">
-              <Icon name="heart" size="lg" />
-            </div>
-            <div>
-              <h3>Acolhimento desde a chegada</h3>
-              <p>Recebemos cada aluno com atenção logo na entrada, para o dia começar tranquilo e organizado.</p>
-            </div>
-          </li>
-
-          <li>
-            <div class="rotina-icone">
-              <Icon name="book-open" size="lg" />
-            </div>
-            <div>
-              <h3>Ensino com profundidade</h3>
-              <p>Aulas com a metodologia do Sistema Positivo, pensadas para o aluno entender a matéria em vez de decorar.</p>
-            </div>
-          </li>
-
-          <li>
-            <div class="rotina-icone">
-              <Icon name="person-running" size="lg" />
-            </div>
-            <div>
-              <h3>Corpo ativo, mente equilibrada</h3>
-              <p>Balé, Karatê, esportes e artes desenvolvem disciplina e expressão e ajudam no equilíbrio emocional.</p>
-            </div>
-          </li>
+          {data.itens.map((item) => (
+            <li>
+              <div class="rotina-icone">
+                <Icon name={item.icone} size="lg" />
+              </div>
+              <div>
+                <h3>{item.titulo}</h3>
+                <p>{item.texto}</p>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
       <!--
         Vídeo com "capa": mostra só a imagem e o botão de play (sem nome do canal nem faixas pretas).
-        O player do YouTube (~1 MB) só carrega quando a pessoa clica. Para trocar o vídeo, mude VIDEO_ID no topo.
+        O player do YouTube (~1 MB) só carrega quando a pessoa clica. Para trocar o vídeo, mude video.youtubeId em src/content/site/secao-rotina.json.
       -->
       <div class="rotina-video" data-video-id={VIDEO_ID} data-video-title={VIDEO_TITULO}>
         <button
@@ -68,7 +54,7 @@ const VIDEO_TITULO = 'Rotina na Escola Prisma';
             <source srcset={`https://i.ytimg.com/vi_webp/${VIDEO_ID}/maxresdefault.webp`} type="image/webp" />
             <img
               src={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-              alt="Alunos da Escola Prisma em sala de aula"
+              alt={data.video.textoAlternativo}
               width="1280"
               height="720"
               loading="lazy"

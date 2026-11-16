@@ -1,4 +1,8 @@
 import { escola } from '../data/escola';
+import type { SeoData } from '../types/content';
+import seoData from '../content/site/seo.json';
+
+const seo: SeoData = seoData;
 
 export interface SchemaOrg {
   '@context': 'https://schema.org';
@@ -15,7 +19,8 @@ const ID_IMAGEM = `${escola.site}/#imagem-principal`;
 /**
  * Ficha da escola para buscadores e assistentes de IA, num único grafo:
  * School (a escola) <- WebSite (publicado pela escola) <- WebPage (a home, sobre a escola).
- * Os dados vêm de src/data/escola.ts e devem bater com o Perfil da Empresa no Google.
+ * Os dados vêm de src/content/site/escola.json (via src/data/escola.ts); imagem,
+ * descrição e temas (knowsAbout) de src/content/site/seo.json. Devem bater com o Perfil da Empresa no Google.
  */
 export function siteGraphSchema(page: { title: string; description: string }): SchemaOrg {
   return {
@@ -65,13 +70,12 @@ function schoolNode() {
     image: {
       '@type': 'ImageObject',
       '@id': ID_IMAGEM,
-      url: `${escola.site}/assets/escola-prisma-marca-1200x630.png`,
+      url: new URL(seo.ogImage, `${escola.site}/`).href,
       width: 1200,
       height: 630,
     },
     slogan: escola.slogan,
-    description:
-      'Escola particular em Feira de Santana (BA), da Educação Infantil ao Ensino Médio, com opção de turno integral. Ensino com o Sistema Positivo, inglês com Positivo English Solution, Balé, Karatê, esporte e acompanhamento próximo de cada aluno.',
+    description: seo.descricaoEscola,
     // Deve ser o MESMO telefone principal do Perfil da Empresa no Google (ver docs/AUDITORIA-SEO-2026-11.md).
     telephone: escola.whatsapp.e164,
     email: escola.email,
@@ -91,18 +95,7 @@ function schoolNode() {
     hasMap: escola.mapaUrl,
     areaServed: { '@type': 'City', name: escola.endereco.cidade },
     ...(escola.anoFundacao ? { foundingDate: escola.anoFundacao } : {}),
-    knowsAbout: [
-      'Educação Infantil',
-      'Ensino Fundamental I',
-      'Ensino Fundamental II',
-      'Ensino Médio',
-      'Turno integral',
-      'Sistema Positivo',
-      'Positivo English Solution',
-      'Preparação para o ENEM e a UEFS',
-      'Balé',
-      'Karatê',
-    ],
+    ...(seo.temas.length > 0 ? { knowsAbout: seo.temas } : {}),
     contactPoint: [
       {
         '@type': 'ContactPoint',

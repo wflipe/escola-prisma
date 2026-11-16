@@ -4,16 +4,19 @@ import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
-import type { EcosystemItem } from '../../types/content';
+import type { EcosystemData } from '../../types/content';
 import { whatsappLink } from '../../data/escola';
+import { partesDoTitulo } from '../../utils/titulo';
 
 interface Props {
-  items: EcosystemItem[];
-  whatsappAssunto: string;
+  /** src/content/site/ecosystem.json (painel: "Diferenciais"). */
+  data: EcosystemData;
 }
 
-const { items, whatsappAssunto } = Astro.props;
-const ctaLink = whatsappLink(whatsappAssunto);
+const { data } = Astro.props;
+const items = data.items;
+const ctaLink = whatsappLink(data.whatsappAssunto);
+const titulo = partesDoTitulo(data.titulo, data.tituloDestaque);
 
 const ecoColors = [
   { bg: '#06B6D4', color: 'white' },   // Cyan
@@ -27,11 +30,10 @@ const ecoColors = [
   <Container>
     <div class="ecossistema-content">
       <h2 class="eco-title">
-        Aprender vai muito além da <br />
-        <span class="font-serif italic" style="color: var(--color-primary);">sala de aula.</span>
+        {titulo.map((p) => p.quebra ? <br /> : p.destaque ? <span class="font-serif italic" style="color: var(--color-primary);">{p.texto}</span> : p.texto)}
       </h2>
       <p>
-        A estrutura da escola junta estudo acadêmico, atividades práticas, tecnologia e formação do caráter.
+        {data.texto}
       </p>
       <Button
         href={ctaLink}
@@ -42,7 +44,7 @@ const ecoColors = [
         data-ga4-event="click_conhecer_estrutura"
         data-ga4-location="ecossistema"
       >
-        Quero conhecer a estrutura
+        {data.textoBotao}
       </Button>
     </div>
 

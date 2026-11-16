@@ -3,12 +3,26 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
+import keystatic from '@keystatic/astro';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://www.escolaprisma.net.br',
+  // Site estático: "/" e "/404" são pré-renderizados no build. O adapter da
+  // Vercel existe só para as rotas do painel (/keystatic e /api/keystatic),
+  // que o Keystatic injeta com prerender = false (rodam como função).
+  output: 'static',
+  adapter: vercel(),
   integrations: [
     mdx(),
-    sitemap({ lastmod: new Date() }),
+    react(),
+    keystatic(),
+    // O painel não entra no sitemap (e recebe noindex pelo vercel.json).
+    sitemap({
+      lastmod: new Date(),
+      filter: (page) => !/^\/(keystatic|api)(\/|$)/.test(new URL(page).pathname),
+    }),
     compress()
   ],
   image: { service: { entrypoint: 'astro/assets/services/sharp' } },
@@ -45,6 +59,13 @@ export default defineConfig({
     },
   ],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    // Só afeta o "npm run dev": sem isto o painel /keystatic não abre no
+    // computador ("react-dom/client does not provide an export named createRoot").
+    optimizeDeps: { include: ['react-dom/client'] },
+    // Também só no "npm run dev": a pasta .vercel/ (saída do build) não deve ser
+    // vigiada. No Windows, um build feito com o caminho em "d:" minúsculo cria
+    // links que apontam para a própria pasta, e o vigia entra em loop (ver README).
+    server: { watch: { ignored: ['**/.vercel/**'] } }
   }
 });

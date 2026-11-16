@@ -1,0 +1,23 @@
+{
+  "selo": "Nossa essência",
+  "titulo": "Valores cristãos\nna formação dos alunos",
+  "tituloDestaque": "na formação dos alunos",
+  "texto": "Além do conteúdo, a Prisma forma alunos com princípios cristãos e valores que fortalecem o caráter e dão propósito à vida.",
+  "cartoes": [
+    {
+      "icone": "shield-halved",
+      "titulo": "Formação com propósito",
+      "texto": "Ajudamos o aluno a crescer em conhecimento, fé, caráter e responsabilidade, pensando também na vida dele fora da escola."
+    },
+    {
+      "icone": "hands-holding-child",
+      "titulo": "Amor ao próximo",
+      "texto": "Incentivamos o respeito, a empatia e o acolhimento, e queremos relações saudáveis e fraternas no dia a dia da escola."
+    },
+    {
+      "icone": "scale-balanced",
+      "titulo": "Princípios que orientam",
+      "texto": "Honestidade, verdade, justiça e solidariedade orientam o trabalho da escola em todas as etapas."
+    }
+  ]
+}

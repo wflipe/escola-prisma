@@ -13,9 +13,13 @@ yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables
+# environment variables (os segredos do painel Keystatic/GitHub App ficam só na Vercel)
 .env
-.env.production
+.env.*
+!.env.example
+
+# saída do adapter da Vercel (gerada pelo astro build / vercel build)
+.vercel/
 
 # macOS-specific files
 .DS_Store

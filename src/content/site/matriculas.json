@@ -4,7 +4,12 @@
   "titulo": "Matrículas 2027 abertas",
   "tituloDestaque": "2027",
   "texto": "Da Educação Infantil ao Ensino Médio, com opção de turno integral. As vagas são limitadas por turma para preservar o acompanhamento próximo de cada aluno.",
-  "etapas": ["Educação Infantil", "Fundamental I", "Fundamental II", "Ensino Médio"],
+  "etapas": [
+    "Educação Infantil",
+    "Fundamental I",
+    "Fundamental II",
+    "Ensino Médio"
+  ],
   "cta": {
     "text": "Garanta a vaga do seu filho",
     "textCurto": "Garanta a vaga",

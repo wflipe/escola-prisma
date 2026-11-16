@@ -1,15 +1,19 @@
 ---
 import { whatsappLink } from "../../data/escola";
+import { menuRodape } from '../../data/menu';
 import Icon from '../ui/Icon.astro';
+
+// Assunto e rótulo em src/content/site/menu-rodape.json ("botaoFlutuante"; painel: "Menu e rodapé").
+const { botaoFlutuante } = menuRodape;
 ---
 
 <a
-  href={whatsappLink("informações sobre matrículas")}
+  href={whatsappLink(botaoFlutuante.whatsappAssunto)}
   class="whatsapp-float"
   id="cta-whatsapp-float"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="Fale conosco pelo WhatsApp"
+  aria-label={botaoFlutuante.rotulo}
   data-ga4-event="click_whatsapp_float"
   data-ga4-location="global"
 >

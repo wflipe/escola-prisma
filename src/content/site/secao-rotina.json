@@ -1,0 +1,26 @@
+{
+  "titulo": "Uma rotina que desenvolve seu filho e simplifica a sua.",
+  "texto": "O dia a dia na Prisma é organizado e tem muitas atividades práticas, em que o aluno aprende fazendo.",
+  "itens": [
+    {
+      "icone": "heart",
+      "titulo": "Acolhimento desde a chegada",
+      "texto": "Recebemos cada aluno com atenção logo na entrada, para o dia começar tranquilo e organizado."
+    },
+    {
+      "icone": "book-open",
+      "titulo": "Ensino com profundidade",
+      "texto": "Aulas com a metodologia do Sistema Positivo, pensadas para o aluno entender a matéria em vez de decorar."
+    },
+    {
+      "icone": "person-running",
+      "titulo": "Corpo ativo, mente equilibrada",
+      "texto": "Balé, Karatê, esportes e artes desenvolvem disciplina e expressão e ajudam no equilíbrio emocional."
+    }
+  ],
+  "video": {
+    "youtubeId": "qYuossXmZfc",
+    "titulo": "Rotina na Escola Prisma",
+    "textoAlternativo": "Alunos da Escola Prisma em sala de aula"
+  }
+}

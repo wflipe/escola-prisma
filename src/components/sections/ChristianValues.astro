@@ -3,48 +3,40 @@ import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import Card from '../ui/Card.astro';
+import type { ValoresData } from '../../types/content';
+import valoresData from '../../content/site/secao-valores.json';
+import { partesDoTitulo } from '../../utils/titulo';
+
+/** Textos em src/content/site/secao-valores.json (painel: "Valores cristãos"). */
+const data = valoresData as ValoresData;
+const titulo = partesDoTitulo(data.titulo, data.tituloDestaque);
+
+/** Cor do ícone de cada cartão, pela posição (repete a partir do 4º). */
+const cores = ['color-orange', 'color-blue', 'color-yellow'];
 ---
 
 <Section id="valores-cristaos" background="white" padding="xl" class="christian-values">
   <Container>
     <div class="values-header">
-      <div class="badge">Nossa essência</div>
+      <div class="badge">{data.selo}</div>
       <h2 class="title">
-        Valores cristãos <br />
-        <span class="font-serif italic text-primary">na formação dos alunos</span>
+        {titulo.map((p) => p.quebra ? <br /> : p.destaque ? <span class="font-serif italic text-primary">{p.texto}</span> : p.texto)}
       </h2>
       <p class="subtitle">
-        Além do conteúdo, a Prisma forma alunos com princípios cristãos e valores que fortalecem o caráter e dão propósito à vida.
+        {data.texto}
       </p>
     </div>
 
     <div class="values-grid">
-      <!-- Card 1 -->
-      <Card variant="bordered" padding="lg" hover class="value-card">
-        <div class="icon-container color-orange">
-          <Icon name="shield-halved" size="lg" />
-        </div>
-        <h3>Formação com propósito</h3>
-        <p>Ajudamos o aluno a crescer em conhecimento, fé, caráter e responsabilidade, pensando também na vida dele fora da escola.</p>
-      </Card>
-
-      <!-- Card 2 -->
-      <Card variant="bordered" padding="lg" hover class="value-card">
-        <div class="icon-container color-blue">
-          <Icon name="hands-holding-child" size="lg" />
-        </div>
-        <h3>Amor ao próximo</h3>
-        <p>Incentivamos o respeito, a empatia e o acolhimento, e queremos relações saudáveis e fraternas no dia a dia da escola.</p>
-      </Card>
-
-      <!-- Card 3 -->
-      <Card variant="bordered" padding="lg" hover class="value-card">
-        <div class="icon-container color-yellow">
-          <Icon name="scale-balanced" size="lg" />
-        </div>
-        <h3>Princípios que orientam</h3>
-        <p>Honestidade, verdade, justiça e solidariedade orientam o trabalho da escola em todas as etapas.</p>
-      </Card>
+      {data.cartoes.map((cartao, index) => (
+        <Card variant="bordered" padding="lg" hover class="value-card">
+          <div class={`icon-container ${cores[index % cores.length]}`}>
+            <Icon name={cartao.icone} size="lg" />
+          </div>
+          <h3>{cartao.titulo}</h3>
+          <p>{cartao.texto}</p>
+        </Card>
+      ))}
     </div>
   </Container>
 </Section>

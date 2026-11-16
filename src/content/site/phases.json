@@ -1,42 +1,49 @@
-[
-  {
-    "title": "Educação Infantil",
-    "slug": "infantile",
-    "phaseLabel": "1ª Descobrir",
-    "icon": "heart",
-    "color": "amarela",
-    "description": "Alfabetização lúdica e estruturada, estímulo sensorial e convivência respeitosa com outras crianças. É quando a criança começa a ganhar independência, no tempo dela.",
-    "ctaText": "Saber mais",
-    "whatsappAssunto": "informações sobre vagas para a Educação Infantil"
-  },
-  {
-    "title": "Fundamental I",
-    "slug": "fundamental-1",
-    "phaseLabel": "2ª Autonomia",
-    "icon": "book-open",
-    "color": "laranja",
-    "description": "A criança cria o hábito de estudar todo dia, desenvolve raciocínio lógico e autonomia e tem inglês na grade, com acompanhamento pedagógico constante.",
-    "ctaText": "Saber mais",
-    "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental I"
-  },
-  {
-    "title": "Fundamental II",
-    "slug": "fundamental-2",
-    "phaseLabel": "3ª Pensar criticamente",
-    "icon": "flask",
-    "color": "azul",
-    "description": "Investigação científica e projetos que juntam várias disciplinas. O lado socioemocional também é trabalhado, para o aluno atravessar a adolescência com responsabilidade.",
-    "ctaText": "Saber mais",
-    "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental II"
-  },
-  {
-    "title": "Ensino Médio",
-    "slug": "medio",
-    "phaseLabel": "4ª Preparar o futuro",
-    "icon": "graduation-cap",
-    "color": "carvao",
-    "description": "Preparação consistente para o ENEM, a UEFS e os principais vestibulares, com orientação vocacional e apoio ao jovem.",
-    "ctaText": "Saber mais",
-    "whatsappAssunto": "informações sobre vagas para o Ensino Médio"
-  }
-]
+{
+  "selo": "Fases de ensino",
+  "titulo": "Acompanhamos o crescimento completo do seu filho.",
+  "tituloDestaque": "filho",
+  "texto": "Seu filho pode fazer toda a vida escolar aqui, da primeira infância ao Ensino Médio, com acompanhamento em cada fase.",
+  "assinatura": "Avançar de fase é evoluir.",
+  "items": [
+    {
+      "title": "Educação Infantil",
+      "slug": "infantile",
+      "phaseLabel": "1ª Descobrir",
+      "icon": "heart",
+      "color": "amarela",
+      "description": "Alfabetização lúdica e estruturada, estímulo sensorial e convivência respeitosa com outras crianças. É quando a criança começa a ganhar independência, no tempo dela.",
+      "ctaText": "Saber mais",
+      "whatsappAssunto": "informações sobre vagas para a Educação Infantil"
+    },
+    {
+      "title": "Fundamental I",
+      "slug": "fundamental-1",
+      "phaseLabel": "2ª Autonomia",
+      "icon": "book-open",
+      "color": "laranja",
+      "description": "A criança cria o hábito de estudar todo dia, desenvolve raciocínio lógico e autonomia e tem inglês na grade, com acompanhamento pedagógico constante.",
+      "ctaText": "Saber mais",
+      "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental I"
+    },
+    {
+      "title": "Fundamental II",
+      "slug": "fundamental-2",
+      "phaseLabel": "3ª Pensar criticamente",
+      "icon": "flask",
+      "color": "azul",
+      "description": "Investigação científica e projetos que juntam várias disciplinas. O lado socioemocional também é trabalhado, para o aluno atravessar a adolescência com responsabilidade.",
+      "ctaText": "Saber mais",
+      "whatsappAssunto": "informações sobre vagas para o Ensino Fundamental II"
+    },
+    {
+      "title": "Ensino Médio",
+      "slug": "medio",
+      "phaseLabel": "4ª Preparar o futuro",
+      "icon": "graduation-cap",
+      "color": "carvao",
+      "description": "Preparação consistente para o ENEM, a UEFS e os principais vestibulares, com orientação vocacional e apoio ao jovem.",
+      "ctaText": "Saber mais",
+      "whatsappAssunto": "informações sobre vagas para o Ensino Médio"
+    }
+  ]
+}

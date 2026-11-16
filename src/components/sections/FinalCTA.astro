@@ -4,6 +4,13 @@ import Container from '../ui/Container.astro';
 import Section from '../ui/Section.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+import type { ChamadaFinalData } from '../../types/content';
+import chamadaFinalData from '../../content/site/secao-chamada-final.json';
+import { partesDoTitulo } from '../../utils/titulo';
+
+/** Textos em src/content/site/secao-chamada-final.json (painel: "Chamada final (visita)"). */
+const data = chamadaFinalData as ChamadaFinalData;
+const titulo = partesDoTitulo(data.titulo, data.tituloDestaque);
 ---
 
 <Section background="none" padding="xl" class="cta-final bg-noise bg-mesh-warm">
@@ -11,14 +18,13 @@ import Icon from '../ui/Icon.astro';
   <span class="cta-blob cta-blob-2"></span>
   <Container>
     <h2 class="cta-title">
-      Antes de escolher a escola, <br />
-      <span class="font-serif italic text-primary">conheça</span> a escola.
+      {titulo.map((p) => p.quebra ? <br /> : p.destaque ? <span class="font-serif italic text-primary">{p.texto}</span> : p.texto)}
     </h2>
     <p class="cta-text">
-      Para manter o acompanhamento próximo que prometemos, cada turma tem um número limitado de vagas a cada ano letivo.
+      {data.texto}
     </p>
     <Button
-      href={whatsappLink("agendar uma visita para conhecer a escola pessoalmente")}
+      href={whatsappLink(data.botao.whatsappAssunto)}
       target="_blank"
       rel="noopener noreferrer"
       variant="primary"
@@ -26,12 +32,12 @@ import Icon from '../ui/Icon.astro';
       data-ga4-event="click_agendar_visita"
       data-ga4-location="final_cta"
     >
-      Agendar uma visita
+      {data.botao.text}
       <Icon name="arrow-right" size="md" />
     </Button>
     <p class="cta-apoio">
-      Conheça a estrutura, converse com a coordenação e tire suas dúvidas pessoalmente.<br>
-      <span class="micro-copy">Resposta rápida pelo WhatsApp oficial da coordenação.</span>
+      {data.apoio}<br>
+      <span class="micro-copy">{data.microTexto}</span>
     </p>
   </Container>
 </Section>

@@ -1,0 +1,11 @@
+{
+  "tituloAba": "Página não encontrada | Escola Prisma",
+  "descricao": "A página que você procurou não existe. Volte para o site da Escola Prisma, em Feira de Santana.",
+  "titulo": "Esta página não existe",
+  "texto": "O endereço pode ter mudado ou ter sido digitado errado. Volte para o início ou fale com a gente pelo WhatsApp.",
+  "botaoInicio": "Ir para o início",
+  "botaoWhatsapp": {
+    "text": "Falar pelo WhatsApp",
+    "whatsappAssunto": "tirar uma dúvida"
+  }
+}

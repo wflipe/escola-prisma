@@ -8,6 +8,9 @@ import WhatsAppFloat from '../components/layout/WhatsAppFloat.astro';
 import { Font } from 'astro:assets';
 import type { SchemaOrg } from '../utils/schema';
 import { escola } from '../data/escola';
+import type { SeoData } from '../types/content';
+import seoData from '../content/site/seo.json';
+import { exigirArquivoPublico } from '../utils/arquivos';
 import '../styles/globals.css';
 
 interface Props {
@@ -17,19 +20,29 @@ interface Props {
   ogImage?: string;
   schema?: SchemaOrg | SchemaOrg[];
   noIndex?: boolean;
+  /**
+   * Prefixo dos links do menu. Na home os links são "#proposta" (rolam a própria
+   * página); em outra página (ex.: 404) use "/" para virar "/#proposta".
+   */
+  prefixoMenu?: string;
 }
 
 const {
   title,
   description,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
-  ogImage: ogImagePath = '/assets/escola-prisma-marca-1200x630.png',
+  ogImage: ogImagePath = (seoData as SeoData).ogImage,
   schema,
   noIndex = false,
+  prefixoMenu = '',
 } = Astro.props;
 
+// Imagem padrão de compartilhamento: src/content/site/seo.json (ogImage).
+// O build falha com mensagem clara se o arquivo não existir em public/.
+exigirArquivoPublico(ogImagePath, 'seo.json, campo ogImage ("Imagem de compartilhamento")');
 // Open Graph (WhatsApp, Facebook, Instagram) exige URL absoluta da imagem.
 const ogImage = new URL(ogImagePath, Astro.site).href;
+const ogImageAlt = (seoData as SeoData).ogImageAlt;
 
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
@@ -76,16 +89,16 @@ const jsonLd = (item: SchemaOrg) => JSON.stringify(item).replace(/</g, '\\u003c'
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content={`${escola.nome}, escola particular em Feira de Santana`} />
+  <meta property="og:image:alt" content={ogImageAlt} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-  <meta name="twitter:image:alt" content={`${escola.nome}, escola particular em Feira de Santana`} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
 
-  <meta name="geo.region" content="BR-BA" />
-  <meta name="geo.placename" content="Feira de Santana" />
+  <meta name="geo.region" content={`${escola.endereco.pais}-${escola.endereco.uf}`} />
+  <meta name="geo.placename" content={escola.endereco.cidade} />
   <meta name="geo.position" content={`${escola.geo.latitude};${escola.geo.longitude}`} />
   <meta name="ICBM" content={`${escola.geo.latitude}, ${escola.geo.longitude}`} />
 
@@ -116,8 +129,8 @@ const jsonLd = (item: SchemaOrg) => JSON.stringify(item).replace(/</g, '\\u003c'
 
   <EnrollmentStrip />
   <TopBar />
-  <Header />
-  <MobileMenu />
+  <Header prefixoMenu={prefixoMenu} />
+  <MobileMenu prefixoMenu={prefixoMenu} />
 
   <main id="main-content">
     <slot />

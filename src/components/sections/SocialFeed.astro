@@ -2,20 +2,28 @@
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
+import type { InstagramData } from '../../types/content';
+import instagramData from '../../content/site/secao-instagram.json';
+import { escola } from '../../data/escola';
+import { partesDoTitulo } from '../../utils/titulo';
+
+/** Textos em src/content/site/secao-instagram.json (painel: "Instagram"); @ e link do perfil em escola.json. */
+const data = instagramData as InstagramData;
+const titulo = partesDoTitulo(data.titulo, data.tituloDestaque);
 ---
 
 <Section id="instagram" background="gray" padding="xl" class="social-feed">
   <Container>
     <div class="social-feed-header">
-      <a class="social-badge" href="https://www.instagram.com/escolaprisma_/" target="_blank" rel="noopener noreferrer">
+      <a class="social-badge" href={escola.instagram.url} target="_blank" rel="noopener noreferrer">
         <Icon name="instagram" size="sm" />
-        <span>@escolaprisma_</span>
+        <span>{escola.instagram.usuario}</span>
       </a>
       <h2 class="title">
-        Acompanhe nosso <span class="font-serif italic text-primary">dia a dia</span>
+        {titulo.map((p) => p.quebra ? <br /> : p.destaque ? <span class="font-serif italic text-primary">{p.texto}</span> : p.texto)}
       </h2>
       <p class="subtitle">
-        Veja na prática como é a rotina, os eventos e as conquistas dos nossos alunos.
+        {data.texto}
       </p>
     </div>
 
