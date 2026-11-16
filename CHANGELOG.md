@@ -3,7 +3,11 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
-## 16/11/2026 · branch `feat/painel-estilo-editorial`
+## 16/11/2026 · branch `docs/organiza-projeto`
+
+- **Organização do projeto e da documentação:** README com a lista de documentos por público (quem edita, técnico, histórico) e a seção do visual do painel atualizada; `AGENTS.md` com as regras do projeto para agentes (Windows, servidor local, formato dos JSON, Tailwind, segredos, fluxo de publicação); `CLAUDE.md` passa a importar o `AGENTS.md`; pendências de segurança do GitHub App listadas em `docs/PLANO-PAINEL-ADMIN.md`; `.vscode/settings.json` (preferência pessoal) fora do Git; branches locais já publicadas apagadas. Nenhuma mudança no site nem no painel.
+
+## 16/11/2026 · [PR #11](https://github.com/wflipe/escola-prisma/pull/11) · branch `feat/painel-estilo-editorial`
 
 - **Novo estilo do painel `/keystatic` (editorial):** fundo branco, texto preto em Inter com espaçamento justo, cartões creme (`#f7f4f1`) sem sombra e com cantos de 16 px, botão **Save** marrom-escuro (`#3b281d`, 13,9:1) em pílula, links cobre (`#a84d16`, 5,1:1 sobre o creme), nomes de grupos e a etiqueta "Onde aparece" em IBM Plex Mono maiúsculo e um disco terracota decorativo na caixa "Onde aparece". Tema escuro em tons de café (fundo `#211006`, botão `#a84d16` com 5,6:1, links `#f2a66b` com 8,5:1).
 - Fontes Inter e IBM Plex Mono (licença SIL OFL, pacotes `@fontsource` 5.3.0) em `public/painel/`, porque a CSP do painel só aceita fontes do próprio domínio. A Bricolage Grotesque saiu do painel; no site nada muda.

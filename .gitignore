@@ -34,3 +34,6 @@ pnpm-debug.log*
 
 # Windows
 Thumbs.db
+
+# preferencias pessoais do VS Code
+.vscode/settings.json
