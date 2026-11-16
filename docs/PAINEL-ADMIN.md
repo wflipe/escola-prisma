@@ -49,7 +49,7 @@ O painel está em português onde o Keystatic (o programa do painel) tem traduç
 
 | Botão | O que faz |
 | --- | --- |
-| **Save** (laranja, no alto) | Salva e publica a tela inteira |
+| **Save** (marrom, no alto) | Salva e publica a tela inteira |
 | **Reset** (ícone de relógio, no alto; no celular fica no menu ⋯) | Desfaz o que você mudou e ainda não salvou |
 | **Adicionar** | Adiciona um item numa lista (pergunta, cartão, etapa…) |
 | **Remove** / ícone de lixeira | Apaga um item da lista ou a foto escolhida |

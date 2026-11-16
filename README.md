@@ -41,7 +41,7 @@ Mantenha estes dados **idênticos** no site, no Perfil da Empresa no Google e na
 ```text
 public/
   assets/            logos e imagem de compartilhamento (og:image 1200x630)
-  painel/            visual do painel /keystatic (painel.css: cores e fonte da marca; fonte Bricolage)
+  painel/            visual do painel /keystatic (painel.css: estilo editorial; fontes Inter e IBM Plex Mono)
   favicon*, robots.txt, verificação do Google Search Console
 src/
   pages/index.astro  página única: monta as seções na ordem de content/site/secoes.json
