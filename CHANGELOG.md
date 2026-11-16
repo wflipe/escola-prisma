@@ -3,7 +3,13 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
-## 16/11/2026 · branch `docs/organiza-projeto`
+## 16/11/2026 · branch `feat/painel-ptbr`
+
+- **Painel 100% em português:** `public/painel/traducao.js` (colocado em `/keystatic*` pelo `src/middleware.ts`) troca os textos que o Keystatic deixa fixos em inglês: Salvar, Desfazer alterações, Concluir, Remover, Editar item, Adicionar item, Escolher arquivo, Não salvo, menus da conta e avisos. Só troca textos idênticos ao dicionário e nunca mexe em campos de digitação; não muda nada do que é gravado. Acentos escritos como `ã` no script (o navegador lia o arquivo com a codificação errada).
+- Manual (`docs/PAINEL-ADMIN.md`) com os nomes dos botões em português.
+- Novo plano [docs/PLANO-PAINEL-DADOS.md](docs/PLANO-PAINEL-DADOS.md): números do Umami, Google Analytics, Search Console e Clarity dentro do painel (aguardando as chaves de acesso).
+
+## 16/11/2026 · [PR #12](https://github.com/wflipe/escola-prisma/pull/12) · branch `docs/organiza-projeto`
 
 - **Organização do projeto e da documentação:** README com a lista de documentos por público (quem edita, técnico, histórico) e a seção do visual do painel atualizada; `AGENTS.md` com as regras do projeto para agentes (Windows, servidor local, formato dos JSON, Tailwind, segredos, fluxo de publicação); `CLAUDE.md` passa a importar o `AGENTS.md`; pendências de segurança do GitHub App listadas em `docs/PLANO-PAINEL-ADMIN.md`; `.vscode/settings.json` (preferência pessoal) fora do Git; branches locais já publicadas apagadas. Nenhuma mudança no site nem no painel.
 

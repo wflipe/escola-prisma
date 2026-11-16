@@ -2,14 +2,17 @@
  * Middleware do Astro: só mexe nas páginas do painel de edição (/keystatic).
  *
  * O Keystatic não tem API de tema. Para o painel usar as cores e a fonte da escola,
- * este middleware acrescenta <link rel="stylesheet" href="/painel/painel.css"> ao HTML
- * de /keystatic e /keystatic/*. Tudo o mais passa direto, sem alteração:
+ * este middleware acrescenta <link rel="stylesheet" href="/painel/painel.css"> e o script
+ * /painel/traducao.js (textos em português) ao HTML de /keystatic e /keystatic/*.
+ * Tudo o mais passa direto, sem alteração:
  * - páginas pré-renderizadas (home, 404, llms.txt, sitemaps): saem iguais no build;
  * - /api/keystatic/* (login e gravação) e qualquer resposta que não seja HTML.
  */
 import { defineMiddleware } from 'astro:middleware';
 
-const ESTILO_DO_PAINEL = '<link rel="stylesheet" href="/painel/painel.css">';
+// Visual (painel.css) e tradução dos textos que o Keystatic deixa em inglês (traducao.js).
+const ESTILO_DO_PAINEL =
+  '<link rel="stylesheet" href="/painel/painel.css"><script src="/painel/traducao.js" charset="utf-8" defer></script>';
 const ROTA_DO_PAINEL = /^\/keystatic(\/|$)/;
 
 export const onRequest = defineMiddleware(async (context, next) => {

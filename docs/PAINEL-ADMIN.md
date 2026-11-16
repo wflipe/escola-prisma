@@ -29,8 +29,8 @@ Se aparecer uma página de erro ("Esta página não está funcionando", erro 500
 
 1. No menu da esquerda, abra a tela que quer mudar.
 2. Altere o campo.
-3. Clique em **Save** (Salvar), no alto da tela.
-4. Pronto. Cada "Save" fica registrado no GitHub (com data e autor) e o site é atualizado sozinho em **1 a 2 minutos**.
+3. Clique em **Salvar**, no alto da tela.
+4. Pronto. Cada "Salvar" fica registrado no GitHub (com data e autor) e o site é atualizado sozinho em **1 a 2 minutos**.
 
 Não existe botão "Publicar" separado: salvar já publica.
 
@@ -45,25 +45,27 @@ Se a tela do painel mostrar um seletor de "branch" (ramo), deixe sempre em **mai
 
 ## 3. Botões do painel
 
-O painel está em português onde o Keystatic (o programa do painel) tem tradução: menu, busca e botões das listas. Alguns botões continuam em inglês porque o Keystatic não permite traduzir. Os principais:
+O painel está todo em português. Os botões principais:
 
 | Botão | O que faz |
 | --- | --- |
-| **Save** (marrom, no alto) | Salva e publica a tela inteira |
-| **Reset** (ícone de relógio, no alto; no celular fica no menu ⋯) | Desfaz o que você mudou e ainda não salvou |
+| **Salvar** (marrom, no alto) | Salva e publica a tela inteira |
+| **Desfazer alterações** (ícone de relógio, no alto; no celular fica no menu ⋯) | Desfaz o que você mudou e ainda não salvou |
 | **Adicionar** | Adiciona um item numa lista (pergunta, cartão, etapa…) |
-| **Remove** / ícone de lixeira | Apaga um item da lista ou a foto escolhida |
-| **Done** | Fecha a janela "Edit item" de um item da lista (ainda precisa clicar em Save depois) |
+| **Remover** / ícone de lixeira | Apaga um item da lista ou a foto escolhida |
+| **Concluir** | Fecha a janela "Editar item" de um item da lista (ainda precisa clicar em Salvar depois) |
 | **Cancelar** | Fecha uma janela sem guardar o que mudou |
-| **Choose file** | Escolhe uma foto do seu computador ou celular |
+| **Escolher arquivo** | Escolhe uma foto do seu computador ou celular |
 | Alça com pontinhos (⋮⋮) | Segure e arraste para mudar a ordem dos itens |
 | **Painel** (primeiro item do menu) | Volta para a página inicial do painel, com todas as telas |
 
-Atenção: **Done** não publica nada. Só o **Save** publica.
+Atenção: **Concluir** não publica nada. Só o **Salvar** publica.
+
+Se aparecer **Não salvo** ao lado do nome da tela, há mudanças que ainda não foram salvas.
 
 ### Como cada tela está organizada
 
-- **No alto de cada tela** há uma caixa que diz **onde aquilo aparece no site**, com o link **Ver no site ↗**. Ele abre o site publicado (em outra aba) já na seção certa. Lembre que o site mostra a mudança 1 a 2 minutos depois do Save.
+- **No alto de cada tela** há uma caixa que diz **onde aquilo aparece no site**, com o link **Ver no site ↗**. Ele abre o site publicado (em outra aba) já na seção certa. Lembre que o site mostra a mudança 1 a 2 minutos depois de salvar.
 - Campos que andam juntos ficam **num quadro com título** (ex.: "Botão principal (WhatsApp)", "Endereço", "Faixa fina no topo do site"). No computador, alguns campos curtos ficam lado a lado (ex.: UF, CEP e País; os 3 cartões de foto do Topo); no celular ficam um embaixo do outro.
 - O painel segue o tema claro ou escuro do seu aparelho. Dá para trocar no menu da esquerda (ícone de sol/lua ou menu da sua conta).
 - As ajudas abaixo de cada campo são curtas; os detalhes estão neste manual.
@@ -178,7 +180,7 @@ Algum campo tem erro. Procure a **mensagem em vermelho** abaixo do campo. Exempl
 - Formato errado (CEP, telefone, coordenadas, ID do YouTube, link do mapa, link da faixa de matrículas).
 - Lista com itens de menos ou de mais (ex.: nenhuma etapa de matrícula, mais de 3 indicadores no Topo).
 
-Corrija e clique em **Save** de novo. Se a lista estiver fechada, abra os itens para achar o erro.
+Corrija e clique em **Salvar** de novo. Se a lista estiver fechada, abra os itens para achar o erro.
 
 ### Salvei, mas o site não mudou
 
@@ -189,7 +191,7 @@ Corrija e clique em **Save** de novo. Se a lista estiver fechada, abra os itens 
 
 ### Mudei algo errado
 
-Se ainda **não salvou**: clique em **Reset**.
+Se ainda **não salvou**: clique em **Desfazer alterações** (ícone de relógio).
 
 Se **já salvou**: corrija no painel e salve de novo. É o jeito mais rápido. Se não lembrar como estava, veja a seção 6.
 
@@ -204,7 +206,7 @@ Toda mudança salva fica guardada no GitHub. Dá para ver como estava antes.
 3. Clique no arquivo da tela (ex.: `hero.json` é o Topo, `matriculas.json` é Matrículas).
 4. Clique em **History** (Histórico), no alto, à direita.
 5. Clique na mudança anterior à sua. As linhas em vermelho mostram o texto antigo.
-6. Copie o texto antigo, cole no painel e clique em **Save**.
+6. Copie o texto antigo, cole no painel e clique em **Salvar**.
 
 ### Pedir ao responsável técnico
 
