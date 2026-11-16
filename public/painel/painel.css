@@ -1,0 +1,249 @@
+/*
+ * Visual do painel de edição (/keystatic) com as cores e a fonte da Escola Prisma.
+ *
+ * Carregado só nas páginas do painel, por src/middleware.ts. O site não usa este arquivo.
+ *
+ * O Keystatic não tem API de tema. A interface dele (Keystar UI) usa variáveis CSS
+ * --kui-* definidas em .kui-scheme--light/--dark/--auto (no <html> e na raiz do app).
+ * Aqui só se trocam essas variáveis: "indigo" é a cor de destaque (botão Salvar,
+ * foco, item selecionado, links) e "slate" são os cinzas (fundos, bordas, textos).
+ * Os seletores usam .kui-theme + .kui-scheme--* (2 classes) para valer mais que os
+ * do Keystatic sem depender da ordem dos estilos. Nada de classes com hash (kui-abc123).
+ *
+ * Contraste (WCAG 2.1, mínimo AA: 4,5:1 texto; 3:1 foco e bordas), para as cores abaixo:
+ *   claro  - texto #18233d sobre #f7f8fb: 14,7:1 · texto secundário #5d6880 sobre #f7f8fb: 5,3:1
+ *            botão Save: branco sobre #c2410c: 5,2:1 (hover #a8380a: 6,5:1)
+ *            foco/borda #c2410c sobre #f7f8fb: 4,9:1 · link e item selecionado #9a3412 sobre #fff: 7,3:1
+ *   escuro - texto #e8ebf1 sobre #151a25: 14,6:1 · texto secundário #959eb1 sobre #151a25: 6,5:1
+ *            botão Save: branco sobre #c2410c: 5,2:1 (hover #b13b0b: 6,0:1)
+ *            foco #c2410c sobre #10141d: 3,6:1 · link e item selecionado #ffb27a sobre #151a25: 9,9:1
+ * Refaça a conta se mudar alguma cor.
+ */
+
+/* Fonte dos títulos do site (Bricolage Grotesque, licença OFL), mesma do site, servida daqui. */
+@font-face {
+  font-family: 'Bricolage Grotesque Painel';
+  src: url('/painel/bricolage-grotesque-latin.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------------------------------------------------------------- Tema claro */
+.kui-theme.kui-scheme--light,
+.kui-theme.kui-scheme--auto {
+  /* Destaque: laranja da marca, escurecido para o texto branco do botão passar no AA. */
+  --kui-color-scale-indigo1: #fffcfa;
+  --kui-color-scale-indigo2: #fff7f1;
+  --kui-color-scale-indigo3: #ffefe3;
+  --kui-color-scale-indigo4: #ffe3cf;
+  --kui-color-scale-indigo5: #fdd2b3;
+  --kui-color-scale-indigo6: #f8bb8f;
+  --kui-color-scale-indigo7: #f19c62;
+  --kui-color-scale-indigo8: #e67e36;
+  --kui-color-scale-indigo9: #c2410c;
+  --kui-color-scale-indigo10: #a8380a;
+  --kui-color-scale-indigo11: #9a3412;
+
+  /* Cinzas puxados para o azul-marinho da marca. */
+  --kui-color-scale-slate1: #ffffff;
+  --kui-color-scale-slate2: #f7f8fb;
+  --kui-color-scale-slate3: #f0f2f7;
+  --kui-color-scale-slate4: #e7eaf1;
+  --kui-color-scale-slate5: #dce1ea;
+  --kui-color-scale-slate6: #c7cedb;
+  --kui-color-scale-slate7: #a9b2c3;
+  --kui-color-scale-slate8: #8a94a8;
+  --kui-color-scale-slate9: #5d6880;
+  --kui-color-scale-slate10: #3a4560;
+  --kui-color-scale-slate11: #18233d;
+
+  /* Variáveis próprias do painel */
+  --painel-titulo: #152e65; /* azul-marinho da marca */
+  --painel-cartao: #ffffff;
+  --painel-cartao-borda: #e7eaf1;
+}
+
+/* --------------------------------------------------------------- Tema escuro */
+.kui-theme.kui-scheme--dark {
+  --kui-color-scale-indigo1: #1a130e;
+  --kui-color-scale-indigo2: #22170f;
+  --kui-color-scale-indigo3: #2d1c10;
+  --kui-color-scale-indigo4: #3a2212;
+  --kui-color-scale-indigo5: #4a2a14;
+  --kui-color-scale-indigo6: #5e3417;
+  --kui-color-scale-indigo7: #7a431b;
+  --kui-color-scale-indigo8: #a3561f;
+  --kui-color-scale-indigo9: #c2410c;
+  --kui-color-scale-indigo10: #b13b0b;
+  --kui-color-scale-indigo11: #ffb27a;
+
+  --kui-color-scale-slate1: #10141d;
+  --kui-color-scale-slate2: #151a25;
+  --kui-color-scale-slate3: #1b2130;
+  --kui-color-scale-slate4: #222939;
+  --kui-color-scale-slate5: #2b3345;
+  --kui-color-scale-slate6: #384154;
+  --kui-color-scale-slate7: #4a5468;
+  --kui-color-scale-slate8: #6c768b;
+  --kui-color-scale-slate9: #959eb1;
+  --kui-color-scale-slate10: #bcc3d1;
+  --kui-color-scale-slate11: #e8ebf1;
+
+  --painel-titulo: #e8ebf1;
+  --painel-cartao: #1b2130;
+  --painel-cartao-borda: #2b3345;
+}
+
+/* "Automático" segue o sistema: mesmas cores do escuro quando o sistema está escuro. */
+@media (prefers-color-scheme: dark) {
+  .kui-theme.kui-scheme--auto {
+    --kui-color-scale-indigo1: #1a130e;
+    --kui-color-scale-indigo2: #22170f;
+    --kui-color-scale-indigo3: #2d1c10;
+    --kui-color-scale-indigo4: #3a2212;
+    --kui-color-scale-indigo5: #4a2a14;
+    --kui-color-scale-indigo6: #5e3417;
+    --kui-color-scale-indigo7: #7a431b;
+    --kui-color-scale-indigo8: #a3561f;
+    --kui-color-scale-indigo9: #c2410c;
+    --kui-color-scale-indigo10: #b13b0b;
+    --kui-color-scale-indigo11: #ffb27a;
+
+    --kui-color-scale-slate1: #10141d;
+    --kui-color-scale-slate2: #151a25;
+    --kui-color-scale-slate3: #1b2130;
+    --kui-color-scale-slate4: #222939;
+    --kui-color-scale-slate5: #2b3345;
+    --kui-color-scale-slate6: #384154;
+    --kui-color-scale-slate7: #4a5468;
+    --kui-color-scale-slate8: #6c768b;
+    --kui-color-scale-slate9: #959eb1;
+    --kui-color-scale-slate10: #bcc3d1;
+    --kui-color-scale-slate11: #e8ebf1;
+
+    --painel-titulo: #e8ebf1;
+    --painel-cartao: #1b2130;
+    --painel-cartao-borda: #2b3345;
+  }
+}
+
+/* ------------------------------------------------------------------ Títulos */
+/* Nome da tela no cabeçalho (id fixo do Keystatic) e títulos do Keystar UI. */
+#page-title,
+.kui\:Heading {
+  font-family: 'Bricolage Grotesque Painel', var(--kui-typography-font-family-base);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--painel-titulo);
+}
+
+/* ---------------------------------------------------------------- Formulário */
+/* Largura de leitura confortável (o padrão do Keystatic é 940px). */
+#singleton-form {
+  --kui-size-container-medium: 800px;
+}
+
+/* Grupos com nome (ex.: "Botão principal (WhatsApp)") viram cartões. O Keystatic
+ * marca cada grupo com role="group" e aria-labelledby (acessibilidade). */
+#singleton-form [role='group'][aria-labelledby] {
+  background: var(--painel-cartao);
+  border: 1px solid var(--painel-cartao-borda);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+}
+
+/* Nome do grupo com a fonte dos títulos. */
+#singleton-form [role='group'][aria-labelledby] > .kui\:Text:first-child {
+  font-family: 'Bricolage Grotesque Painel', var(--kui-typography-font-family-base);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--painel-titulo);
+}
+
+/* Grupo dentro de grupo (ex.: cada cartão de foto do Topo): sem fundo próprio. */
+#singleton-form [role='group'][aria-labelledby] [role='group'][aria-labelledby] {
+  background: transparent;
+  box-shadow: none;
+  padding: 16px;
+}
+#singleton-form [role='group'][aria-labelledby] [role='group'][aria-labelledby] > .kui\:Text:first-child {
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  #singleton-form [role='group'][aria-labelledby] {
+    padding: 16px 14px;
+  }
+  #singleton-form [role='group'][aria-labelledby] [role='group'][aria-labelledby] {
+    padding: 14px 12px;
+  }
+}
+
+/* ------------------------------------------- "Onde aparece" + "Ver no site" */
+/* Bloco do início de cada tela (campo "verNoSite" em keystatic.config.ts; não grava nada). */
+.painel-onde {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: 0;
+  padding: 12px 16px 12px 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--painel-cartao-borda);
+  background: var(--painel-cartao);
+  color: var(--kui-color-foreground-neutral);
+  font-family: var(--kui-typography-font-family-base);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+.painel-onde::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #f9b91a 0 50%, #f67a21 50%);
+}
+.painel-onde a {
+  color: var(--kui-color-foreground-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+.painel-onde a:hover {
+  text-decoration-thickness: 2px;
+}
+.painel-onde a:focus-visible {
+  outline: 2px solid var(--kui-color-alias-focus-ring);
+  outline-offset: 2px;
+}
+/* Texto só para leitores de tela (ex.: "abre em nova aba"). */
+.painel-leitor-de-tela {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------- Logo */
+/* Quadrado branco atrás do logo: legível no tema claro e no escuro. */
+.painel-logo {
+  display: block;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 1px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--painel-cartao-borda);
+}

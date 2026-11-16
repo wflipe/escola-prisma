@@ -43,22 +43,30 @@ Não existe botão "Publicar" separado: salvar já publica.
 
 Se a tela do painel mostrar um seletor de "branch" (ramo), deixe sempre em **main**. É a versão que vai para o site.
 
-## 3. Botões do painel (em inglês)
+## 3. Botões do painel
 
-O painel é em inglês, mas os campos estão em português. Os botões principais:
+O painel está em português onde o Keystatic (o programa do painel) tem tradução: menu, busca e botões das listas. Alguns botões continuam em inglês porque o Keystatic não permite traduzir. Os principais:
 
 | Botão | O que faz |
 | --- | --- |
-| **Save** | Salva e publica a tela inteira |
-| **Reset** | Desfaz o que você mudou e ainda não salvou |
-| **Add** | Adiciona um item numa lista (pergunta, cartão, etapa…) |
+| **Save** (laranja, no alto) | Salva e publica a tela inteira |
+| **Reset** (ícone de relógio, no alto; no celular fica no menu ⋯) | Desfaz o que você mudou e ainda não salvou |
+| **Adicionar** | Adiciona um item numa lista (pergunta, cartão, etapa…) |
 | **Remove** / ícone de lixeira | Apaga um item da lista ou a foto escolhida |
-| **Done** | Fecha a janela de edição de um item da lista (ainda precisa clicar em Save depois) |
-| **Cancel** | Fecha a janela sem guardar o que mudou no item |
-| **Upload** / **Choose file** | Escolhe uma foto do seu computador ou celular |
+| **Done** | Fecha a janela "Edit item" de um item da lista (ainda precisa clicar em Save depois) |
+| **Cancelar** | Fecha uma janela sem guardar o que mudou |
+| **Choose file** | Escolhe uma foto do seu computador ou celular |
 | Alça com pontinhos (⋮⋮) | Segure e arraste para mudar a ordem dos itens |
+| **Painel** (primeiro item do menu) | Volta para a página inicial do painel, com todas as telas |
 
 Atenção: **Done** não publica nada. Só o **Save** publica.
+
+### Como cada tela está organizada
+
+- **No alto de cada tela** há uma caixa que diz **onde aquilo aparece no site**, com o link **Ver no site ↗**. Ele abre o site publicado (em outra aba) já na seção certa. Lembre que o site mostra a mudança 1 a 2 minutos depois do Save.
+- Campos que andam juntos ficam **num quadro com título** (ex.: "Botão principal (WhatsApp)", "Endereço", "Faixa fina no topo do site"). No computador, alguns campos curtos ficam lado a lado (ex.: UF, CEP e País; os 3 cartões de foto do Topo); no celular ficam um embaixo do outro.
+- O painel segue o tema claro ou escuro do seu aparelho. Dá para trocar no menu da esquerda (ícone de sol/lua ou menu da sua conta).
+- As ajudas abaixo de cada campo são curtas; os detalhes estão neste manual.
 
 ## 4. As telas do painel
 
@@ -70,7 +78,7 @@ As telas estão em três grupos, na mesma ordem do menu da esquerda. Cada campo 
 - **Título com quebra de linha:** em alguns títulos, aperte Enter para quebrar a linha. A quebra vale no computador; no celular o texto se ajusta sozinho.
 - **Assunto da mensagem no WhatsApp:** todo botão de WhatsApp manda a frase "Olá! Vim pelo site da Escola Prisma e gostaria de **___**." O campo preenche só o espaço. Comece com letra minúscula e não ponha ponto final. Exemplo: `agendar uma visita guiada`.
 - **Ícones e cores:** escolha numa lista. Não dá para enviar ícones novos.
-- **Listas:** use **Add** para incluir, a lixeira para apagar e a alça para arrastar e reordenar. Cada lista tem um mínimo e um máximo de itens, escritos na ajuda do campo; fora disso o painel não salva. Nos cartões das seções A Escola e Valores, a cor muda conforme a posição (1º, 2º e 3º cartão) e se repete a partir do 4º; no computador ficam 3 por linha, então use 3 ou 6 cartões.
+- **Listas:** use **Adicionar** para incluir, a lixeira para apagar e a alça para arrastar e reordenar. Cada lista tem um mínimo e um máximo de itens, escritos na ajuda do campo; fora disso o painel não salva. Nos cartões das seções A Escola e Valores, a cor muda conforme a posição (1º, 2º e 3º cartão) e se repete a partir do 4º; no computador ficam 3 por linha, então use 3 ou 6 cartões.
 
 ### Grupo "Topo da página"
 
@@ -100,7 +108,7 @@ As telas estão em três grupos, na mesma ordem do menu da esquerda. Cada campo 
 - Desmarque "Mostrar esta seção" para esconder. Os textos ficam guardados.
 - Seção escondida **some também do menu** sozinha (A Escola, Fases, Diferenciais, Famílias, Dúvidas).
 - Se a mesma seção aparecer duas vezes, só a primeira vale. A repetida é ignorada.
-- Se você apagar uma seção da lista, ela fica escondida. Para trazer de volta, use **Add** e escolha a seção.
+- Se você apagar uma seção da lista, ela fica escondida. Para trazer de volta, use **Adicionar** e escolha a seção.
 - "Mostrar depoimentos": liga o bloco "O que dizem as famílias". Só marque com depoimentos reais e autorizados.
 
 **A Escola (proposta)** — primeira seção depois do banner. Frase acima do título, título, destaque, texto e cartões (ícone, título, texto; de 1 a 6, o ideal são 3 ou 6).
@@ -115,7 +123,7 @@ As telas estão em três grupos, na mesma ordem do menu da esquerda. Cada campo 
 
 **Fases de ensino** — os cartões das etapas (Educação Infantil, Fundamental I…).
 - Frase acima do título, título, destaque, texto e a frase em itálico abaixo dos cartões.
-- Cada etapa: nome, identificador, rótulo (ex.: "1ª Descobrir"), ícone, cor do cartão, descrição, texto do botão e assunto do WhatsApp.
+- Cada etapa: nome, identificador, rótulo da fase (texto pequeno do cartão, ex.: "1ª Descobrir"), ícone, cor do cartão, descrição, texto do botão e assunto do WhatsApp.
 - "Identificador": uso interno. Só letras minúsculas, números e hífen (ex.: `fundamental-1`). Não mude sem necessidade.
 
 **Diferenciais** — título, destaque, texto, botão (texto e assunto do WhatsApp) e a lista de diferenciais (ícone, título, descrição; de 1 a 8).
@@ -148,7 +156,7 @@ As telas estão em três grupos, na mesma ordem do menu da esquerda. Cada campo 
 **Dados da escola** — nome, slogan (aparece no rodapé e no Google), ano de fundação, endereço, coordenadas, link do mapa, telefones, WhatsApp, e-mail, Instagram e Facebook.
 - Esses dados aparecem no rodapé, nos botões e no Google. Devem ser **idênticos ao Perfil da Escola no Google** (Google Meu Negócio). Se mudar um, mude o outro.
 - Ano de fundação: só preencha com o ano confirmado. Vazio = não aparece.
-- CEP no formato `00000-000`. Estado e país com 2 letras (`BA`, `BR`).
+- CEP no formato `00000-000`. UF (estado) e País com 2 letras (`BA`, `BR`).
 - Coordenadas (latitude e longitude): números com ponto, com **5 a 7 casas decimais** (ex.: `-12.29491`). Copie do mesmo ponto do Perfil no Google. Zeros no final podem sumir ao salvar (`-12.29000` fica `-12.29` no arquivo); o painel mostra de novo com 5 casas e o valor é o mesmo.
 - Telefones: "Como aparece no site" é livre, ex.: `(75) 3622-9180`. "Formato internacional" é `+55` seguido só de números, ex.: `+557536229180`.
 - WhatsApp "Número para o link": só números, com 55 e DDD, ex.: `5575998954848`. Se errar aqui, **todos** os botões de WhatsApp param de funcionar.
