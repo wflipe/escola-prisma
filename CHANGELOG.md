@@ -3,7 +3,12 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
-## 16/11/2026 · branch `feat/painel-visual`
+## 16/11/2026 · branch `feat/painel-estilo-editorial`
+
+- **Novo estilo do painel `/keystatic` (editorial):** fundo branco, texto preto em Inter com espaçamento justo, cartões creme (`#f7f4f1`) sem sombra e com cantos de 16 px, botão **Save** marrom-escuro (`#3b281d`, 13,9:1) em pílula, links cobre (`#a84d16`, 5,1:1 sobre o creme), nomes de grupos e a etiqueta "Onde aparece" em IBM Plex Mono maiúsculo e um disco terracota decorativo na caixa "Onde aparece". Tema escuro em tons de café (fundo `#211006`, botão `#a84d16` com 5,6:1, links `#f2a66b` com 8,5:1).
+- Fontes Inter e IBM Plex Mono (licença SIL OFL, pacotes `@fontsource` 5.3.0) em `public/painel/`, porque a CSP do painel só aceita fontes do próprio domínio. A Bricolage Grotesque saiu do painel; no site nada muda.
+
+## 16/11/2026 · [PR #10](https://github.com/wflipe/escola-prisma/pull/10) · branch `feat/painel-visual`
 
 - **Visual do painel `/keystatic` com a marca:** cor de destaque laranja (`#c2410c`, laranja da marca escurecido para o texto branco do botão passar no contraste AA: 5,2:1), cinzas puxados para o azul-marinho, títulos na fonte Bricolage Grotesque (a mesma do site), nome da tela em azul-marinho, grupos de campos em cartões e formulário mais estreito (800 px). Tema claro e escuro. Arquivo `public/painel/painel.css`, colocado só nas páginas do painel por `src/middleware.ts` (novo); o CSS só troca variáveis do Keystar UI, sem depender de classes geradas.
 - **Organização das telas** (`keystatic.config.ts`): logo da escola no topo do menu; interface do Keystatic em português onde ele tem tradução (`locale: 'pt-BR'`: "Painel", "Adicionar", "Pesquisar"…; "Save", "Reset", "Done" e "Edit item" continuam em inglês porque o Keystatic não traduz); no início de cada uma das 18 telas, uma caixa "onde aparece" com o link **Ver no site ↗** para a seção (não grava nada no JSON); campos curtos lado a lado no computador (texto do botão e texto curto, chamadas da faixa, UF/CEP/País, latitude/longitude, telefones, WhatsApp, Instagram, portais, ícone e título dos cartões, os 3 cartões de foto do Topo); ajudas mais curtas (detalhes no manual).
