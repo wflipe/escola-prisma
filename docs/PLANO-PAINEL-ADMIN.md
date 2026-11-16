@@ -1,6 +1,6 @@
 # Plano — Painel de edição do site (ADM)
 
-Criado em 15/11/2026. Status: **Etapas 1, 2 e 4 feitas no código (branch `feat/painel-admin`, 15/11/2026; o painel cobre todo o texto visível do site, em 18 telas); manual do ADM (Etapa 5) escrito; falta a Etapa 3 (GitHub App e variáveis na Vercel) e o treino com o ADM.**
+Criado em 15/11/2026. Status: **no ar desde 15/11/2026** ([PR #7](https://github.com/wflipe/escola-prisma/pull/7)). Etapas 1 a 5 concluídas; o login em produção funciona com o GitHub App `escola-prisma-painel` (primeira edição real pelo painel: commit `07ba0a0`). Falta só o treino com o ADM.
 
 Objetivo: um painel compacto, em `www.escolaprisma.net.br/keystatic`, onde o administrador edita **tudo** que aparece no site (textos, botões, ligar/desligar seções, imagens, dados de contato, SEO) sem mexer em código. Cada "Salvar" vira um commit no GitHub e a Vercel publica em 1–2 minutos, como já acontece hoje com os PRs.
 
@@ -114,12 +114,65 @@ Refatoração pequena, sem mudar nada visível no site. *(Feita em 15/11/2026 na
 - [x] Testar em `localhost:4321/keystatic`: editar cada tela, conferir que o JSON gravado é igual ao formato atual (chaves, ordem, acentos) e que o site reflete a mudança. *(Testado com navegador headless: alterar e reverter em cada tela mantém o conteúdo idêntico; o Keystatic regrava com `JSON.stringify(dados, null, 2)` + quebra de linha, então os JSON já foram normalizados para esse formato, e omite texto vazio, por isso `anoFundacao` vazio saiu de `escola.json` e ficou opcional no tipo.)*
 - [x] Conferir que `dist/` continua com `index.html` estático e que o Lighthouse da home não mudou (o React não deve entrar na página pública). *(Com o adapter, o HTML estático fica em `dist/client/` e `.vercel/output/static/`. `index.html` e `404.html` idênticos ao build anterior, sem nenhum JS de React; Lighthouse não foi rodado de novo, já que o HTML não mudou.)*
 
-### Etapa 3 — Ligar ao GitHub e publicar
+### Etapa 3 — Ligar ao GitHub e publicar (concluída em 15/11/2026)
 
-- [x] Trocar para `storage: { kind: 'github', repo: 'wflipe/escola-prisma' }`. *(Já no `keystatic.config.ts`: `local` no `npm run dev`, `github` no build de produção. Até o GitHub App existir, `/keystatic` no ar mostra o assistente de configuração do Keystatic e não grava nada.)*
-- [ ] Abrir `/keystatic` no preview da Vercel e seguir o assistente que cria o GitHub App (nome sugerido: `escola-prisma-painel`), com acesso **só** a este repositório.
-- [ ] Cadastrar as 4 variáveis de ambiente na Vercel (Production e Preview) e a URL de callback `https://www.escolaprisma.net.br/api/keystatic/github/oauth/callback` no GitHub App.
-- [ ] Mesclar o PR e testar o login em produção com a conta do ADM.
+- [x] Trocar para `storage: { kind: 'github', repo: 'wflipe/escola-prisma' }`. *(`local` no `npm run dev`, `github` no build de produção.)*
+- [x] Criar o GitHub App `escola-prisma-painel` (conta `wflipe`). **Correção do plano:** o assistente do Keystatic que cria o app sozinho só aparece rodando o site no computador com `storage: github`. No site publicado, sem as variáveis, `/keystatic` mostra só "Log in with GitHub" e o login dá erro 500 (log da Vercel: `Missing required config in Keystatic API setup when using the 'github' storage mode`). Por isso o app foi criado à mão (passo a passo abaixo).
+- [x] Cadastrar as 4 variáveis de ambiente na Vercel (só **Production**) e fazer Redeploy.
+- [x] Mesclar o PR (#7) e testar o login em produção.
+
+#### Como o GitHub App foi configurado (para refazer, se precisar)
+
+Em <https://github.com/settings/apps/new>, logado como `wflipe`:
+
+| Campo | Valor |
+| --- | --- |
+| GitHub App name | `escola-prisma-painel` |
+| Homepage URL | `https://www.escolaprisma.net.br/keystatic` |
+| Redirect URI (callback) | `https://www.escolaprisma.net.br/api/keystatic/github/oauth/callback` |
+| Expire user authorization tokens | marcado |
+| Request user authorization during installation, Device Flow, wildcard | desmarcados (opcionais) |
+| Webhook → Active | **desmarcado** |
+| Repository permissions | **Contents: Read and write** · Metadata: Read-only (obrigatório) · **Pull requests: Read-only** · o resto "No access" |
+| Organization / Account / Enterprise permissions | tudo "No access" |
+| Subscribe to events | nenhum |
+| Where can this GitHub App be installed? | Only on this account |
+
+São as mesmas permissões que o assistente do Keystatic pediria (`contents: write`, `metadata: read`, `pull_requests: read`, conferido no código de `@keystatic/core`).
+
+Depois de criar:
+
+1. **Client ID**: na página do app (começa com `Iv23`).
+2. **Client secret**: menu **Credentials → Generate a new client secret** (aparece uma vez só).
+3. **Slug**: final do endereço do app (`github.com/apps/escola-prisma-painel` → `escola-prisma-painel`).
+4. **Install App → Install → Only select repositories → `escola-prisma`**. Não deixar em "All repositories": o app teria escrita em todos os repositórios da conta.
+5. **Private key**: o painel não usa. Se o GitHub gerou uma, apagar em **App settings → Private keys** e apagar o arquivo `.pem` baixado.
+
+#### Variáveis na Vercel
+
+Projeto `escola-prisma` → **Settings → Environment Variables**, ambiente **Production**. O Preview não precisa: o callback só aceita o domínio oficial, e o preview tem proteção de login da Vercel.
+
+| Nome | Valor | Tipo na Vercel |
+| --- | --- | --- |
+| `KEYSTATIC_GITHUB_CLIENT_ID` | Client ID | Secret |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET` | client secret | Secret |
+| `KEYSTATIC_SECRET` | texto aleatório com 32+ caracteres: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` | Secret |
+| `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | `escola-prisma-painel` | **Config** (a Vercel recusa o tipo Secret em variável `PUBLIC_`; o slug não é segredo) |
+
+Depois de salvar: **Deployments → último deploy → ⋯ → Redeploy** (sem novo deploy a variável `PUBLIC_` não entra no site). Uma cópia local dos valores pode ficar em `.env` na raiz (está no `.gitignore`); dá para colar o conteúdo dele inteiro no primeiro campo "Key" da Vercel.
+
+#### Trocar o client secret (rotina de segurança)
+
+Gerar um novo em **App settings → Credentials**, apagar o antigo, atualizar `KEYSTATIC_GITHUB_CLIENT_SECRET` na Vercel e fazer Redeploy. Fazer isso sempre que o valor aparecer em print, e-mail ou conversa. Para cortar o acesso de todo mundo de uma vez: **Revoke all user tokens** na página do app.
+
+#### Se o login falhar
+
+| Sintoma | Causa provável |
+| --- | --- |
+| Erro 500 em `/api/keystatic/github/login` | Variável faltando ou Redeploy não feito (ver Vercel → Logs) |
+| GitHub diz "redirect_uri is not associated with this application" | Redirect URI diferente de `https://www.escolaprisma.net.br/api/keystatic/github/oauth/callback` (atenção ao `www`) |
+| Entra, mas não vê o repositório ou não salva | App não instalado no repositório `escola-prisma`, ou a conta não tem permissão de escrita nele |
+| `KEYSTATIC_SECRET must be at least 32 characters long` | Segredo curto demais |
 
 ### Etapa 4 — Segurança e ajustes finos
 
@@ -131,7 +184,7 @@ Refatoração pequena, sem mudar nada visível no site. *(Feita em 15/11/2026 na
 ### Etapa 5 — Manual do ADM
 
 - [x] Criar `docs/PAINEL-ADMIN.md` com: como entrar, o que cada tela faz, quanto tempo leva para publicar (1–2 min), como acompanhar o deploy na Vercel, como desfazer uma mudança (reverter o commit pelo GitHub), limites (tamanho de imagem, textos longos) e o que **não** está no painel.
-  *(Feito em 15/11/2026: [PAINEL-ADMIN.md](PAINEL-ADMIN.md). Revisar quando a Etapa 3 estiver pronta, com o nome real do botão de login.)*
+  *(Feito em 15/11/2026: [PAINEL-ADMIN.md](PAINEL-ADMIN.md); revisado depois da Etapa 3 com a tela real de login.)*
 - [ ] Sessão de 30 min com o ADM editando uma coisa de cada tela.
 
 ## 5. Riscos e como lidar

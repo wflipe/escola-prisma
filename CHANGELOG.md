@@ -3,9 +3,14 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
-## 15/11/2026 · branch `feat/painel-admin` (ainda sem PR) · tag `restauracao/2026-11-15-antes-do-painel`
+## 16/11/2026 · branch `docs/painel-etapa3`
 
-- **Painel de edição em `/keystatic`** (Keystatic, [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md)): 18 telas em `keystatic.config.ts`, cada uma editando um JSON de `src/content/`. Todo texto visível do site, os assuntos das mensagens do WhatsApp, as fotos do Hero, a ordem e a visibilidade das seções, o menu, o rodapé, a página 404, os dados da escola e o SEO saíram do código para esses JSON. Manual para quem edita: [docs/PAINEL-ADMIN.md](docs/PAINEL-ADMIN.md). Falta ligar ao GitHub (Etapa 3 do plano).
+- **Painel ligado ao GitHub (Etapa 3):** GitHub App `escola-prisma-painel` e 4 variáveis na Vercel; login em produção funcionando desde 15/11/2026. Primeira edição feita pelo painel: selo do topo sem "· Vestibular" (commit `07ba0a0`).
+- Docs: passo a passo do GitHub App e das variáveis (o assistente do Keystatic só roda no computador; a variável `PUBLIC_` tem de ser do tipo Config na Vercel), troca do client secret e tabela de erros de login em [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md); manual atualizado com a tela real de login; tag `restauracao/2026-11-15-antes-do-painel` enviada ao GitHub.
+
+## 15/11/2026 · [PR #7](https://github.com/wflipe/escola-prisma/pull/7) · branch `feat/painel-admin` · tag `restauracao/2026-11-15-antes-do-painel`
+
+- **Painel de edição em `/keystatic`** (Keystatic, [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md)): 18 telas em `keystatic.config.ts`, cada uma editando um JSON de `src/content/`. Todo texto visível do site, os assuntos das mensagens do WhatsApp, as fotos do Hero, a ordem e a visibilidade das seções, o menu, o rodapé, a página 404, os dados da escola e o SEO saíram do código para esses JSON. Manual para quem edita: [docs/PAINEL-ADMIN.md](docs/PAINEL-ADMIN.md). Ligado ao GitHub em 15/11/2026 (Etapa 3; ver a entrada de 16/11).
 - O HTML da home e o sitemap continuam iguais aos da `main`; o `llms.txt` também (byte a byte).
 - Correções da revisão do painel:
   - **Fotos:** a extensão é lida sem diferenciar maiúsculas (`.JPG` não quebra mais o build, `src/utils/imagens.ts`); foto nova enviada pelo painel ganha nome único (nome original sem `#`, `%`, `?` + sufixo de data/hora + extensão minúscula), então não substitui mais outra foto de mesmo nome; gif e heic são recusados no envio, com aviso.
@@ -16,7 +21,7 @@ Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](d
   - Limites de cada lista no painel alinhados com a ajuda e o layout (indicadores do Hero até 3; etapas de matrícula 1 a 6; depoimentos 1 a 6; temas 1 a 20); as cores dos cartões de A Escola e Valores se repetem a partir do 4º cartão.
   - Identificador (`id`) dos depoimentos saiu da tela (não é usado no site); o valor que já existe nos JSON é mantido.
   - **Página 404:** os links do menu passam a ser `/#proposta`, `/#etapas`… (antes `#proposta`, que não existe nessa página). Na home continuam `#proposta`.
-- Docs: plano, manual, [docs/SEO-GEO.md](docs/SEO-GEO.md) (`llms.txt`), [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md) (assuntos vêm do painel) e [docs/RESTAURACAO.md](docs/RESTAURACAO.md) (tag nova, ainda só neste computador).
+- Docs: plano, manual, [docs/SEO-GEO.md](docs/SEO-GEO.md) (`llms.txt`), [docs/WHATSAPP-SAUDACAO.md](docs/WHATSAPP-SAUDACAO.md) (assuntos vêm do painel) e [docs/RESTAURACAO.md](docs/RESTAURACAO.md) (tag nova).
 
 ## 15/11/2026 · [PR #5](https://github.com/wflipe/escola-prisma/pull/5) · branch `fix/clarity-via-gtm`
 
