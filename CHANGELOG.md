@@ -3,6 +3,13 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
+## 16/11/2026 · [PR #9](https://github.com/wflipe/escola-prisma/pull/9) · branch `chore/atualiza-astro`
+
+- **Atualização de segurança:** `astro` 7.2.2 → 7.4.12 (falha crítica em `astro <=7.4.6`), `@astrojs/mdx` 7.0.5 → 7.0.8, `@astrojs/sitemap` 3.7.3 → 3.7.5, `sharp` 0.35.3 → 0.35.5; `@astrojs/react` 7.1.9, `@astrojs/vercel` 11.0.22 e `@astrojs/check` 0.9.12 já estavam na última versão. `npm audit fix` (sem `--force`) atualizou dependências internas (`vite` 8.3.8, `undici` 8.12.4, `devalue` 6.0.3, `js-yaml` 4.3.2, `source-map-js` 1.2.2).
+- `npm audit`: de 16 falhas (1 crítica, 13 altas, 2 moderadas) para 10 (8 altas, 2 moderadas). As que sobram não têm correção sem subir major ou trocar de pacote: `astro-compress` (fixa `sharp` 0.35.3, `svgo` 4.0.2 e `deepmerge-ts` 7; não há versão nova), `@astrojs/vercel` (`path-to-regexp` 6.1.0 via `@vercel/routing-utils`) e `@keystatic/core` (`minimatch`); todas rodam só no build ou no painel.
+- **Node 24 fixo:** `engines` passou de `>=22.12.0` para `24.x` e foi criado o `.nvmrc` (`24`). A Vercel avisava que `>=22.12` fazia o build rodar em Node 26, enquanto as funções rodam em Node 24.
+- O HTML da home e da 404 só muda em duas coisas: a meta `generator` (`Astro v7.4.12`) e a saída de `font-stretch:100%` dos `@font-face` (é o valor padrão, nada muda na tela). `llms.txt` e sitemaps saem iguais byte a byte; as rotas da Vercel (`config.json`) também.
+
 ## 16/11/2026 · branch `docs/painel-etapa3`
 
 - **Painel ligado ao GitHub (Etapa 3):** GitHub App `escola-prisma-painel` e 4 variáveis na Vercel; login em produção funcionando desde 15/11/2026. Primeira edição feita pelo painel: selo do topo sem "· Vestibular" (commit `07ba0a0`).

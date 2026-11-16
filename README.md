@@ -23,7 +23,7 @@ Mantenha estes dados **idênticos** no site, no Perfil da Empresa no Google e na
 - Painel de edição [Keystatic](https://keystatic.com) (`@keystatic/core` + `@keystatic/astro`, com `@astrojs/react`) em `/keystatic`, e adapter `@astrojs/vercel` só para as rotas do painel. A home e a 404 continuam pré-renderizadas, sem React
 - [Tailwind CSS 4](https://tailwindcss.com) via `@tailwindcss/vite`
 - `sharp` para otimização de imagens (`astro:assets`)
-- Node.js **>= 22.12**
+- Node.js **24.x** (`engines` no `package.json` e `.nvmrc`; é a versão em que a Vercel roda o build e as funções)
 
 ## Comandos
 
