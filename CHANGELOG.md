@@ -3,6 +3,13 @@
 Mudanças relevantes do site, da mais recente para a mais antiga.
 Pontos de restauração (tags `restauracao/*`) estão em [docs/RESTAURACAO.md](docs/RESTAURACAO.md).
 
+## 16/11/2026 · branch `feat/painel-visual`
+
+- **Visual do painel `/keystatic` com a marca:** cor de destaque laranja (`#c2410c`, laranja da marca escurecido para o texto branco do botão passar no contraste AA: 5,2:1), cinzas puxados para o azul-marinho, títulos na fonte Bricolage Grotesque (a mesma do site), nome da tela em azul-marinho, grupos de campos em cartões e formulário mais estreito (800 px). Tema claro e escuro. Arquivo `public/painel/painel.css`, colocado só nas páginas do painel por `src/middleware.ts` (novo); o CSS só troca variáveis do Keystar UI, sem depender de classes geradas.
+- **Organização das telas** (`keystatic.config.ts`): logo da escola no topo do menu; interface do Keystatic em português onde ele tem tradução (`locale: 'pt-BR'`: "Painel", "Adicionar", "Pesquisar"…; "Save", "Reset", "Done" e "Edit item" continuam em inglês porque o Keystatic não traduz); no início de cada uma das 18 telas, uma caixa "onde aparece" com o link **Ver no site ↗** para a seção (não grava nada no JSON); campos curtos lado a lado no computador (texto do botão e texto curto, chamadas da faixa, UF/CEP/País, latitude/longitude, telefones, WhatsApp, Instagram, portais, ícone e título dos cartões, os 3 cartões de foto do Topo); ajudas mais curtas (detalhes no manual).
+- **O formato dos JSON de `src/content` não mudou:** ida e volta nas 18 telas (alterar, salvar, desfazer, salvar) deixa os 18 arquivos iguais byte a byte ao commit; fotos intactas. `index.html`, `404.html` e `llms.txt` saem idênticos byte a byte aos da `main`; sitemaps iguais tirando o `lastmod`; rotas da Vercel (`config.json`) idênticas.
+- Docs: manual (botões em português, caixa "Ver no site", campos lado a lado) e README (estrutura e como o visual do painel funciona).
+
 ## 16/11/2026 · [PR #9](https://github.com/wflipe/escola-prisma/pull/9) · branch `chore/atualiza-astro`
 
 - **Atualização de segurança:** `astro` 7.2.2 → 7.4.12 (falha crítica em `astro <=7.4.6`), `@astrojs/mdx` 7.0.5 → 7.0.8, `@astrojs/sitemap` 3.7.3 → 3.7.5, `sharp` 0.35.3 → 0.35.5; `@astrojs/react` 7.1.9, `@astrojs/vercel` 11.0.22 e `@astrojs/check` 0.9.12 já estavam na última versão. `npm audit fix` (sem `--force`) atualizou dependências internas (`vite` 8.3.8, `undici` 8.12.4, `devalue` 6.0.3, `js-yaml` 4.3.2, `source-map-js` 1.2.2).

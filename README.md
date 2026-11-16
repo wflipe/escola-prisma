@@ -41,12 +41,15 @@ Mantenha estes dados **idênticos** no site, no Perfil da Empresa no Google e na
 ```text
 public/
   assets/            logos e imagem de compartilhamento (og:image 1200x630)
+  painel/            visual do painel /keystatic (painel.css: cores e fonte da marca; fonte Bricolage)
   favicon*, robots.txt, verificação do Google Search Console
 src/
   pages/index.astro  página única: monta as seções na ordem de content/site/secoes.json
   pages/404.astro    página de "não encontrada" (noindex; links do menu com "/#secao")
   pages/llms.txt.ts  gera /llms.txt (resumo para IAs) com os dados de escola.json e matriculas.json
                      (o Keystatic injeta /keystatic e /api/keystatic/*, que rodam sob demanda)
+  middleware.ts      só no HTML de /keystatic*: acrescenta o <link> de public/painel/painel.css
+                     (páginas pré-renderizadas e /api passam sem alteração)
   layouts/BaseLayout.astro   <head> (SEO, Open Graph, geo, JSON-LD), header, footer, WhatsApp
   components/
     layout/          EnrollmentStrip (faixa de matrículas), TopBar, Header, MobileMenu,
@@ -98,6 +101,8 @@ Fontes: **Bricolage Grotesque** (títulos), **Instrument Serif** (destaques em i
   - **Site todo:** Menu e rodapé, Página não encontrada (404), Dados da escola, SEO e compartilhamento.
 
   No site publicado (`www.escolaprisma.net.br/keystatic`) o painel grava no GitHub: cada "Save" vira um commit na `main` e a Vercel publica em 1–2 minutos. O login usa o GitHub App `escola-prisma-painel` e 4 variáveis de ambiente na Vercel; como refazer, trocar o segredo e resolver erros de login está na Etapa 3 de [docs/PLANO-PAINEL-ADMIN.md](docs/PLANO-PAINEL-ADMIN.md). Manual de quem edita: [docs/PAINEL-ADMIN.md](docs/PAINEL-ADMIN.md). O painel grava os JSON no formato `JSON.stringify(dados, null, 2)`, omite campos de texto vazios e **apaga chaves que não estão na tela** (para manter uma chave fora do painel, use `fields.ignored()`); edições à mão devem seguir o mesmo formato para não gerar diferenças à toa. O painel fica fora do Google (`robots.txt`, `X-Robots-Tag: noindex` e fora do sitemap).
+
+  **Visual do painel:** o Keystatic não tem API de tema. As cores e a fonte da marca entram por `public/painel/painel.css`, que só troca as variáveis CSS `--kui-color-scale-indigo*` (cor de destaque: laranja `#c2410c`, que passa no contraste AA com texto branco) e `--kui-color-scale-slate*` (cinzas puxados para o azul-marinho), com tema claro e escuro; o `src/middleware.ts` coloca esse CSS só nas páginas `/keystatic*`. Ao atualizar o `@keystatic/core`, confira se essas variáveis ainda existem (se sumirem, o painel volta ao visual padrão, sem quebrar). Em `keystatic.config.ts`: interface em `pt-BR` (`locale`), logo no menu (`ui.brand.mark`), um bloco "Onde aparece / Ver no site" no início de cada tela (campo `verNoSite`, um `fields.empty()` que não grava nada no JSON) e `layout` (colunas) nos grupos. ⚠️ O Tailwind do site lê `keystatic.config.ts`: não escreva ali estilos inline com valores que tenham nome de classe do Tailwind (ex.: a posição absoluta ou o display em bloco), senão a classe entra no CSS do site (o Tailwind também lê o README); use classes de `painel.css`.
 - **Dados oficiais da escola** (endereço, CEP, telefones, WhatsApp, Instagram, coordenadas, slogan do rodapé): `src/content/site/escola.json` (descrição dos campos em `EscolaData`, `src/types/content.ts`; lido por `src/data/escola.ts`). É a fonte única, usada pelo rodapé, menu, seção Instagram e dados estruturados (`src/utils/schema.ts`). Latitude e longitude ficam como **número** no JSON; o painel edita como texto (4 a 7 casas, sem arredondar).
 - **Textos das seções:** `src/content/**.json`, com os tipos em `src/types/content.ts`. Todo JSON tem um objeto na raiz; listas ficam em `{ "items": [...] }` ou numa chave própria (`cartoes`, `itens`, `menu`). Títulos usam `titulo` + `tituloDestaque` (trecho em itálico colorido; quebra de linha no título vira `<br />`, ver `src/utils/titulo.ts`). As seções sem JSON próprio antes do painel ganharam um arquivo `src/content/site/secao-*.json`.
   - **Seções da página:** `src/content/site/secoes.json` liga/desliga (`"ativo"`) e ordena as seções depois do Hero e do banner de matrículas, que ficam fixos no topo. Seção repetida vale só na primeira posição; seção ausente da lista fica escondida (`src/data/secoes.ts`). O item do menu de uma seção desligada some sozinho (topo e celular).
